@@ -34,9 +34,15 @@
                       <a class="button is-light">
                           <strong>See the past results</strong>
                       </a>
-                      <a class="button is-primary" @click="isComponentModalActive = true">
-                          <strong>Vote Now</strong>
+                        <a v-if="userid == 171273" class="button is-danger">
+                          <strong>Admin</strong>
                       </a>
+                      <a v-if="userid" class="button is-primary" @click="Logout()">
+                          <strong>Logout</strong>
+                      </a>
+                      <a v-else class="button is-primary" @click="isComponentModalActive = true">
+                          <strong>Vote Now</strong>
+                      </a>      
                   </div>
               </b-navbar-item>
           </template>
@@ -50,7 +56,7 @@
                     aria-role="dialog"
                     aria-modal>
                     
-                <modal-form v-bind="formProps"></modal-form>
+                <modal-form></modal-form>
             </b-modal>
         </section>
     </template>
@@ -72,44 +78,9 @@
 </template>
 
 <script>
-    const ModalForm = {
-        props: ['email', 'password'],
-        template: `
-            <form action="">
-                <div class="modal-card" style="width: auto">
-                    <header class="modal-card-head">
-                        <p class="modal-card-title">Login with Kitsu</p>
-                    </header>
-                    <section class="modal-card-body">
-                        <b-field label="Email">
-                            <b-input
-                                type="email"
-                                :value="email"
-                                placeholder="Your email"
-                                required>
-                            </b-input>
-                        </b-field>
+import ModalForm from './components/ModalForm'
+const axios = require('axios').default;
 
-                        <b-field label="Password">
-                            <b-input
-                                type="password"
-                                :value="password"
-                                password-reveal
-                                placeholder="Your password"
-                                required>
-                            </b-input>
-                        </b-field>
-
-                        <p>We do NOT store any of your credentials.</p>
-                    </section>
-                    <footer class="modal-card-foot">
-                        <button class="button" type="button" @click="$parent.close()">Close</button>
-                        <button class="button is-primary">Login</button>
-                    </footer>
-                </div>
-            </form>
-        `
-    }
 export default {
   name: 'App',
     components: {
@@ -118,10 +89,27 @@ export default {
     data() {
         return {
             isComponentModalActive: false,
-            formProps: {
-                email: '',
-                password: ''
-            }
+            token: localStorage.token,
+            userid: ""
+        }
+    },
+    mounted() {
+        if(localStorage.token) {
+            axios({
+                method: "get",
+                url: 'https://kitsu.io/api/edge/users?filter[self]=true&include=userRoles.role,userRoles.user',
+                headers: {
+                    Authorization: "Bearer "+JSON.parse(localStorage.token).data.access_token
+                }
+            }).then((response) => {
+                this.userid=JSON.parse(JSON.stringify(response['data'])).data[0].id
+            })
+        }
+    },
+    methods: {
+        Logout: function() {
+            localStorage.clear()
+            window.location.reload()
         }
     }
 }
