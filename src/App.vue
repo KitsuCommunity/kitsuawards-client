@@ -90,7 +90,7 @@ export default {
         return {
             isComponentModalActive: false,
             token: localStorage.token,
-            userid: ""
+            userid: localStorage.userid
         }
     },
     mounted() {
@@ -103,6 +103,7 @@ export default {
                 }
             }).then((response) => {
                 this.userid=JSON.parse(JSON.stringify(response['data'])).data[0].id
+                localStorage.setItem("userid",this.userid)
             })
         }
     },
