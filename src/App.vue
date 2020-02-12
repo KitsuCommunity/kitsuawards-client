@@ -41,7 +41,7 @@
                           <strong>Logout</strong>
                       </a>
                       <a v-else class="button is-primary" @click="isComponentModalActive = true">
-                          <strong>Vote Now</strong>
+                          <strong>Login</strong>
                       </a>      
                   </div>
               </b-navbar-item>
@@ -55,8 +55,42 @@
                     trap-focus
                     aria-role="dialog"
                     aria-modal>
-                    
-                <modal-form></modal-form>
+                        <form @submit.prevent="Login">
+                            <div class="modal-card" style="width: auto">
+                                <header class="modal-card-head">
+                                    <p class="modal-card-title">Login with Kitsu</p>
+                                </header>
+                                <section class="modal-card-body">
+                                    <b-field label="Username">
+                                        <b-input
+                                            type="text"
+                                            placeholder="Your username"
+                                            v-model="email"
+                                            required>
+                                        </b-input>
+                                    </b-field>
+
+                                    <b-field label="Password">
+                                        <b-input
+                                            type="password"
+                                            password-reveal
+                                            placeholder="Your password"
+                                            v-model="password"
+                                            required>
+                                        </b-input>
+                                    </b-field>
+                                    <b-message v-if="IncorrectLogin" size="is-small" type="is-danger">
+                                        Username or password invalid
+                                    </b-message>
+                                    We do NOT store any of your credentials.
+                                </section>
+                                <footer class="modal-card-foot">
+                                    <button class="button" type="button" @click="$parent.close()">Close</button>
+                                    <b-button v-if="IsLogging" class="button is-primary" loading>Login</b-button>
+                                    <button v-else class="button is-primary">Login</button>
+                                </footer>
+                            </div>
+                        </form>
             </b-modal>
         </section>
     </template>
@@ -78,23 +112,60 @@
 </template>
 
 <script>
-import ModalForm from './components/ModalForm'
 const axios = require('axios').default;
 
 export default {
   name: 'App',
-    components: {
-        ModalForm
-    },
     data() {
         return {
             isComponentModalActive: false,
             token: localStorage.token,
-            userid: localStorage.userid
+            userid: localStorage.userid,
+            IsLogging: false,
+            IncorrectLogin: "",
+            email: "",
+            password: ""
         }
     },
     mounted() {
         if(localStorage.token) {
+            this.checkToken()
+        }
+    },
+    methods: {
+        Login: function() {
+            this.IsLogging=true
+            axios({
+                method: "post",
+                url: 'https://kitsu.io/api/oauth/token',
+                data: {
+                    grant_type: 'password',
+                    username: this.email,
+                    password: this.password
+                }
+            })
+            .then((response) => {
+                localStorage.setItem('token', JSON.stringify(response, null, 2))
+                this.checkToken()
+                this.IsLogging=false
+                this.isComponentModalActive=false
+            })
+            .catch((error) => {
+                this.IsLogging=false
+                if(error.error == "invalid_grant") {
+                    this.IncorrectLogin="Incorrect username or password"
+                }
+                else {
+                    this.IncorrectLogin="Something went wrong..."
+                }                
+            })
+        },
+        Logout: function() {
+            localStorage.clear()
+            this.token = ""
+            this.userid = ""
+        },
+        checkToken: function() {
             axios({
                 method: "get",
                 url: 'https://kitsu.io/api/edge/users?filter[self]=true&include=userRoles.role,userRoles.user',
@@ -102,15 +173,14 @@ export default {
                     Authorization: "Bearer "+JSON.parse(localStorage.token).data.access_token
                 }
             }).then((response) => {
-                this.userid=JSON.parse(JSON.stringify(response['data'])).data[0].id
-                localStorage.setItem("userid",this.userid)
+                try {
+                    this.userid=JSON.parse(JSON.stringify(response['data'])).data[0].id
+                    localStorage.setItem("userid",this.userid)
+                } catch (error) {
+                    this.userid=""
+                    localStorage.clear()
+                }
             })
-        }
-    },
-    methods: {
-        Logout: function() {
-            localStorage.clear()
-            window.location.reload()
         }
     }
 }
