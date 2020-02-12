@@ -149,6 +149,7 @@ export default {
                 this.checkToken()
                 this.IsLogging=false
                 this.isComponentModalActive=false
+                this.IncorrectLogin=""
             })
             .catch((error) => {
                 this.IsLogging=false
