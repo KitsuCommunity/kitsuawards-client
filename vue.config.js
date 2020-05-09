@@ -1,1 +1,6 @@
-module.exports = { runtimeCompiler: true }
+{
+    test: /\.(graphql|gql)$/
+    use: [
+      { loader: 'graphql-tag/loader' }
+    ]
+  }

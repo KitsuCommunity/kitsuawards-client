@@ -1,24 +1,26 @@
 import gql from 'graphql-tag'
-export const GET_CREATION_QUERY = gql`
-    query FetchData() {
-        {
-            year {
-            start
-            end
-            categories {
+export const FETCH_DATA_QUERY = gql`
+  query FetchDataQuery {
+	year {
+        start
+        end
+        description
+        categories {
+          name
+          url
+          subcategories {
+            name
+            nominees {
+              id
               name
-              subcategories {
-                name
-                nominees {
-                  name
-                  media
-                }
-              }
-            }
-            judges {
-              userId
+              media
             }
           }
         }
-    }
+        judges {
+          id
+          userId
+        }
+      }
+  }
 `

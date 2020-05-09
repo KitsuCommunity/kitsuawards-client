@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Homepage from '@/components/Homepage'
-import Error404 from '@/components/Error404'
+import Category from '@/components/Category'
+// import Results from '@/components/Results'
 
 Vue.use(Router)
 
@@ -15,8 +16,13 @@ export default new Router({
     },
     {
       path: '*',
-      name: '404',
-      component: Error404
-    }
+      name: 'Category',
+      component: Category
+    }//,
+    // {
+    //   path: '/results/',
+    //   name: 'Results',
+    //   components: Results
+    // }
   ]
 })

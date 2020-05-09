@@ -1,24 +1,50 @@
 <template>
   <div>
-    <h1><strong>Welcome Users of Kitsu !</strong></h1>
-    <p>The Kitsu Anime Awards 2019, hosted by The Anime Social Club, features 20 categories with 6 nominees each. The nomination process involved 18 Kitsu users whom were selected to be judges, and through a series of forms, chose what will be featured in each category!</p>
-    <p>VOTING: There is a link to vote for each category under the category title</p>
-    <p>Voting will begin December 28th and end on January 8th 2020. There will be two winners for each category: A Judge’s Winner and a People’s Choice Winner. The winners will be announced over Twitch Live on January 11th 2020. </p>
-  </div>
+    <h1><strong>Welcome Users of Kitsu!</strong></h1>
+    <div class="description" v-html="data[0].description"></div>
+    <h1><strong>The fabulous judges:</strong></h1>
+    <div class="judges-grid">
+      <div class="judges-grid-child" v-for="judge in judges_id"
+        :key="judge.id">
+        <a :href="'https://kitsu.io/users/'+judge.userId">
+          <judgeinfos :userid="judge.userId" />
+        </a>
+      </div>
+    </div>
+  </div>                                                    
 </template>
 
 <script>
+import judgeinfos from './JudgesInfo.vue'
+
 export default {
   name: 'Homepage',
+  props: ['data'],
+  components: {
+    judgeinfos
+  },
+  data() {
+    return {
+      judges_id: this.data[0].judges
+    }
+  }
 }
 </script>
-<style scoped>
+<style>
 h1 {
   font-size: 32px;
   text-align: center;
 }
-p {
+.description {
   margin-left: 5%;
   margin-right: 5%;
+}
+
+.judges-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(150px,1fr));
+}
+.judges-grid-child {
+  padding: 15px;
 }
 </style>
