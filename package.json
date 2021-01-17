@@ -10,7 +10,7 @@
   "dependencies": {
     "apollo-boost": "^0.4.7",
     "axios": "^0.21.1",
-    "buefy": "^0.8.9",
+    "buefy": "^0.9.4",
     "core-js": "^3.8.2",
     "graphql": "^15.0.0",
     "node-sass": "^4.14.1",
@@ -25,7 +25,7 @@
     "@vue/cli-plugin-babel": "^4.5.10",
     "@vue/cli-plugin-eslint": "^4.1.0",
     "@vue/cli-plugin-router": "^4.5.10",
-    "@vue/cli-service": "^4.1.0",
+    "@vue/cli-service": "^4.5.10",
     "babel-eslint": "^10.0.3",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
