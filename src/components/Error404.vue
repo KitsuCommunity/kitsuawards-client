@@ -10,8 +10,9 @@ export default {
 }
 </script>
 <style scoped>
-h1 {
+strong {
   font-size: 32px;
   text-align: center;
+  color: white;
 }
 </style>

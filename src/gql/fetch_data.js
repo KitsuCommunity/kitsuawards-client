@@ -4,10 +4,13 @@ export const FETCH_DATA_QUERY = gql`
 	year {
         start
         end
+        showResults
         description
         categories {
           name
           url
+          start
+          end
           subcategories {
             name
             nominees {

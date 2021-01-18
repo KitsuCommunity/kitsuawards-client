@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h1><strong>Welcome Users of Kitsu!</strong></h1>
+    <h1 class="strong">Welcome Users of Kitsu!</h1>
     <div class="description" v-html="data[0].description"></div>
-    <h1><strong>The fabulous judges:</strong></h1>
+    <h1 class="strong">The fabulous judges:</h1>
     <div class="judges-grid">
       <div class="judges-grid-child" v-for="judge in judges_id"
         :key="judge.id">
@@ -46,5 +46,8 @@ h1 {
 }
 .judges-grid-child {
   padding: 15px;
+}
+.strong {
+  font-weight: bold;
 }
 </style>

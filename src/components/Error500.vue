@@ -60,6 +60,7 @@
     /* h3 */
     margin-top: -20px;
     line-height: 1em;
+    color: white !important;
   }
   h3 {
     font-size:30pt;
@@ -80,7 +81,9 @@
   }
   p {
     font-size: 20pt;
-    font-wight: 400;
+    font-weight: 400;
+    color: white !important;
+
   }
   
   #break {
