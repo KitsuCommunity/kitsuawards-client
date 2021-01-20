@@ -54,10 +54,11 @@
         </form>
       </div>
     </div>
-    <div v-else>
-      <h1 class="not_revealed">
+    <div class="not_revealed" v-else>
+      <h1>
         Nominees will be revealed {{ time_tools("countdown", category.start) }}
       </h1>
+      <img src="https://64.media.tumblr.com/b4b741f4b462803cc765567133a9e32c/tumblr_p0thvr4Y0Y1qzxv73o1_540.gif">
     </div>
   </div>
   <div v-else>
@@ -249,8 +250,8 @@ input[type="radio"]:checked + label {
 .iframe {
   width: 100%;
 }
-.not_revealed {
-  margin-top: 250px;
+.not_revealed, .not_revealed * {
   font-weight: bold;
+  text-align: center;
 }
 </style>
