@@ -15,7 +15,7 @@ export default new Router({
       component: Homepage
     },
     {
-      path: '/results',
+      path: 'results',
       name: 'Results',
       components: Results
     },

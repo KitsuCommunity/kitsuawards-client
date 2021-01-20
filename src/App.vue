@@ -69,14 +69,26 @@
                 >
                   <strong>See the results</strong>
                 </b-navbar-item>
-                <b-navbar-item href="https://api.kitsuawards.com/admin" v-if="userid == 171273" class="button is-danger">
+                <b-navbar-item
+                  href="https://api.kitsuawards.com/admin"
+                  v-if="userid == 171273"
+                  class="button is-danger"
+                >
                   <strong>Admin</strong>
                 </b-navbar-item>
-                <b-navbar-item v-if="token" @click="Logout()" class="button is-hidden-mobile is-primary">
-                    <strong >Logout</strong>
+                <b-navbar-item
+                  v-if="token"
+                  @click="Logout()"
+                  class="button is-hidden-mobile is-primary"
+                >
+                  <strong>Logout</strong>
                 </b-navbar-item>
-                <b-navbar-item v-else @click="isComponentModalActive = true" class="button is-hidden-mobile is-primary">
-                    <strong>Login</strong>
+                <b-navbar-item
+                  v-else
+                  @click="isComponentModalActive = true"
+                  class="button is-hidden-mobile is-primary"
+                >
+                  <strong>Login</strong>
                 </b-navbar-item>
               </div>
             </b-navbar-item>
@@ -139,7 +151,13 @@
         </section>
       </template>
       <div v-if="year" id="router-view">
-        <router-view :route="$route.fullPath" :data="year" :token="token" />
+        <router-view
+          :route="$route.fullPath"
+          :data="year"
+          :token="token"
+          :votes="votes"
+          @fetch-vote="fetchVote"
+        />
       </div>
       <footer class="footer">
         <div class="content has-text-centered">
@@ -167,7 +185,7 @@
 const axios = require("axios").default;
 import Error500 from "./components/Error500.vue";
 import { FETCH_DATA_QUERY } from "./gql/fetch_data";
-
+import { FETCH_VOTE_QUERY } from "./gql/fetch_votes";
 export default {
   name: "App",
   components: {
@@ -177,6 +195,7 @@ export default {
     return {
       APIerror: false,
       year: null,
+      votes: [],
       isComponentModalActive: false,
       token: localStorage.token,
       userid: null,
@@ -214,7 +233,7 @@ export default {
       })
         .then((response) => {
           localStorage.setItem("token", response.data.access_token);
-          this.token=response.data.access_token
+          this.token = response.data.access_token;
           this.checkToken();
           this.IsLogging = false;
           this.isComponentModalActive = false;
@@ -234,18 +253,30 @@ export default {
       this.token = null;
       this.userid = "";
     },
+    fetchVote: async function() {
+      const votes = await this.$apollo.query({
+        query: FETCH_VOTE_QUERY,
+        fetchPolicy: 'network-only',
+        variables: {
+          token: this.token,
+        },
+      });
+      this.votes = votes.data.FetchVote.map(function(el) {
+        return el.nominee;
+      });
+    },
     checkToken: function() {
       axios({
         method: "get",
         url:
           "https://kitsu.io/api/edge/users?filter[self]=true&include=userRoles.role,userRoles.user",
         headers: {
-          Authorization:
-            "Bearer " + this.token,
+          Authorization: "Bearer " + this.token,
         },
-      }).then((response) => {
+      }).then(async (response) => {
         try {
           this.userid = JSON.parse(JSON.stringify(response["data"])).data[0].id;
+          this.fetchVote();
         } catch (error) {
           this.userid = "";
           localStorage.clear();

@@ -1,46 +1,63 @@
 <template>
   <div v-if="!is404">
-    <div
-      id="grid"
-      v-for="subcategory in category.subcategories"
-      :key="subcategory.id"
-    >
-      <h1>{{ subcategory.name }}</h1>
-      <form class="subcategory">
-        <div class="subcategory-grid">
-          <b-radio
-            v-model="selection"
-            v-for="nominee in subcategory.nominees"
-            :key="nominee.id"
-            name="name"
-            :native-value="nominee.id"
+    <div v-if="time_tools('started', category.start)">
+      <div
+        id="grid"
+        v-for="subcategory in category.subcategories"
+        :key="subcategory.id"
+      >
+        <h1>{{ subcategory.name }}</h1>
+        <form class="subcategory">
+          <div class="subcategory-grid">
+            <b-radio
+              v-model="selections[subcategory.id]"
+              v-for="nominee in subcategory.nominees"
+              :key="nominee.id"
+              name="name"
+              :native-value="nominee.id"
+            >
+              <div v-html="media_rendering(nominee.media)"></div>
+              <p>{{ nominee.name }}</p>
+            </b-radio>
+          </div>
+          <a
+            v-if="time_tools('ended', category.end)"
+            class="button is-primary vote-btn"
+            disabled
+            >Votes ended</a
           >
-            <div v-html="media_rendering(nominee.media)"></div>
-            <p>{{ nominee.name }}</p>
-          </b-radio>
-        </div>
-        <a
-          v-if="time_tools('started', category.start)==false"
-          class="button is-primary vote-btn"
-          disabled
-          >Votes open {{ time_tools("countdown", category.start) }}</a
-        >
-        <a
-          v-else-if="time_tools('ended', category.end)"
-          class="button is-primary vote-btn"
-          disabled
-          >Votes ended</a
-        >
-        <a v-else-if="token == null" class="button is-primary vote-btn" disabled
-          >You need to log in</a
-        >
-        <a
-          v-else-if="time_tools('started', category.start) && time_tools('ended', category.end)==false"
-          class="button is-primary vote-btn"
-          @click="vote()"
-          >Submit my vote</a
-        >
-      </form>
+          <a
+            v-else-if="token == null"
+            class="button is-primary vote-btn"
+            disabled
+            >You need to log in</a
+          >
+          <a
+            v-else-if="
+              votes.find((x) => x.subcategoryId == subcategory.id) &&
+                time_tools('started', category.start) &&
+                time_tools('ended', category.end) == false
+            "
+            class="button is-primary vote-btn"
+            @click="vote(subcategory.id)"
+            >Change my vote</a
+          >
+          <a
+            v-else-if="
+              time_tools('started', category.start) &&
+                time_tools('ended', category.end) == false
+            "
+            class="button is-primary vote-btn"
+            @click="vote(subcategory.id)"
+            >Submit my vote</a
+          >
+        </form>
+      </div>
+    </div>
+    <div v-else>
+      <h1 class="not_revealed">
+        Nominees will be revealed {{ time_tools("countdown", category.start) }}
+      </h1>
     </div>
   </div>
   <div v-else>
@@ -53,7 +70,7 @@ import Error404 from "./Error404.vue";
 import { VOTE_MUTATION } from "../gql/vote_mutation";
 export default {
   name: "Category",
-  props: ["data", "route", "token"],
+  props: ["data", "route", "token", "votes"],
   components: {
     Error404,
   },
@@ -61,10 +78,15 @@ export default {
     return {
       category: null,
       is404: true,
-      selection: null,
+      selections: [],
     };
   },
   methods: {
+    restoreVotes: function() {
+      for (let i = 0; i < this.votes.length; i++) {
+        this.selections[this.votes[i].subcategoryId] = this.votes[i].id;
+      }
+    },
     loadpage: function() {
       this.category = this.data[0].categories.find(
         (x) => "/" + x.url == this.$route.path
@@ -79,7 +101,7 @@ export default {
       if (media.includes("youtu.be")) {
         const yt_url = media.split(".be/")[1];
         return (
-          '<iframe height="315" src="https://youtube.com/embed/' +
+          '<iframe height="315" class="iframe" src="https://youtube.com/embed/' +
           yt_url +
           '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
         );
@@ -88,20 +110,26 @@ export default {
       }
     },
     time_tools: function(tool, date_tz) {
-      const date = date_tz.split(' UTC')[0]
+      const date = date_tz.split(" UTC")[0];
       switch (tool) {
         case "started":
-          return moment().format("YYYY-MM-DD h:mm:ss",'Europe/Paris') >= moment(date).format("YYYY-MM-DD h:mm:ss",'Europe/Paris')
-      case "ended":
-          return moment().format("YYYY-MM-DD h:mm:ss",'Europe/Paris') > moment(date).format("YYYY-MM-DD h:mm:ss",'Europe/Paris')
+          return (
+            moment().format("YYYY-MM-DD h:mm:ss", "Europe/Paris") >=
+            moment(date).format("YYYY-MM-DD h:mm:ss", "Europe/Paris")
+          );
+        case "ended":
+          return (
+            moment().format("YYYY-MM-DD h:mm:ss", "Europe/Paris") >
+            moment(date).format("YYYY-MM-DD h:mm:ss", "Europe/Paris")
+          );
         case "countdown":
-          return moment(date, "YYYY-MM-DD h:mm:ss",'Europe/Paris').fromNow();
+          return moment(date, "YYYY-MM-DD h:mm:ss", "Europe/Paris").fromNow();
         default:
           break;
       }
     },
-    vote: function() {
-      if (this.selection) {
+    vote: function(sub_id) {
+      if (this.selections[sub_id]) {
         this.$apollo
           .mutate({
             // Query
@@ -109,7 +137,7 @@ export default {
             // Parameters
             variables: {
               token: this.token,
-              nomineeid: parseInt(this.selection),
+              nomineeid: parseInt(this.selections[sub_id]),
             },
           })
           .then((reponse) => {
@@ -124,6 +152,7 @@ export default {
                 type: "is-danger",
               });
             } else {
+              this.$emit('fetch-vote');
               this.$buefy.notification.open({
                 duration: 5000,
                 message: "Vote submitted",
@@ -151,8 +180,12 @@ export default {
   },
   mounted() {
     this.loadpage();
+    this.restoreVotes();
   },
   watch: {
+    votes: function() {
+      this.restoreVotes();
+    },
     route: function() {
       this.loadpage();
       scroll(0, 0);
@@ -212,5 +245,12 @@ input[type="radio"]:checked + label {
   padding-left: 0 !important;
   margin-bottom: auto;
   width: 100%;
+}
+.iframe {
+  width: 100%;
+}
+.not_revealed {
+  margin-top: 250px;
+  font-weight: bold;
 }
 </style>

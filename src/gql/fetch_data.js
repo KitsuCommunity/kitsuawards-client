@@ -13,6 +13,7 @@ export const FETCH_DATA_QUERY = gql`
           end
           subcategories {
             name
+            id
             nominees {
               id
               name
