@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Homepage from '@/components/Homepage'
 import Category from '@/components/Category'
-// import Results from '@/components/Results'
+import Results from '@/components/Results'
 
 Vue.use(Router)
 
@@ -15,14 +15,14 @@ export default new Router({
       component: Homepage
     },
     {
+      path: 'results',
+      name: 'Results',
+      components: Results
+    },
+    {
       path: '*',
       name: 'Category',
       component: Category
-    }//,
-    // {
-    //   path: '/results/',
-    //   name: 'Results',
-    //   components: Results
-    // }
+    }
   ]
 })
