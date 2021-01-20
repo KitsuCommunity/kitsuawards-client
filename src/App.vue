@@ -2,7 +2,7 @@
   <div id="app">
     <template v-if="year">
       <template>
-        <b-navbar shadow fixed-top>
+        <b-navbar fixed-top>
           <template slot="brand">
             <b-navbar-item tag="router-link" :to="{ path: '/' }">
               <svg
@@ -162,10 +162,12 @@
       <footer class="footer">
         <div class="content has-text-centered">
           <p>
-            The <strong>Kitsu Anime Awards</strong> are hosted by
-            <a href="https://kitsu.io/users/Kuroonuma">Kuroonuma</a>. The
-            website was made by
-            <a href="https://kitsu.io/users/Gakamine">Gakamine</a>.
+            The <strong>Kitsu Anime Awards</strong> is hosted by
+            <a href="https://kitsu.io/users/Kuroonuma">Kuroonuma</a>. <br> 
+            The website was made by
+            <a href="https://kitsu.io/users/Gakamine">Gakamine</a>. <br>
+            And styled by 
+            <a href="https://kitsu.io/users/Reinachan">Reina</a>
           </p>
           <p>
             All other trademarks and content not owned by the Kitsu Anime Awards
@@ -303,14 +305,84 @@ export default {
 // Import Bulma's core
 @import "~bulma/sass/utilities/_all";
 
+// Base colours
+:root {
+		// Base Colours
+		--background-color: #161116ff;
+		--secondary-background-color: #312631ff;
+		--foreground-background-color: #453345ff;
+		--secondary-foreground-background-color: #6F5C6Fff;
+		--cta-accept-color: #236147ff;
+
+    --navbar-color: #161116ff;
+    --navbar-hover-color: #251e25;
+
+		// Shadow Colours
+		--foreground-shadow: #16111688;
+
+		// Text Colours
+		--main-text: #fff;
+		--secondary-text: #ddd;
+		--placeholder-text: #ccc;
+		--links-text: #ff8c7c;
+
+		// Tags
+		--generic-tag: #576163;
+		--media-subtype-tag: var(--generic-tag);
+
+		// Focus highlights
+		--focus-highlight: #ff8c7c;
+		--unfocused-highlights: #ff8c7c00;
+		
+		// Border-Radius
+		--rounded-input: 7px;
+
+		// Font Sizes
+		--font-xs: 0.6rem;
+		--font-sm: 0.8rem;
+		--font-me: 1rem;
+		--font-lg: 1.2rem;
+		--font-xl: 1.4rem;
+		--font-xxl: 1.8rem;
+
+		// Font Weights
+		--light: 300;
+		--regular: 400;
+		--semi-bold: 600;
+		--bold: 700;
+		--extra-bold: 800;
+
+		// Standard Breakpoints
+		--breakpoint-xs: 0;
+		--breakpoint-sm: 576px;
+		--breakpoint-md: 768px;
+		--breakpoint-lg: 992px;
+		--breakpoint-xl: 1200px;
+	}
+
+  // Default border-box
+  * {
+		box-sizing: border-box;
+		text-rendering: optimizeLegibility;
+	}
+
+  // General font
+	body {
+		font-family: "Open Sans", sans-serif;
+		background-color: var(--secondary-background-color);
+		color: var(--main-text);
+	}
+
+
+
 // Set your colors
 $primary: #fd755c;
 $primary-invert: findColorInvert($primary);
 $twitter: #4099ff;
 $twitter-invert: findColorInvert($twitter);
-$navbar-background-color: #292631;
+$navbar-background-color: var(--navbar-color);
 $navbar-box-shadow-color: #282530;
-$text-strong: #868182;
+$text-strong: #e7dfe0;
 $navbar-burger-color: white;
 
 //Modal colors
@@ -376,7 +448,7 @@ $link: $primary;
 $link-hover: #dd452a;
 $link-invert: $primary-invert;
 $link-focus-border: $primary;
-$navbar-item-hover-background-color: #18161d;
+$navbar-item-hover-background-color: var(--navbar-hover-color);
 $navbar-item-hover-color: #bfbfbf;
 $navbar-item-color: #bfbfbf;
 
@@ -386,29 +458,46 @@ $navbar-item-color: #bfbfbf;
 
 #app {
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  min-height: calc(100% - 52px);
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* min-height: calc(100% - 52px); */
   position: absolute;
   width: 100%;
-  min-height: 100%;
-  background-color: #3b3946;
+  min-height: 100vh;
+  background-color: var(--secondary-background-color);
 }
 #router-view {
-  background-color: #3b3946;
-  color: #d8d8d9;
-  margin: 10px;
-  flex: 1 0 auto;
+  background-color: var(--secondary-background-color);
+  color: var(--secondary-text);
+  /* margin: 10px; */
+  /* flex: 1 0 auto; */
 }
 
-.router-link-exact-active {
+// Layout
+#app {
+  display: grid;
+  grid-template-rows: 5rem auto;
+
+  .navbar {
+    grid-row: 1;
+  }
+  #router-view {
+    grid-row: 2;
+  }
+  .footer {
+    grid-row: 3;
+  }
+
+}
+
+/* .router-link-exact-active {
   color: #c1c1c4;
   background-color: #24212c;
-}
+} */
 
 .navbar-brand > .navbar-item {
   color: #fd755c !important;
-  background-color: #292631;
+  /* background-color: #292631; */
 }
 
 .modal-card-body {
@@ -421,9 +510,10 @@ $navbar-item-color: #bfbfbf;
 }
 
 .footer {
-  background-color: #2a2832;
+  background-color: var(--background-color);
   color: #c1c1c4;
   margin-top: 35px;
+  margin-bottom: 0;
 }
 
 .isjudge {
@@ -436,7 +526,7 @@ $navbar-item-color: #bfbfbf;
 }
 
 h1 {
-  color: white !important;
+  color: var(--main-text);
 }
 
 .is-hidden-desktop {
@@ -449,4 +539,16 @@ h1 {
 .navbar-burger {
   margin-left: 0px !important;
 }
+
+// SHAMEFUL FIXES
+html.has-navbar-fixed-top, body.has-navbar-fixed-top {
+  padding: 0;
+}
+body {
+  min-height: 100vh!important;
+  margin: 0!important;
+  padding:0!important;
+}
+
+
 </style>

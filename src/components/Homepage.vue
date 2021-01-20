@@ -36,18 +36,20 @@ h1 {
   text-align: center;
 }
 .description {
-  margin-left: 5%;
-  margin-right: 5%;
+  max-width: 1024px;
+  margin-left: auto;
+  margin-right: auto;
   font-size: 18px;
   text-align: center;
 }
 
 .judges-grid {
+  margin-left: auto;
+  margin-right: auto;
   display: grid;
   grid-template-columns: repeat(auto-fill,minmax(150px,1fr));
-}
-.judges-grid-child {
-  padding: 15px;
+  gap: 15px;
+  max-width: 1024px;
 }
 .strong {
   font-weight: bold;

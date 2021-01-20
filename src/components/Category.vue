@@ -206,14 +206,16 @@ export default {
 .subcategory-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  border: 1px solid #3b3946;
+  gap: 10px;
+
+  padding: 10px;
+  background-color: var(--foreground-background-color);
   border-radius: 6px;
+  margin-bottom: 10px;
   overflow: hidden;
   text-align: center;
 }
 .subcategory {
-  border: 2px solid #292631;
-  background-color: #292631;
   border-radius: 6px;
   overflow: hidden;
   margin: auto;
@@ -225,14 +227,16 @@ export default {
   width: 100%;
 }
 
+.b-radio {
+  margin: 0px!important;
+  
+}
+
 .b-radio.radio:hover,
 input[type="radio"]:checked + label {
   background-color: #24212c;
 }
-.b-radio {
-  border: 1px solid #3b3946;
-  margin-right: 0px !important;
-}
+
 .check {
   position: absolute !important;
   bottom: 0;
@@ -253,6 +257,7 @@ input[type="radio"]:checked + label {
   width: 100%;
 }
 .iframe {
+  border-radius: 3px;
   width: 100%;
   background-color: black;
 }
