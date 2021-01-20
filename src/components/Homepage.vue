@@ -38,6 +38,8 @@ h1 {
 .description {
   margin-left: 5%;
   margin-right: 5%;
+  font-size: 18px;
+  text-align: center;
 }
 
 .judges-grid {
