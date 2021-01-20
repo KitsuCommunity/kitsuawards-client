@@ -4,5 +4,6 @@
 <script>
 export default {
   name: 'Results',
+  props: ["data", "route", "token", "votes"]
 }
 </script>

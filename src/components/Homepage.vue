@@ -19,7 +19,7 @@ import judgeinfos from './JudgesInfo.vue'
 
 export default {
   name: 'Homepage',
-  props: ['data'],
+  props: ["data", "route", "token", "votes"],
   components: {
     judgeinfos
   },
