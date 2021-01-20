@@ -58,7 +58,9 @@
       <h1>
         Nominees will be revealed {{ time_tools("countdown", category.start) }}
       </h1>
-      <img src="https://64.media.tumblr.com/b4b741f4b462803cc765567133a9e32c/tumblr_p0thvr4Y0Y1qzxv73o1_540.gif">
+      <img
+        src="https://64.media.tumblr.com/b4b741f4b462803cc765567133a9e32c/tumblr_p0thvr4Y0Y1qzxv73o1_540.gif"
+      />
     </div>
   </div>
   <div v-else>
@@ -102,10 +104,13 @@ export default {
       if (media.includes("youtu.be")) {
         const yt_url = media.split(".be/")[1];
         return (
-          '<iframe height="315" class="iframe" src="https://youtube.com/embed/' +
+          '<iframe class="iframe" src="https://youtube.com/embed/' +
           yt_url +
           '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
         );
+      } else if (media.includes("streamable.com")) {
+        const streamable_url = media.split(".com/")[1];
+        return '<iframe class="iframe" src="https://streamable.com/e/'+streamable_url+'" frameborder="0" allowfullscreen></iframe>';
       } else {
         return '<img src="' + media + '"/>';
       }
@@ -153,7 +158,7 @@ export default {
                 type: "is-danger",
               });
             } else {
-              this.$emit('fetch-vote');
+              this.$emit("fetch-vote");
               this.$buefy.notification.open({
                 duration: 5000,
                 message: "Vote submitted",
@@ -249,8 +254,10 @@ input[type="radio"]:checked + label {
 }
 .iframe {
   width: 100%;
+  background-color: black;
 }
-.not_revealed, .not_revealed * {
+.not_revealed,
+.not_revealed * {
   font-weight: bold;
   text-align: center;
 }
