@@ -561,14 +561,14 @@ body {
   padding:0!important;
 }
 .secret-sauce p {
-  color: var(--main-text);
+  color: var(--main-text)!important;
 }
 .secret-sauce:hover {
   cursor: help;
 }
 
 .secret-sauce summary {
-  color: var(--background-color);
+  color: #fff0!important;
 }
 
 </style>
