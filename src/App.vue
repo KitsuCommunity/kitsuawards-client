@@ -532,6 +532,8 @@ $navbar-item-color: #bfbfbf;
 }
 
 h1 {
+    font-size: 2em;
+    margin: .67em 0;
   color: var(--main-text);
 }
 
