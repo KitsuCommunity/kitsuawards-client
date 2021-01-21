@@ -164,17 +164,20 @@
         <div class="content has-text-centered">
           <p>
             The <strong>Kitsu Anime Awards</strong> is hosted by
-            <a href="https://kitsu.io/users/Kuroonuma">Kuroonuma</a>. <br> 
+            <a href="https://kitsu.io/users/Kuroonuma" target="_blank" rel="noopener noreferrer" >Kuroonuma</a>. <br> 
             The website was made by
-            <a href="https://kitsu.io/users/Gakamine">Gakamine</a>. <br>
+            <a href="https://kitsu.io/users/Gakamine" target="_blank" rel="noopener noreferrer" >Gakamine</a>. <br>
             And styled by 
-            <a href="https://kitsu.io/users/Reinachan">Reina</a>
+            <a href="https://kitsu.io/users/Reinachan" target="_blank" rel="noopener noreferrer" >Reina</a>
           </p>
           <p>
             All other trademarks and content not owned by the Kitsu Anime Awards
             that appear on the website are the property of their respective
             owners
           </p>
+          <details class="secret-sauce"><summary>secret-sauce</summary>
+            <p>yo waifu sux</p>
+          </details> 
         </div>
       </footer>
     </template>
@@ -389,18 +392,18 @@ $text-strong: #e7dfe0;
 $navbar-burger-color: white;
 
 //Modal colors
-$modal-card-body-background-color: #3b3946;
-$modal-card-head-background-color: #292631;
+$modal-card-body-background-color: var(--foreground-background-color);
+$modal-card-head-background-color: var(--secondary-background-color);
 $modal-card-title-color: white;
 $modal-card-foot-border-top: #282530;
 $modal-card-head-border-bottom: #282530;
-$label-color: #c1c1c4;
-$message-body-pre-background-color: #292631;
+$label-color: #eeeef1;
+$message-body-pre-background-color: var(--background-color);
 
 // Forms
 $input-color: white;
-$input-background-color: #24212c;
-$input-border-color: #555160;
+$input-background-color: var(--background-color);
+$input-border-color: var(--secondary-background-color);
 
 // Setup $colors to use as bulma classes (e.g. 'is-twitter')
 $colors: (
@@ -470,7 +473,7 @@ $navbar-item-color: #bfbfbf;
   background-color: var(--secondary-background-color);
 }
 #router-view {
-  background-color: var(--secondary-background-color);
+  /* background-color: var(--secondary-background-color); */
   color: var(--secondary-text);
   /* margin: 10px; */
   /* flex: 1 0 auto; */
@@ -543,6 +546,11 @@ h1 {
   margin-left: 0px !important;
 }
 
+*::selection {
+  color: black;
+  background-color: var(--links-text);
+}
+
 // SHAMEFUL FIXES
 html.has-navbar-fixed-top, body.has-navbar-fixed-top {
   padding: 0;
@@ -552,6 +560,15 @@ body {
   margin: 0!important;
   padding:0!important;
 }
+.secret-sauce p {
+  color: var(--main-text);
+}
+.secret-sauce:hover {
+  cursor: help;
+}
 
+.secret-sauce summary {
+  color: var(--background-color);
+}
 
 </style>

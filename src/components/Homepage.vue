@@ -3,13 +3,15 @@
     <h1 class="strong">Welcome Users of Kitsu!</h1>
     <div class="description" v-html="data[0].description"></div>
     <h1 class="strong">The fabulous judges:</h1>
+    <div class="all-judges">
     <div class="judges-grid">
       <div class="judges-grid-child" v-for="judge in judges_id"
         :key="judge.id">
-        <a :href="'https://kitsu.io/users/'+judge.userId">
+        <a :href="'https://kitsu.io/users/'+judge.userId" target="_blank" rel="noopener noreferrer" >
           <judgeinfos :userid="judge.userId" />
         </a>
       </div>
+    </div>
     </div>
   </div>                                                    
 </template>
@@ -43,14 +45,23 @@ h1 {
   text-align: center;
 }
 
+.all-judges {
+  max-width: 1024px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .judges-grid {
   margin-left: auto;
   margin-right: auto;
   display: grid;
-  grid-template-columns: repeat(auto-fill,minmax(150px,1fr));
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
   gap: 15px;
-  max-width: 1024px;
 }
+.judges-grid-child {
+  max-width: 160px;
+}
+
 .strong {
   font-weight: bold;
 }

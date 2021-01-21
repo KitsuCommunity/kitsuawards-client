@@ -9,7 +9,7 @@
         <h1>{{ subcategory.name }}</h1>
         <form class="subcategory">
           <div class="subcategory-grid">
-            <b-radio
+              <b-radio
               v-model="selections[subcategory.id]"
               v-for="nominee in subcategory.nominees"
               :key="nominee.id"
@@ -205,11 +205,11 @@ export default {
 }
 .subcategory-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-rows: repeat(auto-fit, minmax(250px, 1fr));
   gap: 10px;
 
   padding: 10px;
-  background-color: var(--foreground-background-color);
   border-radius: 6px;
   margin-bottom: 10px;
   overflow: hidden;
@@ -222,7 +222,26 @@ export default {
   display: inline-block;
   max-width: 1250px;
   min-width: 250px;
+  width: 95%;
 }
+.b-radio.radio {
+  min-width: 250px;
+  background-color: var(--foreground-background-color);
+  border-radius: 5px;
+  padding: 10px;
+  
+  display: grid;
+  grid-template-rows: auto auto auto 35px;
+  grid-template-columns: 1fr auto 1fr;
+  
+}
+
+.radio-wrapper {
+  display: grid;
+
+} 
+
+
 .vote-btn {
   width: 100%;
 }
@@ -234,30 +253,47 @@ export default {
 
 .b-radio.radio:hover,
 input[type="radio"]:checked + label {
-  background-color: #24212c;
+  color: white;
+  background-color: var(--secondary-foreground-background-color);
+  border-radius: 5px;
 }
 
 .check {
-  position: absolute !important;
-  bottom: 0;
-  margin-top: 20px;
+  position: relative;
+  grid-row: 4;
+  grid-column: 2;
+  /* position: absolute !important; */
+  /* bottom: 0; */
+  /* margin-top: 20px;
   margin-left: calc(50% - 10px);
-  margin-bottom: 5px;
+  margin-bottom: 5px; */
 }
 .radio p {
-  margin-bottom: 30px;
-  padding-left: 4px;
-  padding-right: 4px;
+  margin-bottom: 5px;
+  /* padding-left: 4px;
+  padding-right: 4px; */
   text-align: center;
   font-size: 18px;
 }
-.b-radio.radio .control-label {
-  padding-left: 0 !important;
-  margin-bottom: auto;
+.control-label img {
+  border-radius: 5px;
+  object-fit: cover;
   width: 100%;
+  height: 100%;
+}
+
+.b-radio.radio .control-label {
+  padding: 0 !important;
+  grid-column: span 3;
+  grid-row: span 3;
+
+  display: grid;
+  grid-template-rows: 350px auto;
+  gap: 10px;
 }
 .iframe {
   border-radius: 3px;
+  height: 100%;
   width: 100%;
   background-color: black;
 }
