@@ -156,6 +156,7 @@
           :data="year"
           :token="token"
           :votes="votes"
+          :userid="userid"
           @fetch-vote="fetchVote"
         />
       </div>
@@ -288,6 +289,7 @@ export default {
   },
   watch: {
     userid: function() {
+      if(this.year) {
       for (var index = 0; index < this.year[0].judges.length; ++index) {
         var judge = this.year[0].judges[index].userId;
         if (judge == this.userid) {
@@ -296,6 +298,7 @@ export default {
         } else {
           this.isJudge = false;
         }
+      }
       }
     },
   },
