@@ -267,7 +267,7 @@ export default {
           token: this.token,
         },
       });
-      this.votes = votes.data.FetchVote.map(function(el) {
+      this.votes = votes.data.fetchvote.map(function(el) {
         return el.nominee;
       });
     },
