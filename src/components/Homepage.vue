@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1 class="strong">Welcome Users of Kitsu!</h1>
     <div class="description" v-html="data[0].description"></div>
     <h1 class="strong">The fabulous judges:</h1>
     <div class="all-judges">
@@ -43,6 +42,13 @@ h1 {
   margin-right: auto;
   font-size: 18px;
   text-align: center;
+}
+.description h1 {
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+.description p {
+  margin-bottom: 15px;
 }
 
 .all-judges {
