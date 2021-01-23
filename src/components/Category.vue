@@ -120,16 +120,16 @@ export default {
       switch (tool) {
         case "started":
           return (
-            moment().format("YYYY-MM-DD h:mm:ss", "Europe/Paris") >=
-            moment(date).format("YYYY-MM-DD h:mm:ss", "Europe/Paris")
+            moment().format("YYYY-MM-DD HH:mm:ss", "Europe/Paris") >=
+            moment(date).format("YYYY-MM-DD HH:mm:ss", "Europe/Paris")
           );
         case "ended":
           return (
-            moment().format("YYYY-MM-DD h:mm:ss", "Europe/Paris") >
-            moment(date).format("YYYY-MM-DD h:mm:ss", "Europe/Paris")
+            moment().format("YYYY-MM-DD HH:mm:ss", "Europe/Paris") >
+            moment(date).format("YYYY-MM-DD HH:mm:ss", "Europe/Paris")
           );
         case "countdown":
-          return moment(date, "YYYY-MM-DD h:mm:ss", "Europe/Paris").fromNow();
+          return moment(date, "YYYY-MM-DD HH:mm:ss", "Europe/Paris").fromNow();
         default:
           break;
       }
