@@ -120,12 +120,12 @@ export default {
       switch (tool) {
         case "started":
           return (
-            moment().format("YYYY-MM-DD HH:mm:ss", "Europe/Paris") >=
+            moment().utcOffset('+0100').format("YYYY-MM-DD HH:mm:ss") >=
             moment(date).format("YYYY-MM-DD HH:mm:ss", "Europe/Paris")
           );
         case "ended":
           return (
-            moment().format("YYYY-MM-DD HH:mm:ss", "Europe/Paris") >
+            moment().utcOffset('+0100').format("YYYY-MM-DD HH:mm:ss") >
             moment(date).format("YYYY-MM-DD HH:mm:ss", "Europe/Paris")
           );
         case "countdown":
