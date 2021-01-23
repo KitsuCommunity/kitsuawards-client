@@ -3,13 +3,15 @@
     <h1 class="strong">Welcome Users of Kitsu!</h1>
     <div class="description" v-html="data[0].description"></div>
     <h1 class="strong">The fabulous judges:</h1>
+    <div class="all-judges">
     <div class="judges-grid">
       <div class="judges-grid-child" v-for="judge in judges_id"
         :key="judge.id">
-        <a :href="'https://kitsu.io/users/'+judge.userId">
+        <a :href="'https://kitsu.io/users/'+judge.userId" target="_blank" rel="noopener noreferrer" >
           <judgeinfos :userid="judge.userId" />
         </a>
       </div>
+    </div>
     </div>
   </div>                                                    
 </template>
@@ -19,7 +21,7 @@ import judgeinfos from './JudgesInfo.vue'
 
 export default {
   name: 'Homepage',
-  props: ["data", "route", "token", "votes"],
+  props: ["data", "route", "token", "votes","userid"],
   components: {
     judgeinfos
   },
@@ -36,19 +38,30 @@ h1 {
   text-align: center;
 }
 .description {
-  margin-left: 5%;
-  margin-right: 5%;
+  max-width: 1024px;
+  margin-left: auto;
+  margin-right: auto;
   font-size: 18px;
   text-align: center;
 }
 
+.all-judges {
+  max-width: 1024px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .judges-grid {
+  margin-left: auto;
+  margin-right: auto;
   display: grid;
-  grid-template-columns: repeat(auto-fill,minmax(150px,1fr));
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 15px;
 }
 .judges-grid-child {
-  padding: 15px;
+  max-width: 160px;
 }
+
 .strong {
   font-weight: bold;
 }

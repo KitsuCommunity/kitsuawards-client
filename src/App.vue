@@ -2,7 +2,7 @@
   <div id="app">
     <template v-if="year">
       <template>
-        <b-navbar shadow fixed-top>
+        <b-navbar fixed-top>
           <template slot="brand">
             <b-navbar-item tag="router-link" :to="{ path: '/' }">
               <svg
@@ -156,22 +156,28 @@
           :data="year"
           :token="token"
           :votes="votes"
+          :userid="userid"
           @fetch-vote="fetchVote"
         />
       </div>
       <footer class="footer">
         <div class="content has-text-centered">
           <p>
-            The <strong>Kitsu Anime Awards</strong> are hosted by
-            <a href="https://kitsu.io/users/Kuroonuma">Kuroonuma</a>. The
-            website was made by
-            <a href="https://kitsu.io/users/Gakamine">Gakamine</a>.
+            The <strong>Kitsu Anime Awards</strong> is hosted by
+            <a href="https://kitsu.io/users/Kuroonuma" target="_blank" rel="noopener noreferrer" >Kuroonuma</a>. <br> 
+            The website was made by
+            <a href="https://kitsu.io/users/Gakamine" target="_blank" rel="noopener noreferrer" >Gakamine</a>. <br>
+            And styled by 
+            <a href="https://kitsu.io/users/Reinachan" target="_blank" rel="noopener noreferrer" >Reina</a>
           </p>
           <p>
             All other trademarks and content not owned by the Kitsu Anime Awards
             that appear on the website are the property of their respective
             owners
           </p>
+          <details class="secret-sauce"><summary>secret-sauce</summary>
+            <p>yo waifu sux</p>
+          </details> 
         </div>
       </footer>
     </template>
@@ -261,7 +267,7 @@ export default {
           token: this.token,
         },
       });
-      this.votes = votes.data.FetchVote.map(function(el) {
+      this.votes = votes.data.fetchvote.map(function(el) {
         return el.nominee;
       });
     },
@@ -286,6 +292,7 @@ export default {
   },
   watch: {
     userid: function() {
+      if(this.year) {
       for (var index = 0; index < this.year[0].judges.length; ++index) {
         var judge = this.year[0].judges[index].userId;
         if (judge == this.userid) {
@@ -295,6 +302,7 @@ export default {
           this.isJudge = false;
         }
       }
+      }
     },
   },
 };
@@ -303,29 +311,100 @@ export default {
 // Import Bulma's core
 @import "~bulma/sass/utilities/_all";
 
+// Base colours
+:root {
+		// Base Colours
+		--background-color: #161116ff;
+		--secondary-background-color: #312631ff;
+		--foreground-background-color: #453345ff;
+		--secondary-foreground-background-color: #6F5C6Fff;
+		--cta-accept-color: #236147ff;
+
+    --navbar-color: #161116ff;
+    --navbar-hover-color: #251e25;
+    --navbar-focus-color: #3a333a;
+
+		// Shadow Colours
+		--foreground-shadow: #16111688;
+
+		// Text Colours
+		--main-text: #fff;
+		--secondary-text: #ddd;
+		--placeholder-text: #ccc;
+		--links-text: #ff8c7c;
+
+		// Tags
+		--generic-tag: #576163;
+		--media-subtype-tag: var(--generic-tag);
+
+		// Focus highlights
+		--focus-highlight: #ff8c7c;
+		--unfocused-highlights: #ff8c7c00;
+		
+		// Border-Radius
+		--rounded-input: 7px;
+
+		// Font Sizes
+		--font-xs: 0.6rem;
+		--font-sm: 0.8rem;
+		--font-me: 1rem;
+		--font-lg: 1.2rem;
+		--font-xl: 1.4rem;
+		--font-xxl: 1.8rem;
+
+		// Font Weights
+		--light: 300;
+		--regular: 400;
+		--semi-bold: 600;
+		--bold: 700;
+		--extra-bold: 800;
+
+		// Standard Breakpoints
+		--breakpoint-xs: 0;
+		--breakpoint-sm: 576px;
+		--breakpoint-md: 768px;
+		--breakpoint-lg: 992px;
+		--breakpoint-xl: 1200px;
+	}
+
+  // Default border-box
+  * {
+		box-sizing: border-box;
+		text-rendering: optimizeLegibility;
+	}
+
+  // General font
+	body {
+		font-family: "Open Sans", sans-serif;
+		background-color: var(--secondary-background-color);
+		color: var(--main-text);
+	}
+
+
+
 // Set your colors
 $primary: #fd755c;
 $primary-invert: findColorInvert($primary);
 $twitter: #4099ff;
 $twitter-invert: findColorInvert($twitter);
-$navbar-background-color: #292631;
+$navbar-background-color: var(--navbar-color);
 $navbar-box-shadow-color: #282530;
-$text-strong: #868182;
+$text-strong: #e7dfe0;
 $navbar-burger-color: white;
 
 //Modal colors
-$modal-card-body-background-color: #3b3946;
-$modal-card-head-background-color: #292631;
+$modal-card-body-background-color: var(--foreground-background-color);
+$modal-card-head-background-color: var(--secondary-background-color);
 $modal-card-title-color: white;
 $modal-card-foot-border-top: #282530;
 $modal-card-head-border-bottom: #282530;
-$label-color: #c1c1c4;
-$message-body-pre-background-color: #292631;
+$label-color: #eeeef1;
+$message-body-pre-background-color: var(--background-color);
 
 // Forms
 $input-color: white;
-$input-background-color: #24212c;
-$input-border-color: #555160;
+$input-background-color: var(--background-color);
+$input-border-color: var(--secondary-background-color);
 
 // Setup $colors to use as bulma classes (e.g. 'is-twitter')
 $colors: (
@@ -376,7 +455,7 @@ $link: $primary;
 $link-hover: #dd452a;
 $link-invert: $primary-invert;
 $link-focus-border: $primary;
-$navbar-item-hover-background-color: #18161d;
+$navbar-item-hover-background-color: var(--navbar-hover-color);
 $navbar-item-hover-color: #bfbfbf;
 $navbar-item-color: #bfbfbf;
 
@@ -386,29 +465,47 @@ $navbar-item-color: #bfbfbf;
 
 #app {
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  min-height: calc(100% - 52px);
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* min-height: calc(100% - 52px); */
   position: absolute;
   width: 100%;
-  min-height: 100%;
-  background-color: #3b3946;
+  min-height: 100vh;
+  background-color: var(--secondary-background-color);
 }
 #router-view {
-  background-color: #3b3946;
-  color: #d8d8d9;
-  margin: 10px;
-  flex: 1 0 auto;
+  /* background-color: var(--secondary-background-color); */
+  color: var(--secondary-text);
+  /* margin: 10px; */
+  /* flex: 1 0 auto; */
+}
+
+// Layout
+#app {
+  display: grid;
+  grid-template-rows: 52px 1fr auto;
+
+  .navbar {
+    grid-row: 1;
+  }
+  #router-view {
+    grid-row: 2;
+  }
+  .footer {
+    grid-row: 3;
+    padding: 1rem 1.5rem 1rem;
+  }
+
 }
 
 .router-link-exact-active {
   color: #c1c1c4;
-  background-color: #24212c;
+  background-color: var(--navbar-focus-color);
 }
 
 .navbar-brand > .navbar-item {
   color: #fd755c !important;
-  background-color: #292631;
+  background-color: var(--navbar-background-color);
 }
 
 .modal-card-body {
@@ -421,9 +518,10 @@ $navbar-item-color: #bfbfbf;
 }
 
 .footer {
-  background-color: #2a2832;
+  background-color: var(--background-color);
   color: #c1c1c4;
   margin-top: 35px;
+  margin-bottom: 0;
 }
 
 .isjudge {
@@ -436,7 +534,9 @@ $navbar-item-color: #bfbfbf;
 }
 
 h1 {
-  color: white !important;
+    font-size: 2em;
+    margin: .67em 0;
+  color: var(--main-text);
 }
 
 .is-hidden-desktop {
@@ -449,4 +549,30 @@ h1 {
 .navbar-burger {
   margin-left: 0px !important;
 }
+
+*::selection {
+  color: black;
+  background-color: var(--links-text);
+}
+
+// SHAMEFUL FIXES
+html.has-navbar-fixed-top, body.has-navbar-fixed-top {
+  padding: 0;
+}
+body {
+  min-height: 100vh!important;
+  margin: 0!important;
+  padding:0!important;
+}
+.secret-sauce p {
+  color: var(--main-text)!important;
+}
+.secret-sauce:hover {
+  cursor: help;
+}
+
+.secret-sauce summary {
+  color: #fff0!important;
+}
+
 </style>
