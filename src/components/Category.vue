@@ -116,7 +116,7 @@ export default {
       }
     },
     time_tools: function(tool, date_tz) {
-      const date = date_tz.split(" UTC")[0];
+      const date = date_tz.split("+")[0];
       switch (tool) {
         case "started":
           return (
