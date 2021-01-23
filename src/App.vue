@@ -322,6 +322,7 @@ export default {
 
     --navbar-color: #161116ff;
     --navbar-hover-color: #251e25;
+    --navbar-focus-color: #3a333a;
 
 		// Shadow Colours
 		--foreground-shadow: #16111688;
@@ -482,7 +483,7 @@ $navbar-item-color: #bfbfbf;
 // Layout
 #app {
   display: grid;
-  grid-template-rows: 5rem auto;
+  grid-template-rows: 52px 1fr auto;
 
   .navbar {
     grid-row: 1;
@@ -492,18 +493,19 @@ $navbar-item-color: #bfbfbf;
   }
   .footer {
     grid-row: 3;
+    padding: 1rem 1.5rem 1rem;
   }
 
 }
 
-/* .router-link-exact-active {
+.router-link-exact-active {
   color: #c1c1c4;
-  background-color: #24212c;
-} */
+  background-color: var(--navbar-focus-color);
+}
 
 .navbar-brand > .navbar-item {
   color: #fd755c !important;
-  /* background-color: #292631; */
+  background-color: var(--navbar-background-color);
 }
 
 .modal-card-body {
