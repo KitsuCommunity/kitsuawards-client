@@ -129,7 +129,7 @@ export default {
             moment(date).format("YYYY-MM-DD HH:mm:ss", "Europe/Paris")
           );
         case "countdown":
-          return moment(date).utc(+1).fromNow();
+          return moment(date).utc().fromNow();
         default:
           break;
       }
