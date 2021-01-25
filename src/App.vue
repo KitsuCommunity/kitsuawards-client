@@ -203,7 +203,7 @@ export default {
       year: null,
       votes: [],
       isComponentModalActive: false,
-      token: localStorage.token,
+      token: localStorage.token || '',
       userid: null,
       IsLogging: false,
       IncorrectLogin: "",
@@ -219,10 +219,13 @@ export default {
   },
   apollo: {
     year: {
+      variables: {
+        token: ""
+      },
       query: FETCH_DATA_QUERY,
       error() {
         this.APIerror = true;
-      },
+      }
     },
   },
   methods: {

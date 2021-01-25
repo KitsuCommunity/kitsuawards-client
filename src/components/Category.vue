@@ -116,20 +116,20 @@ export default {
       }
     },
     time_tools: function(tool, date_tz) {
-      const date = date_tz.split(" UTC")[0];
+      const date = date_tz.split(" +")[0];
       switch (tool) {
         case "started":
           return (
-            moment().format("YYYY-MM-DD h:mm:ss", "Europe/Paris") >=
-            moment(date).format("YYYY-MM-DD h:mm:ss", "Europe/Paris")
+            moment().utcOffset('+0100').format("YYYY-MM-DD HH:mm:ss") >=
+            moment(date).format("YYYY-MM-DD HH:mm:ss", "Europe/Paris")
           );
         case "ended":
           return (
-            moment().format("YYYY-MM-DD h:mm:ss", "Europe/Paris") >
-            moment(date).format("YYYY-MM-DD h:mm:ss", "Europe/Paris")
+            moment().utcOffset('+0100').format("YYYY-MM-DD HH:mm:ss") >
+            moment(date).format("YYYY-MM-DD HH:mm:ss", "Europe/Paris")
           );
         case "countdown":
-          return moment(date, "YYYY-MM-DD h:mm:ss", "Europe/Paris").fromNow();
+          return moment(date + "+01:00", "YYYY-MM-DD HH:mm:ssZ").fromNow();
         default:
           break;
       }
@@ -168,6 +168,7 @@ export default {
             }
           })
           .catch(() => {
+            localStorage.clear();
             this.$buefy.notification.open({
               duration: 5000,
               message:
