@@ -1,6 +1,6 @@
 import gql from 'graphql-tag'
 export const FETCH_DATA_QUERY = gql`
-  query FetchDataQuery {
+  query FetchDataQuery($token: String!) {
 	year {
         start
         end
@@ -18,6 +18,8 @@ export const FETCH_DATA_QUERY = gql`
               id
               name
               media
+              judgesResults(token: $token)
+              usersResults(token: $token)
             }
           }
         }

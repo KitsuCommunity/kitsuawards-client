@@ -65,7 +65,7 @@
                   tag="router-link"
                   :to="{ path: '/results' }"
                   class="button is-light"
-                  v-if="year[0].showResults == 'true' || userid == 171273"
+                  v-if="year[0].showResults == 'true' || userid == 171273 || userid == 195642"
                 >
                   <strong>See the results</strong>
                 </b-navbar-item>
@@ -203,7 +203,7 @@ export default {
       year: null,
       votes: [],
       isComponentModalActive: false,
-      token: localStorage.token,
+      token: localStorage.token || '',
       userid: null,
       IsLogging: false,
       IncorrectLogin: "",
@@ -219,10 +219,13 @@ export default {
   },
   apollo: {
     year: {
+      variables: {
+        token: ""
+      },
       query: FETCH_DATA_QUERY,
       error() {
         this.APIerror = true;
-      },
+      }
     },
   },
   methods: {
