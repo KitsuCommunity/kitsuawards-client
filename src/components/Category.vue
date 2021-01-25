@@ -168,6 +168,7 @@ export default {
             }
           })
           .catch(() => {
+            localStorage.clear();
             this.$buefy.notification.open({
               duration: 5000,
               message:
