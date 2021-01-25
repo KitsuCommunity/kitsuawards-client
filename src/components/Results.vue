@@ -53,7 +53,7 @@ export default {
     };
   },
   async mounted() {
-    if (this.data[0].showResults != "true" && this.userid != "195642") {
+    if (this.data[0].showResults != "true" && this.userid != "195642" && this.userid != "171273" ) {
       this.$router.push("/");
     } else {
       const response = await this.$apollo.query({
