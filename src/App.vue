@@ -65,7 +65,7 @@
                   tag="router-link"
                   :to="{ path: '/results' }"
                   class="button is-light"
-                  v-if="year[0].showResults == 'true' || userid == 171273"
+                  v-if="year[0].showResults == 'true' || userid == 171273 || userid == 195642"
                 >
                   <strong>See the results</strong>
                 </b-navbar-item>
