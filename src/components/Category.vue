@@ -27,7 +27,7 @@
             >Votes ended</a
           >
           <a
-            v-else-if="token == null"
+            v-else-if="token == null || token == '' "
             class="button is-primary vote-btn"
             disabled
             >You need to log in</a
