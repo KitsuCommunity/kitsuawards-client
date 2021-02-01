@@ -188,10 +188,10 @@
 </template>
 
 <script>
-const axios = require("axios").default;
-import Error500 from "./components/Error500.vue";
-import { FETCH_DATA_QUERY } from "./gql/fetch_data";
-import { FETCH_VOTE_QUERY } from "./gql/fetch_votes";
+const axios = require('axios').default;
+import Error500 from './components/Error500.vue';
+import { FETCH_DATA_QUERY } from './gql/fetch_data';
+import { FETCH_VOTE_QUERY } from './gql/fetch_votes';
 export default {
   name: "App",
   components: {
@@ -312,78 +312,76 @@ export default {
 </script>
 <style lang="scss">
 // Import Bulma's core
-@import "~bulma/sass/utilities/_all";
+@import '~bulma/sass/utilities/_all';
 
 // Base colours
 :root {
-		// Base Colours
-		--background-color: #161116ff;
-		--secondary-background-color: #312631ff;
-		--foreground-background-color: #453345ff;
-		--secondary-foreground-background-color: #6F5C6Fff;
-		--cta-accept-color: #236147ff;
+	// Base Colours
+	--background-color: #161116ff;
+	--secondary-background-color: #312631ff;
+	--foreground-background-color: #453345ff;
+	--secondary-foreground-background-color: #6f5c6fff;
+	--cta-accept-color: #236147ff;
 
-    --navbar-color: #161116ff;
-    --navbar-hover-color: #251e25;
-    --navbar-focus-color: #3a333a;
+	--navbar-color: #161116ff;
+	--navbar-hover-color: #251e25;
+	--navbar-focus-color: #3a333a;
 
-		// Shadow Colours
-		--foreground-shadow: #16111688;
+	// Shadow Colours
+	--foreground-shadow: #16111688;
 
-		// Text Colours
-		--main-text: #fff;
-		--secondary-text: #ddd;
-		--placeholder-text: #ccc;
-		--links-text: #ff8c7c;
+	// Text Colours
+	--main-text: #fff;
+	--secondary-text: #ddd;
+	--placeholder-text: #ccc;
+	--links-text: #ff8c7c;
 
-		// Tags
-		--generic-tag: #576163;
-		--media-subtype-tag: var(--generic-tag);
+	// Tags
+	--generic-tag: #576163;
+	--media-subtype-tag: var(--generic-tag);
 
-		// Focus highlights
-		--focus-highlight: #ff8c7c;
-		--unfocused-highlights: #ff8c7c00;
-		
-		// Border-Radius
-		--rounded-input: 7px;
+	// Focus highlights
+	--focus-highlight: #ff8c7c;
+	--unfocused-highlights: #ff8c7c00;
 
-		// Font Sizes
-		--font-xs: 0.6rem;
-		--font-sm: 0.8rem;
-		--font-me: 1rem;
-		--font-lg: 1.2rem;
-		--font-xl: 1.4rem;
-		--font-xxl: 1.8rem;
+	// Border-Radius
+	--rounded-input: 7px;
 
-		// Font Weights
-		--light: 300;
-		--regular: 400;
-		--semi-bold: 600;
-		--bold: 700;
-		--extra-bold: 800;
+	// Font Sizes
+	--font-xs: 0.6rem;
+	--font-sm: 0.8rem;
+	--font-me: 1rem;
+	--font-lg: 1.2rem;
+	--font-xl: 1.4rem;
+	--font-xxl: 1.8rem;
 
-		// Standard Breakpoints
-		--breakpoint-xs: 0;
-		--breakpoint-sm: 576px;
-		--breakpoint-md: 768px;
-		--breakpoint-lg: 992px;
-		--breakpoint-xl: 1200px;
-	}
+	// Font Weights
+	--light: 300;
+	--regular: 400;
+	--semi-bold: 600;
+	--bold: 700;
+	--extra-bold: 800;
 
-  // Default border-box
-  * {
-		box-sizing: border-box;
-		text-rendering: optimizeLegibility;
-	}
+	// Standard Breakpoints
+	--breakpoint-xs: 0;
+	--breakpoint-sm: 576px;
+	--breakpoint-md: 768px;
+	--breakpoint-lg: 992px;
+	--breakpoint-xl: 1200px;
+}
 
-  // General font
-	body {
-		font-family: "Open Sans", sans-serif;
-		background-color: var(--secondary-background-color);
-		color: var(--main-text);
-	}
+// Default border-box
+* {
+	box-sizing: border-box;
+	text-rendering: optimizeLegibility;
+}
 
-
+// General font
+body {
+	font-family: 'Open Sans', sans-serif;
+	background-color: var(--secondary-background-color);
+	color: var(--main-text);
+}
 
 // Set your colors
 $primary: #fd755c;
@@ -411,46 +409,46 @@ $input-border-color: var(--secondary-background-color);
 
 // Setup $colors to use as bulma classes (e.g. 'is-twitter')
 $colors: (
-  "white": (
-    $white,
-    $black,
-  ),
-  "black": (
-    $black,
-    $white,
-  ),
-  "light": (
-    $light,
-    $light-invert,
-  ),
-  "dark": (
-    $dark,
-    $dark-invert,
-  ),
-  "primary": (
-    $primary,
-    $primary-invert,
-  ),
-  "info": (
-    $info,
-    $info-invert,
-  ),
-  "success": (
-    $success,
-    $success-invert,
-  ),
-  "warning": (
-    $warning,
-    $warning-invert,
-  ),
-  "danger": (
-    $danger,
-    $danger-invert,
-  ),
-  "twitter": (
-    $twitter,
-    $twitter-invert,
-  ),
+	'white': (
+		$white,
+		$black,
+	),
+	'black': (
+		$black,
+		$white,
+	),
+	'light': (
+		$light,
+		$light-invert,
+	),
+	'dark': (
+		$dark,
+		$dark-invert,
+	),
+	'primary': (
+		$primary,
+		$primary-invert,
+	),
+	'info': (
+		$info,
+		$info-invert,
+	),
+	'success': (
+		$success,
+		$success-invert,
+	),
+	'warning': (
+		$warning,
+		$warning-invert,
+	),
+	'danger': (
+		$danger,
+		$danger-invert,
+	),
+	'twitter': (
+		$twitter,
+		$twitter-invert,
+	),
 );
 
 // Links
@@ -463,119 +461,147 @@ $navbar-item-hover-color: #bfbfbf;
 $navbar-item-color: #bfbfbf;
 
 // Import Bulma and Buefy styles
-@import "~bulma";
-@import "~buefy/src/scss/buefy";
+@import '~bulma';
+@import '~buefy/src/scss/buefy';
 
 #app {
-  overflow: hidden;
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* min-height: calc(100% - 52px); */
-  position: absolute;
-  width: 100%;
-  min-height: 100vh;
-  background-color: var(--secondary-background-color);
+	overflow: hidden;
+	/* display: flex; */
+	/* flex-direction: column; */
+	/* min-height: calc(100% - 52px); */
+	position: absolute;
+	width: 100%;
+	min-height: 100vh;
+	background-color: var(--secondary-background-color);
 }
 #router-view {
-  /* background-color: var(--secondary-background-color); */
-  color: var(--secondary-text);
-  /* margin: 10px; */
-  /* flex: 1 0 auto; */
+	/* background-color: var(--secondary-background-color); */
+	color: var(--secondary-text);
+	/* margin: 10px; */
+	/* flex: 1 0 auto; */
 }
 
 // Layout
 #app {
-  display: grid;
-  grid-template-rows: 52px 1fr auto;
+	display: grid;
+	grid-template-rows: 52px 1fr auto;
 
-  .navbar {
-    grid-row: 1;
-  }
-  #router-view {
-    grid-row: 2;
-  }
-  .footer {
-    grid-row: 3;
-    padding: 1rem 1.5rem 1rem;
-  }
-
+	.navbar {
+		grid-row: 1;
+	}
+	#router-view {
+		grid-row: 2;
+	}
+	.footer {
+		grid-row: 3;
+		padding: 1rem 1.5rem 1rem;
+	}
 }
 
 .router-link-exact-active {
-  color: #c1c1c4;
-  background-color: var(--navbar-focus-color);
+	color: #c1c1c4;
+	background-color: var(--navbar-focus-color);
 }
 
 .navbar-brand > .navbar-item {
-  color: #fd755c !important;
-  background-color: var(--navbar-background-color);
+	color: #fd755c !important;
+	background-color: var(--navbar-background-color);
 }
 
 .modal-card-body {
-  color: #c1c1c4;
+	color: #c1c1c4;
 }
 
 .checkbox:hover,
 .radio:hover {
-  color: #a6a6a6;
+	color: #a6a6a6;
 }
 
 .footer {
-  background-color: var(--background-color);
-  color: #c1c1c4;
-  margin-top: 35px;
-  margin-bottom: 0;
+	background-color: var(--background-color);
+	color: #c1c1c4;
+	margin-top: 35px;
+	margin-bottom: 0;
 }
 
 .isjudge {
-  color: #e75e45;
-  border: 1px solid #e75e45;
-  padding: 5px;
-  margin-right: 0.5rem;
-  margin-bottom: 0.5rem;
-  border-radius: 4px;
+	color: #e75e45;
+	border: 1px solid #e75e45;
+	padding: 5px;
+	margin-right: 0.5rem;
+	margin-bottom: 0.5rem;
+	border-radius: 4px;
 }
 
 h1 {
-    font-size: 2em;
-    margin: .67em 0;
-  color: var(--main-text);
+	font-size: 2em;
+	margin: 0.67em 0;
+	color: var(--main-text);
 }
 
 .is-hidden-desktop {
-  margin-bottom: 0px !important;
-  margin-left: auto;
+	margin-bottom: 0px !important;
+	margin-left: auto;
 }
 .is-hidden-desktop .button {
-  margin: 0px !important;
+	margin: 0px !important;
 }
+
 // .navbar-burger {
 //   margin-left: 0px !important;
 // }
 
 *::selection {
-  color: black;
-  background-color: var(--links-text);
+	color: black;
+	background-color: var(--links-text);
 }
 
 // SHAMEFUL FIXES
-html.has-navbar-fixed-top, body.has-navbar-fixed-top {
-  padding: 0;
+html.has-navbar-fixed-top,
+body.has-navbar-fixed-top {
+	padding: 0;
 }
 body {
-  min-height: 100vh!important;
-  margin: 0!important;
-  padding:0!important;
+	min-height: 100vh !important;
+	margin: 0 !important;
+	padding: 0 !important;
 }
 .secret-sauce p {
-  color: var(--main-text)!important;
+	color: var(--main-text) !important;
 }
 .secret-sauce:hover {
-  cursor: help;
+	cursor: help;
 }
 
 .secret-sauce summary {
-  color: #fff0!important;
+	color: #fff0 !important;
 }
 
+.b-tabs {
+	.tabs ul {
+		justify-content: center !important;
+		align-items: center;
+
+		li a {
+			background-color: var(--background-color);
+			span {
+				color: var(--secondary-text);
+			}
+		}
+		.is-active a {
+			background-color: var(--links-text);
+			border-color: var(--links-text);
+			span {
+				color: var(--secondary-text);
+			}
+		}
+	}
+}
+
+.nominee-img {
+	border-radius: 5px;
+	object-fit: cover;
+	width: 100%;
+	height: 100%;
+}
 </style>
