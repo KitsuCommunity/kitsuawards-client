@@ -22,7 +22,7 @@
               </svg>
               <strong>Kitsu Anime Awards</strong>
             </b-navbar-item>
-            <div class="buttons is-hidden-desktop">
+            <!-- <div class="buttons is-hidden-desktop">
               <a v-if="token" class="button is-primary" @click="Logout()">
                 <strong>Logout</strong>
               </a>
@@ -33,7 +33,7 @@
               >
                 <strong>Login</strong>
               </a>
-            </div>
+            </div> -->
           </template>
           <template slot="start">
             <b-navbar-item tag="router-link" :to="{ path: '/' }">
@@ -76,7 +76,7 @@
                 >
                   <strong>Admin</strong>
                 </b-navbar-item>
-                <b-navbar-item
+                <!-- <b-navbar-item
                   v-if="token"
                   @click="Logout()"
                   class="button is-hidden-mobile is-primary"
@@ -89,7 +89,7 @@
                   class="button is-hidden-mobile is-primary"
                 >
                   <strong>Login</strong>
-                </b-navbar-item>
+                </b-navbar-item> -->
               </div>
             </b-navbar-item>
           </template>
@@ -230,32 +230,32 @@ export default {
   },
   methods: {
     Login: function() {
-      this.IsLogging = true;
-      axios({
-        method: "post",
-        url: "https://kitsu.io/api/oauth/token",
-        data: {
-          grant_type: "password",
-          username: this.email,
-          password: this.password,
-        },
-      })
-        .then((response) => {
-          localStorage.setItem("token", response.data.access_token);
-          this.token = response.data.access_token;
-          this.checkToken();
-          this.IsLogging = false;
-          this.isComponentModalActive = false;
-          this.IncorrectLogin = "";
-        })
-        .catch((error) => {
-          this.IsLogging = false;
-          if (error.error == "invalid_grant") {
-            this.IncorrectLogin = "Incorrect username or password";
-          } else {
-            this.IncorrectLogin = "Something went wrong...";
-          }
-        });
+      // this.IsLogging = true;
+      // axios({
+      //   method: "post",
+      //   url: "https://kitsu.io/api/oauth/token",
+      //   data: {
+      //     grant_type: "password",
+      //     username: this.email,
+      //     password: this.password,
+      //   },
+      // })
+      //   .then((response) => {
+      //     localStorage.setItem("token", response.data.access_token);
+      //     this.token = response.data.access_token;
+      //     this.checkToken();
+      //     this.IsLogging = false;
+      //     this.isComponentModalActive = false;
+      //     this.IncorrectLogin = "";
+      //   })
+      //   .catch((error) => {
+      //     this.IsLogging = false;
+      //     if (error.error == "invalid_grant") {
+      //       this.IncorrectLogin = "Incorrect username or password";
+      //     } else {
+      //       this.IncorrectLogin = "Something went wrong...";
+      //     }
+      //   });
     },
     Logout: function() {
       localStorage.clear();
@@ -549,9 +549,9 @@ h1 {
 .is-hidden-desktop .button {
   margin: 0px !important;
 }
-.navbar-burger {
-  margin-left: 0px !important;
-}
+// .navbar-burger {
+//   margin-left: 0px !important;
+// }
 
 *::selection {
   color: black;
