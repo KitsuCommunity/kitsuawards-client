@@ -163,6 +163,7 @@ export default {
 
 	img {
 		max-width: 1300px;
+		width: 100%;
 	}
 }
 </style>
