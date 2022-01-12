@@ -5,7 +5,12 @@
 				<b-navbar fixed-top>
 					<template slot="brand">
 						<b-navbar-item tag="router-link" :to="{ path: '/' }">
-							<svg width="36" height="36" viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
+							<svg
+								width="36"
+								height="36"
+								viewBox="0 0 260 260"
+								xmlns="http://www.w3.org/2000/svg"
+							>
 								<g fill="#E75E45">
 									<path
 										d="M152.7 48.5c-6.8-2.5-14.1-4.1-21.8-4.4-12.7-.6-24.8 2.2-35.4 7.6-.6.3-1.3.6-2 1v36.4c0 .5 0 2.4-.3 4-.7 3.7-2.9 7-6 9.1-2.6 1.8-5.6 2.6-8.8 2.5-.6 0-1.3-.1-1.9-.2-1.6-.3-3.3-.9-3.8-1.1-1.4-.5-21.8-8.4-31.6-12.2-1.2-.5-2.2-.9-3-1.2-11.7 9.9-24 21.7-35.5 35.6-.1.1-.6.7-.7.8-1.5 2.1-1.6 5.1 0 7.4 1.2 1.7 3.1 2.7 5 2.8 1.3.1 2.7-.3 3.9-1.1.1-.1.2-.2.4-.3 12.2-8.8 25.6-15.9 39.8-21.6 1-.5 2.2-.8 3.3-.7 1.6.1 3.1.7 4.3 1.9 2.3 2.3 2.4 6 .5 8.5-.8 1.2-1.5 2.4-2.2 3.6-7.6 12.4-13.7 25.9-18.3 40-.1.4-.2.7-.3 1.1v.1c-.4 1.7-.1 3.5 1 5 1.2 1.7 3.1 2.7 5.1 2.8 1.4.1 2.7-.3 3.9-1.1.5-.4 1-.8 1.4-1.3.1-.2.3-.4.4-.6 5-7.1 10.5-13.8 16.4-20 26.3-28.2 61.2-48.1 100.3-55.9.3-.1.6-.1.9-.1 2.2.1 3.9 2 3.8 4.2-.1 1.9-1.4 3.3-3.2 3.7-36.3 7.7-101.7 50.8-78.8 113.4.4 1 .7 1.6 1.2 2.5 1.2 1.7 3.1 2.7 5 2.8 1.1 0 4.2-.3 6.1-3.7 3.7-7 10.7-14.8 30.9-23.2 56.3-23.3 65.6-56.6 66.6-77.7v-1.2c.9-31.4-18.6-58.8-46.6-69.2zm-56.5 165C91 198 91.5 183 97.6 168.7c11.7 18.9 32.1 20.5 32.1 20.5-20.9 8.7-29.1 17.3-33.5 24.3z"
@@ -21,7 +26,11 @@
 							<a v-if="token" class="button is-primary" @click="Logout()">
 								<strong>Logout</strong>
 							</a>
-							<a v-else class="button is-primary" @click="isComponentModalActive = true">
+							<a
+								v-else
+								class="button is-primary"
+								@click="isComponentModalActive = true"
+							>
 								<strong>Login</strong>
 							</a>
 						</div>
@@ -39,12 +48,20 @@
 						>
 							{{ category.name }}
 						</b-navbar-item>
+						<b-navbar-item tag="router-link" :to="{ path: '/prev-results' }">
+							Previous Results
+						</b-navbar-item>
 					</template>
 
 					<template slot="end">
 						<b-navbar-item tag="div">
 							<div class="buttons">
-								<span class="isjudge" v-if="isJudge" type="is-primary" rounded outlined
+								<span
+									class="isjudge"
+									v-if="isJudge"
+									type="is-primary"
+									rounded
+									outlined
 									>JUDGE MODE</span
 								>
 								<b-navbar-item
@@ -102,7 +119,12 @@
 								</header>
 								<section class="modal-card-body">
 									<b-field label="Email">
-										<b-input type="text" placeholder="Your email" v-model="email" required>
+										<b-input
+											type="text"
+											placeholder="Your email"
+											v-model="email"
+											required
+										>
 										</b-input>
 									</b-field>
 
@@ -116,13 +138,19 @@
 										>
 										</b-input>
 									</b-field>
-									<b-message v-if="IncorrectLogin" size="is-small" type="is-danger">
+									<b-message
+										v-if="IncorrectLogin"
+										size="is-small"
+										type="is-danger"
+									>
 										Email or password invalid
 									</b-message>
 									We do NOT store any of your credentials.
 								</section>
 								<footer class="modal-card-foot">
-									<b-button v-if="IsLogging" class="button is-primary" loading>Login</b-button>
+									<b-button v-if="IsLogging" class="button is-primary" loading
+										>Login</b-button
+									>
 									<button v-else class="button is-primary">Login</button>
 								</footer>
 							</div>
@@ -144,21 +172,31 @@
 				<div class="content has-text-centered">
 					<p>
 						The <strong>Kitsu Anime Awards</strong> is hosted by
-						<a href="https://kitsu.io/users/Kuroonuma" target="_blank" rel="noopener noreferrer"
+						<a
+							href="https://kitsu.io/users/Kuroonuma"
+							target="_blank"
+							rel="noopener noreferrer"
 							>Kuroonuma</a
 						>. <br />
 						The website was made by
-						<a href="https://kitsu.io/users/Gakamine" target="_blank" rel="noopener noreferrer"
+						<a
+							href="https://kitsu.io/users/Gakamine"
+							target="_blank"
+							rel="noopener noreferrer"
 							>Gakamine</a
 						>. <br />
 						And styled by
-						<a href="https://kitsu.io/users/Reinachan" target="_blank" rel="noopener noreferrer"
+						<a
+							href="https://kitsu.io/users/Reinachan"
+							target="_blank"
+							rel="noopener noreferrer"
 							>Reina</a
 						>
 					</p>
 					<p>
-						All other trademarks and content not owned by the Kitsu Anime Awards that appear on the
-						website are the property of their respective owners
+						All other trademarks and content not owned by the Kitsu Anime Awards
+						that appear on the website are the property of their respective
+						owners
 					</p>
 					<details class="secret-sauce"
 						><summary>secret-sauce</summary>
