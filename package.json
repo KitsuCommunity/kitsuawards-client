@@ -1,54 +1,39 @@
 {
-  "name": "kitsuawards",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
-  },
-  "dependencies": {
-    "apollo-boost": "^0.4.9",
-    "axios": "^0.21.1",
-    "buefy": "^0.9.4",
-    "core-js": "^3.8.3",
-    "graphql": "^15.4.0",
-    "lodash": "^4.17.21",
-    "moment": "^2.29.1",
-    "node-sass": "^5.0.0",
-    "sass-loader": "^10.1.1",
-    "tachyons": "^4.12.0",
-    "vue": "^2.6.12",
-    "vue-apollo": "^3.0.7",
-    "vue-async-computed": "^3.9.0",
-    "vue-router": "^3.4.9"
-  },
-  "devDependencies": {
-    "@vue/cli-plugin-babel": "^4.5.10",
-    "@vue/cli-plugin-eslint": "^4.5.10",
-    "@vue/cli-plugin-router": "^4.5.10",
-    "@vue/cli-service": "^4.5.10",
-    "babel-eslint": "^10.0.3",
-    "eslint": "^6.8.0",
-    "eslint-plugin-vue": "^6.2.2",
-    "vue-template-compiler": "^2.6.12"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "rules": {},
-    "parserOptions": {
-      "parser": "babel-eslint"
-    }
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions"
-  ]
+	"name": "kitsuawards-client",
+	"version": "0.2.0",
+	"scripts": {
+		"start": "vite",
+		"dev": "vite",
+		"build": "tsc && vite build",
+		"preview": "vite preview",
+		"gql": "graphql-codegen --config codegen.yml"
+	},
+	"dependencies": {
+		"@graphql-codegen/cli": "^2.4.0",
+		"axios": "^0.25.0",
+		"graphql": "^16.2.0",
+		"react": "^17.0.2",
+		"react-dom": "^17.0.2",
+		"react-router": "^6.2.1",
+		"urql": "^2.0.6"
+	},
+	"devDependencies": {
+		"@graphql-codegen/cli": "2.4.0",
+		"@graphql-codegen/introspection": "2.1.1",
+		"@graphql-codegen/near-operation-file-preset": "^2.2.3",
+		"@graphql-codegen/typescript": "2.4.2",
+		"@graphql-codegen/typescript-document-nodes": "2.2.2",
+		"@graphql-codegen/typescript-graphql-files-modules": "2.1.1",
+		"@graphql-codegen/typescript-operations": "2.2.2",
+		"@graphql-codegen/typescript-urql": "^3.4.2",
+		"@graphql-codegen/urql-introspection": "2.1.1",
+		"@types/react": "^17.0.33",
+		"@types/react-dom": "^17.0.10",
+		"@vitejs/plugin-react": "^1.0.7",
+		"autoprefixer": "^10.4.2",
+		"postcss": "^8.4.5",
+		"postcss-nested": "^5.0.6",
+		"typescript": "^4.4.4",
+		"vite": "^2.7.2"
+	}
 }
