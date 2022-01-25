@@ -1,6 +1,6 @@
 <template>
 	<div v-if="!is404">
-		<div v-if="time_tools('started', category.start)">
+		<div >
 			<div id="grid" v-for="subcategory in category.subcategories" :key="subcategory.id">
 				<h1>{{ subcategory.name }}</h1>
 				<form class="subcategory">
@@ -43,12 +43,7 @@
 				</form>
 			</div>
 		</div>
-		<div class="not_revealed" v-else>
-			<h1>Nominees will be revealed {{ time_tools('countdown', category.start) }}</h1>
-			<img
-				src="https://64.media.tumblr.com/b4b741f4b462803cc765567133a9e32c/tumblr_p0thvr4Y0Y1qzxv73o1_540.gif"
-			/>
-		</div>
+
 	</div>
 	<div v-else>
 		<Error404 />
