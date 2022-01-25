@@ -1,7 +1,11 @@
 <template>
 	<div v-if="!is404">
-		<div >
-			<div id="grid" v-for="subcategory in category.subcategories" :key="subcategory.id">
+		<div>
+			<div
+				id="grid"
+				v-for="subcategory in category.subcategories"
+				:key="subcategory.id"
+			>
 				<h1>{{ subcategory.name }}</h1>
 				<form class="subcategory">
 					<div class="subcategory-grid">
@@ -16,10 +20,16 @@
 							<p>{{ nominee.name }}</p>
 						</b-radio>
 					</div>
-					<a v-if="time_tools('ended', category.end)" class="button is-primary vote-btn" disabled
+					<a
+						v-if="time_tools('ended', category.end)"
+						class="button is-primary vote-btn"
+						disabled
 						>Votes ended</a
 					>
-					<a v-else-if="token == null || token == ''" class="button is-primary vote-btn" disabled
+					<a
+						v-else-if="token == null || token == ''"
+						class="button is-primary vote-btn"
+						disabled
 						>You need to log in</a
 					>
 					<a
@@ -34,7 +44,8 @@
 					>
 					<a
 						v-else-if="
-							time_tools('started', category.start) && time_tools('ended', category.end) == false
+							time_tools('started', category.start) &&
+								time_tools('ended', category.end) == false
 						"
 						class="button is-primary vote-btn"
 						@click="vote(subcategory.id)"
@@ -43,7 +54,6 @@
 				</form>
 			</div>
 		</div>
-
 	</div>
 	<div v-else>
 		<Error404 />
@@ -73,7 +83,9 @@ export default {
 			}
 		},
 		loadpage: function() {
-			this.category = this.data[0].categories.find((x) => '/' + x.url == this.$route.path);
+			this.category = this.data[0].categories.find(
+				(x) => '/' + x.url == this.$route.path
+			);
 			if (this.category) {
 				this.is404 = false;
 			} else {
@@ -136,7 +148,10 @@ export default {
 					})
 					.then((reponse) => {
 						this.api_response = reponse.data.submitVote;
-						if (this.api_response.errors[0] && this.api_response.errors != '_typename') {
+						if (
+							this.api_response.errors[0] &&
+							this.api_response.errors != '_typename'
+						) {
 							this.$buefy.notification.open({
 								duration: 5000,
 								message: this.api_response.errors[0],
@@ -257,27 +272,25 @@ input[type='radio']:checked + label {
 	text-align: center;
 	font-size: 18px;
 }
-.control-label img {
-	border-radius: 5px;
-	object-fit: cover;
-	width: 100%;
-	height: 100%;
+.control-label {
+	img {
+		border-radius: 5px;
+		object-fit: cover;
+		width: 370px;
+		height: 520px;
+	}
+	iframe {
+		border-radius: 3px;
+		height: 100%;
+		width: 100%;
+		background-color: black;
+	}
 }
 
 .b-radio.radio .control-label {
 	padding: 0 !important;
 	grid-column: span 3;
 	grid-row: span 3;
-
-	display: grid;
-	grid-template-rows: 320px auto;
-	gap: 10px;
-}
-.iframe {
-	border-radius: 3px;
-	height: 100%;
-	width: 100%;
-	background-color: black;
 }
 .not_revealed,
 .not_revealed * {
