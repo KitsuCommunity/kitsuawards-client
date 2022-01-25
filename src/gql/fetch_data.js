@@ -1,6 +1,6 @@
 import gql from 'graphql-tag'
 export const FETCH_DATA_QUERY = gql`
-  query FetchDataQuery($token: String!) {
+  query FetchDataQuery {
 	year {
         start
         end
