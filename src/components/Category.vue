@@ -107,6 +107,8 @@ export default {
 					streamable_url +
 					'" frameborder="0" allowfullscreen></iframe>'
 				);
+			} else if (media.includes('.gifv')) {
+				return '<img class="gif" src="' + media + '"/>';
 			} else {
 				return '<img src="' + media + '"/>';
 			}
@@ -281,9 +283,13 @@ input[type='radio']:checked + label {
 	}
 	iframe {
 		border-radius: 3px;
-		height: 100%;
-		width: 100%;
+		width: 370px;
+		height: 208px;
 		background-color: black;
+	}
+	.gif {
+		width: 370px;
+		height: 208px;
 	}
 }
 
