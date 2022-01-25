@@ -108,7 +108,13 @@ export default {
 					'" frameborder="0" allowfullscreen></iframe>'
 				);
 			} else if (media.includes('.gifv')) {
-				return '<img class="gif" src="' + media + '"/>';
+				const webm = media.replace(/\.gifv/, '.webm');
+				const mp4 = media.replace(/\.gifv/, '.mp4');
+
+				return `<video class="gif" controls>
+						<source src="${webm} type="video/webm">
+					 	<source src="${mp4}"type="video/mp4"/>
+					</video>`;
 			} else {
 				return '<img src="' + media + '"/>';
 			}
@@ -288,6 +294,8 @@ input[type='radio']:checked + label {
 		background-color: black;
 	}
 	.gif {
+		border-radius: 5px;
+		object-fit: cover;
 		width: 370px;
 		height: 208px;
 	}
