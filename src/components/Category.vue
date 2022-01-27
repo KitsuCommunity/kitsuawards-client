@@ -127,14 +127,18 @@ export default {
 						moment()
 							.utcOffset('+0100')
 							.format('YYYY-MM-DD HH:mm:ss') >=
-						moment(date).format('YYYY-MM-DD HH:mm:ss', 'Europe/Paris')
+						moment(date, 'YYYY-MM-DD HH:mm:ssZ')
+							.utcOffset('+0100')
+							.format('YYYY-MM-DD HH:mm:ss')
 					);
 				case 'ended':
 					return (
 						moment()
 							.utcOffset('+0100')
 							.format('YYYY-MM-DD HH:mm:ss') >
-						moment(date).format('YYYY-MM-DD HH:mm:ss', 'Europe/Paris')
+						moment(date, 'YYYY-MM-DD HH:mm:ssZ')
+							.utcOffset('+0100')
+							.format('YYYY-MM-DD HH:mm:ss')
 					);
 				case 'countdown':
 					return moment(date + '+01:00', 'YYYY-MM-DD HH:mm:ssZ').fromNow();
