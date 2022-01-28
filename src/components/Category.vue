@@ -111,7 +111,7 @@ export default {
 				const webm = media.replace(/\.gifv/, '.webm');
 				const mp4 = media.replace(/\.gifv/, '.mp4');
 
-				return `<video class="gif" controls>
+				return `<video class="gif" controls loop>
 						<source src="${webm} type="video/webm">
 					 	<source src="${mp4}"type="video/mp4"/>
 					</video>`;
