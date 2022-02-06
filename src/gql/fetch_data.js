@@ -18,6 +18,8 @@ export const FETCH_DATA_QUERY = gql`
               id
               name
               media
+              judgesResults(token: $token)
+              usersResults(token: $token)
             }
           }
         }
