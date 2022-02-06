@@ -1,11 +1,8 @@
 import axios from 'axios';
-import { UniqueDirectivesPerLocationRule } from 'graphql';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { Judge as JudgeType } from 'src/generated/graphql';
-import classes from './judge.module.css';
-
-import { useQuery } from 'urql';
+import styles from './styles.module.css';
 
 interface JudgeProps {
 	judgeData: JudgeType;
@@ -81,7 +78,7 @@ export default function Judge({ judgeData }: JudgeProps) {
 		const profile = data.data.findProfileById;
 
 		return (
-			<li className={classes.judge}>
+			<li className={styles.judgeItem}>
 				<img src={profile.avatarImage.views[0]?.url} />
 				<p>{profile.name}</p>
 			</li>

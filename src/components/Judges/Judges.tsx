@@ -1,5 +1,6 @@
 import { Judge } from './Judge';
 import { useFetchJudgesQuery } from './Judges.generated';
+import styles from './styles.module.css';
 
 interface JudgesProps {}
 
@@ -8,7 +9,7 @@ export default function Judges({}: JudgesProps) {
 
 	if (data && !fetching && !error) {
 		return (
-			<section>
+			<section className={styles.judgesList}>
 				<h2>Judges</h2>
 				<ul>
 					{data.year[0].judges.map((judge) => {

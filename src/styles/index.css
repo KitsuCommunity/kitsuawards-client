@@ -1,0 +1,85 @@
+@import url('./font/index.css');
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+:root {
+  /* Base Colours */
+  --page-background: #161116ff;
+  --secondary-background-color: #312631ff;
+  --foreground-background-color: #453345ff;
+  --secondary-foreground-background-color: #6f5c6fff;
+  --cta-accept-color: #236147ff;
+  --navbar-color: #161116ff;
+  --navbar-hover-color: #251e25;
+  --navbar-focus-color: #3a333a;
+
+  /* Shadow Colours */
+  --foreground-shadow: #16111688;
+
+  /* Text Colours */
+  --main-text: #fff;
+  --secondary-text: #ddd;
+  --placeholder-text: #ccc;
+  --links-text: #ff8c7c;
+
+  /* Tags */
+  --generic-tag: #576163;
+  --media-subtype-tag: var(--generic-tag);
+
+  /* Focus highlights */
+  --focus-highlight: #ff8c7c;
+  --unfocused-highlights: #ff8c7c00;
+
+  /* Border-Radius */
+  --radius-small: 3px;
+  --radius-medium: 5px;
+  --radius-large: 8px;
+
+  /* Font Sizes */
+  --font-xs: 0.6rem;
+  --font-sm: 0.8rem;
+  --font-me: 1rem;
+  --font-lg: 1.2rem;
+  --font-xl: 1.4rem;
+  --font-xxl: 1.8rem;
+
+  /* Font Weights */
+  --light: 300;
+  --regular: 400;
+  --semi-bold: 600;
+  --bold: 700;
+  --extra-bold: 800;
+
+  /* Standard Breakpoints */
+  --breakpoint-xs: 0;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+}
+
+body {
+  all: unset;
+
+  font-family: var(--font-family-body);
+  font-size: var(--font-me);
+  font-weight: var(--font-regular);
+  color: var(--page-text-color);
+
+  background-color: var(--page-background);
+  min-block-size: 100vh;
+}
+
+:is(h1, h2, h3, h4, h5, h6) {
+  font-family: var(--font-family-headings);
+  color: var(--main-text);
+}
