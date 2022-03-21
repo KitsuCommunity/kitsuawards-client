@@ -1,0 +1,31 @@
+query Categories {
+  year {
+    categories {
+      ...Category
+    }
+  }
+}
+
+fragment Category on Category {
+  name
+  url
+  start
+  end
+  subcategories {
+    ...Subcategory
+  }
+}
+
+fragment Subcategory on Subcategory {
+  name
+  id
+  nominees {
+    ...Nominee
+  }
+}
+
+fragment Nominee on Nominee {
+  id
+  name
+  media
+}

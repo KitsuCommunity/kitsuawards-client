@@ -1,0 +1,8 @@
+.page {
+  display: grid;
+  grid-template-columns: 1fr min(90%, 100ch) 1fr;
+  
+  > main {
+    grid-column: 2;
+  }
+}

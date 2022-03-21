@@ -1,0 +1,7 @@
+.app {
+  display: grid;
+  grid-template-areas: 'Navigation Content';
+  grid-template-columns: min-content auto;
+
+  min-block-size: 100vh;
+}

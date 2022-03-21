@@ -123,14 +123,39 @@ export type Year = {
   start: Scalars['String'];
 };
 
-
-export const FetchJudges = gql`
-    query FetchJudges {
+export const Nominee = gql`
+    fragment Nominee on Nominee {
+  id
+  name
+  media
+}
+    `;
+export const Subcategory = gql`
+    fragment Subcategory on Subcategory {
+  name
+  id
+  nominees {
+    ...Nominee
+  }
+}
+    ${Nominee}`;
+export const Category = gql`
+    fragment Category on Category {
+  name
+  url
+  start
+  end
+  subcategories {
+    ...Subcategory
+  }
+}
+    ${Subcategory}`;
+export const Categories = gql`
+    query Categories {
   year {
-    judges {
-      id
-      userId
+    categories {
+      ...Category
     }
   }
 }
-    `;
+    ${Category}`;
