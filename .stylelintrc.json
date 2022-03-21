@@ -12,10 +12,6 @@
   ],
   "rules": {
     "declaration-empty-line-before": null,
-    "unit-disallowed-list": [
-      ["px"],
-      { "message": "Use em or rem instead", "severity": "warning" }
-    ],
     "color-no-invalid-hex": true,
     "selector-pseudo-class-no-unknown": [
       true,
