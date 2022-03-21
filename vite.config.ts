@@ -5,16 +5,22 @@ import path from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-	resolve: {
-		alias: {
-			src: path.resolve(__dirname, './src'),
-		},
-	},
-	plugins: [react()],
-	css: {
-		modules: {
-			scopeBehaviour: 'local',
-			localsConvention: 'camelCaseOnly',
-		},
-	},
+  resolve: {
+    alias: {
+      components: path.resolve(__dirname, './src/components'),
+      common: path.resolve(__dirname, './src/common'),
+      layout: path.resolve(__dirname, './src/layout'),
+      helpers: path.resolve(__dirname, './src/helpers'),
+      hooks: path.resolve(__dirname, './src/hooks'),
+      assets: path.resolve(__dirname, './src/assets'),
+      src: path.resolve(__dirname, './src'),
+    },
+  },
+  plugins: [react()],
+  css: {
+    modules: {
+      scopeBehaviour: 'local',
+      localsConvention: 'camelCaseOnly',
+    },
+  },
 });

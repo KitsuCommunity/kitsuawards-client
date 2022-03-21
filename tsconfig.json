@@ -17,6 +17,12 @@
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
+      "components/*": ["./src/components/*"],
+      "common/*": ["./src/common/*"],
+      "layout/*": ["./src/layout/*"],
+      "helpers/*": ["./src/helpers/*"],
+      "hooks/*": ["./src/hooks/*"],
+      "assets/*": ["./src/assets/*"],
       "src/*": ["./src/*"]
     }
   },
