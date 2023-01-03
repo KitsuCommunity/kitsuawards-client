@@ -19,8 +19,6 @@ function App() {
     setNavOpen(false);
   };
 
-  if (fetching) return <Loading fullscreen />;
-
   if (data)
     return (
       <div
@@ -53,6 +51,8 @@ function App() {
         </Routes>
       </div>
     );
+
+  return <Loading fullscreen />;
 }
 
 export default App;
