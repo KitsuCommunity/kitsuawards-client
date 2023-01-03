@@ -1,7 +1,46 @@
+.navToggle {
+  position: fixed;
+  z-index: var(--index-top);
+    
+  inline-size: 100vw;
+  block-size: 50px;
+
+  color: var(--nav-text);
+
+  background-color: var(--nav-bg);
+  border: none;
+  border-radius: 0;
+  inset-block-end: 0;
+  inset-inline-start: 0;
+
+  .navVisible & {
+    background-color: var(--nav-button-bg);
+  }
+
+  img {
+    inline-size: var(--font-lg);
+  }
+}
+
 .app {
+  position: relative;
+
   display: grid;
   grid-template-areas: 'Navigation Content';
-  grid-template-columns: min-content auto;
+  grid-template-columns: 17rem auto;
+  
+  .navToggle {
+    display: none;
+  }
+  
+  @media screen and (max-width: 65rem) {
+    grid-template-areas: 'Content';
+    grid-template-columns: auto;
+    
+    .navToggle {
+      display: block;
+    }
+  }
 
   min-block-size: 100vh;
 }

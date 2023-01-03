@@ -8,30 +8,51 @@ import NotFound from './pages/NotFound';
 import { useCategoriesQuery } from './graphql/categories.generated';
 import Category from './pages/Category';
 import { Loading } from 'common/Loading';
+import icon from 'assets/hamburger_icon.svg';
+import SignIn from './pages/SignIn';
 
 function App() {
   const [{ data, fetching, error }] = useCategoriesQuery();
+  const [navOpen, setNavOpen] = useState(false);
 
-  console.log(data);
+  const closeNav = () => {
+    setNavOpen(false);
+  };
 
   if (fetching) return <Loading fullscreen />;
 
-  return (
-    <div className={styles.app}>
-      <Navigation categories={data?.year[0].categories} />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="judges" element={<Judges />} />
-        {data?.year[0].categories.map((category) => (
+  if (data)
+    return (
+      <div
+        className={[styles.app, navOpen ? styles.navVisible : null].join(' ')}
+      >
+        <Navigation
+          categories={data?.year[0].categories}
+          open={navOpen}
+          close={closeNav}
+        />
+        <button
+          className={styles.navToggle}
+          onClick={() => setNavOpen((c) => !c)}
+        >
+          <img src={icon} />
+        </button>
+        <Routes>
           <Route
-            path={`/category/${category.url}`}
-            element={<Category category={category} key={category.url} />}
+            path="/"
+            element={<Home description={data.year[0].description} />}
           />
-        ))}
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </div>
-  );
+          <Route path="/signin" element={<SignIn />} />
+          {data.year[0].categories.map((category) => (
+            <Route
+              path={`/category/${category.url}`}
+              element={<Category category={category} key={category.url} />}
+            />
+          ))}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </div>
+    );
 }
 
 export default App;

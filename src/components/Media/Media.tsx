@@ -35,7 +35,7 @@ const mediaType = (media: string) => {
 };
 
 export const Media = ({ media }: MediaProps) => {
-  return <div>{mediaType(media)}</div>;
+  return <>{mediaType(media)}</>;
 };
 
 export default Media;

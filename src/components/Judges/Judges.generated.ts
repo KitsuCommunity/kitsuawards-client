@@ -1,4 +1,4 @@
-import * as Types from '../../generated/graphql';
+import * as Types from '../../generated/graphql.js';
 
 import gql from 'graphql-tag';
 import * as Urql from 'urql';
@@ -20,6 +20,6 @@ export const FetchJudgesDocument = gql`
 }
     `;
 
-export function useFetchJudgesQuery(options: Omit<Urql.UseQueryArgs<FetchJudgesQueryVariables>, 'query'> = {}) {
-  return Urql.useQuery<FetchJudgesQuery>({ query: FetchJudgesDocument, ...options });
+export function useFetchJudgesQuery(options?: Omit<Urql.UseQueryArgs<FetchJudgesQueryVariables>, 'query'>) {
+  return Urql.useQuery<FetchJudgesQuery, FetchJudgesQueryVariables>({ query: FetchJudgesDocument, ...options });
 };

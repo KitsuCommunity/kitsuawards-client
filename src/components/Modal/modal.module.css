@@ -1,0 +1,5 @@
+.dialog {
+  background-color: var(--dialog-bg);
+  border: var(--dialog-border);
+  box-shadow: var(--card-shadow);
+}

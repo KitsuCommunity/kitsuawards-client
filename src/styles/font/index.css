@@ -1,11 +1,13 @@
 :root {
   /* Font Sizes */
-  --font-xxs: 0.7rem;
-  --font-xs: 0.75rem;
-  --font-sm: 0.85rem;
-  --font-me: 0.9rem;
-  --font-la: 1rem;
-  --font-xl: 1.2rem;
+  --font-xs: 0.6rem;
+  --font-sm: 0.8rem;
+  --font-me: 1rem;
+  --font-lg: 1.2rem;
+  --font-xl: 1.4rem;
+  --font-xxl: 1.8rem;
+  --font-heading: 2.5rem;
+  --font-subheading: var(--font-xxl);
 
   /* Font Weights */
   --font-light: 300;

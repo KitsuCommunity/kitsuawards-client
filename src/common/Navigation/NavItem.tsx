@@ -5,14 +5,18 @@ import styles from './navigation.module.css';
 interface NavItemProps {
   route: string;
   children: string;
+  closeNav: () => void;
 }
 
-export const NavItem = ({ route, children }: NavItemProps) => {
+export const NavItem = ({ route, children, closeNav }: NavItemProps) => {
   return (
     <li className={styles.navigationItem}>
       <NavLink
         className={({ isActive }) => (isActive ? styles.active : '')}
         to={route}
+        onClick={(e) => {
+          closeNav();
+        }}
       >
         {children}
       </NavLink>

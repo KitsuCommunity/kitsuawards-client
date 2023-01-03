@@ -1,5 +1,8 @@
+import { Button } from 'components/Button';
 import { Nominee } from 'components/Nominee';
+import { useState } from 'react';
 import { SubcategoryFragment } from 'src/graphql/categories.generated';
+import styles from './subcategory.module.css';
 
 interface SubcategoryProps {
   subcategory: SubcategoryFragment;
@@ -7,14 +10,36 @@ interface SubcategoryProps {
 
 export const Subcategory = ({ subcategory }: SubcategoryProps) => {
   const { name, nominees } = subcategory;
+  const [selected, setSelected] = useState<number | null>(null);
 
   return (
-    <article>
+    <form
+      className={styles.subcategory}
+      onSubmit={(e) => {
+        e.preventDefault();
+      }}
+    >
       <h3>{name}</h3>
-      {nominees?.map((nominee) => (
-        <Nominee nominee={nominee} />
-      ))}
-    </article>
+
+      <div className={styles.nominees}>
+        {nominees?.map((nominee) => (
+          <Nominee
+            nominee={nominee}
+            currentlySelected={selected}
+            select={(id: number) => setSelected(id)}
+          />
+        ))}
+      </div>
+
+      <Button
+        type="submit"
+        onClick={(e) => {
+          e.preventDefault();
+        }}
+      >
+        Vote
+      </Button>
+    </form>
   );
 };
 export default Subcategory;

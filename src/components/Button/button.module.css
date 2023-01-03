@@ -1,0 +1,17 @@
+.button {
+  padding: 13px 22px;
+
+  color: var(--input-text-color);
+
+  background-color: var(--button-primary-bg);
+  border: var(--input-border);
+  border-radius: var(--radius-medium);
+
+  &:hover {
+    background-color: var(--button-primary-hover-bg);
+  }
+
+  &:disabled {
+    background-color: var(--button-disabled-bg);
+  }
+}

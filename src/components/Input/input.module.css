@@ -1,0 +1,20 @@
+.input {
+  block-size: 1.2rem;
+  padding: 13px 22px;
+
+  color: var(--input-text-color);
+
+  background-color: var(--input-background);
+  border: var(--input-border);
+  border-radius: var(--radius-medium);
+  
+  &:invalid {
+    border: var(--input-invalid-border);
+  }
+
+  &::placeholder {
+    color: var(--input-text-color);
+
+    opacity: 0.5;
+  }
+}

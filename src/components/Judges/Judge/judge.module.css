@@ -13,8 +13,8 @@
   
     place-items: center;
   
-    inline-size: 11rem;
-    block-size: 11rem;
+    inline-size: 10rem;
+    block-size: 10rem;
 
     color: var(--secondary-text);
   
