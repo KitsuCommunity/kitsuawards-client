@@ -19,11 +19,14 @@ import SignIn from './pages/SignIn';
 import useGetUser from 'hooks/useGetUser';
 import getCurrentUser from 'helpers/getUser';
 import getLocalStorage from 'helpers/getLocalStorage';
+import { Role } from './types/role';
+import { User } from './types/profile';
 
 const profile: User = {
   user: null,
   token: null,
   allowYouTube: false,
+  role: Role.Regular,
 };
 
 export const UserContext = createContext<
@@ -36,12 +39,7 @@ export const UserContext = createContext<
 >([profile, async (token: Token) => {}, () => {}, () => {}]);
 
 function App() {
-  const [{ data, fetching, error }, refetchCategories] = useCategoriesQuery({
-    variables: {
-      token: getLocalStorage<Token>('kitsu-token')?.access_token,
-      signedIn: !!getLocalStorage<Token>('kitsu-token')?.access_token,
-    },
-  });
+  const [{ data, fetching, error }, refetchCategories] = useCategoriesQuery();
   const [navOpen, setNavOpen] = useState(false);
   const [user, setUser] = useState<User>(profile);
 
@@ -82,6 +80,19 @@ function App() {
     }));
   };
 
+  const setAdminRole = (user: User) => {
+    console.log('checking admin role');
+    console.log(user);
+    if (
+      user.user?.id === '171606' ||
+      user.user?.id === '171273' ||
+      user.user?.id === '195642'
+    ) {
+      console.log('Setting admin role');
+      setUser((existing) => ({ ...existing, role: Role.Admin }));
+    }
+  };
+
   useEffect(() => {
     const token = getLocalStorage<Token>('kitsu-token');
     const allowYouTubeBool = getLocalStorage<boolean>('allowYouTube');
@@ -90,6 +101,10 @@ function App() {
 
     if (token) setToken(token);
   }, []);
+
+  useEffect(() => {
+    if (user.role === Role.Regular) setAdminRole(user);
+  }, [user]);
 
   if (data?.year[0]) {
     const currentYear = data.year[0];

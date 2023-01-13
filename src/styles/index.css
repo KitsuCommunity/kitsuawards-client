@@ -96,6 +96,7 @@
   --radius-medium: 5px;
   --radius-large: 8px;
   --radius-circle: 50%;
+  --radius-medium-top: 5px 5px 0 0;
 
   /* Standard Breakpoints */
   --breakpoint-xs: 0;

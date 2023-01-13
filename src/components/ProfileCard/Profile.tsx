@@ -2,6 +2,7 @@ import NavItem from 'common/Navigation/NavItem';
 import { Button } from 'components/Button';
 import { useContext } from 'react';
 import { UserContext } from 'src/App';
+import { Role } from 'src/types/role';
 import styles from './profile.module.css';
 
 interface ProfileCardProps {
@@ -17,7 +18,10 @@ export const ProfileCard = ({ className, closeNav }: ProfileCardProps) => {
       {!!user.user ? (
         <div className={[styles.account, className].join(' ')}>
           <img src={user.user.avatarImage.views[0].url} />
-          <span>{user.user.name}</span>
+          <span>
+            {user.user.name}{' '}
+            {user.role !== Role.Regular ? `-- ${user.role}` : ''}
+          </span>
           <Button
             className={styles.signOut}
             onClick={(e) => {

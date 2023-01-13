@@ -3,6 +3,7 @@ import axios from 'axios';
 const QUERY = `query {
   currentAccount {
     profile {
+      id
       name
       avatarImage {
         blurhash

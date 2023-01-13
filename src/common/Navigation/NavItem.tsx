@@ -38,7 +38,7 @@ export const NavItem = ({
         className={({ isActive }) => (isActive ? styles.active : '')}
         to={route}
         onClick={(e) => {
-          closeNav();
+          closeNav && closeNav();
         }}
       >
         {children}

@@ -4,10 +4,11 @@ import styles from './navigation.module.css';
 import { Brand } from 'components/Brand';
 import { CategoryFragment } from 'src/graphql/categories.generated';
 import { Category } from 'src/generated/graphql';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { UserContext } from 'src/App';
 import { Button } from 'components/Button';
 import ProfileCard from 'components/ProfileCard';
+import { Role } from 'src/types/role';
 
 interface NavigationProps {
   categories?: CategoryFragment[];
@@ -17,6 +18,7 @@ interface NavigationProps {
 
 export const Navigation = ({ categories, open, close }: NavigationProps) => {
   const [user, _, signOut] = useContext(UserContext);
+  const [showResults, setShowResults] = useState(false);
 
   return (
     <aside
@@ -32,7 +34,11 @@ export const Navigation = ({ categories, open, close }: NavigationProps) => {
             Home
           </NavItem>
           {categories?.map(({ name, url }) => (
-            <NavItem route={`/category/${url}`} key={url} closeNav={close}>
+            <NavItem
+              route={`${showResults ? '/results' : ''}/category/${url}`}
+              key={url}
+              closeNav={close}
+            >
               {name}
             </NavItem>
           ))}
@@ -40,6 +46,15 @@ export const Navigation = ({ categories, open, close }: NavigationProps) => {
       </nav>
       <ProfileCard closeNav={close} />
       <footer>
+        {user.role === Role.Admin && (
+          <Button
+            onClick={() => {
+              setShowResults((value) => !value);
+            }}
+          >
+            {showResults ? 'Navigate Voting' : 'Navigate Results'}
+          </Button>
+        )}
         <p>Made with ❤️ by Reina and Gakamine</p>
         <p>
           Source code available on{' '}
