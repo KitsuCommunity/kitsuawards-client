@@ -9,7 +9,7 @@ export type SubmitVoteMutationVariables = Types.Exact<{
 }>;
 
 
-export type SubmitVoteMutation = { __typename?: 'Mutation', submitVote?: { __typename?: 'SubmitVotePayload', errors: Array<string>, vote?: { __typename?: 'Vote', id: number } | null | undefined } | null | undefined };
+export type SubmitVoteMutation = { __typename?: 'Mutation', submitVote?: { __typename?: 'SubmitVotePayload', errors: Array<string>, vote?: { __typename?: 'Vote', id: number, date: string, nominee: { __typename?: 'Nominee', name: string, id: number } } | null | undefined } | null | undefined };
 
 
 export const SubmitVoteDocument = gql`
@@ -17,6 +17,11 @@ export const SubmitVoteDocument = gql`
   submitVote(input: {token: $token, nomineeid: $nomineeid}) {
     vote {
       id
+      nominee {
+        name
+        id
+      }
+      date
     }
     errors
   }

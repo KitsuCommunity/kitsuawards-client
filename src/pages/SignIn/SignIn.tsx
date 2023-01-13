@@ -2,18 +2,10 @@ import { Button } from 'components/Button';
 import { Input } from 'components/Input';
 import { Modal } from 'components/Modal';
 import { Page } from 'layout/Page';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { UserContext } from 'src/App';
 import styles from './signin.module.css';
-
-interface TokenRes {
-  access_token: string; // Token used in Authorization header
-  created_at: number;
-  expires_in: number; // Seconds until the access_token expires (30 days default)
-  refresh_token: string; // Token used to get a new access_token
-  scope: 'public';
-  token_type: 'bearer';
-}
 
 interface SignInProps {
   modal?: boolean;
@@ -41,6 +33,8 @@ const SignInContent = ({ modal }: { modal?: boolean }) => {
   const [error, setError] = useState<string>();
   const nav = useNavigate();
 
+  const [user, setUserToken] = useContext(UserContext);
+
   const submit = () => {
     fetch('https://kitsu.io/api/oauth/token', {
       method: 'POST',
@@ -56,7 +50,7 @@ const SignInContent = ({ modal }: { modal?: boolean }) => {
       .then(async (data) => {
         if (!data.ok)
           throw 'Failed to sign in. Did you use the wrong email or password?';
-        const tokenRes: TokenRes = await data.json();
+        const tokenRes: Token = await data.json();
 
         setToken(tokenRes);
         setError('');
@@ -70,8 +64,9 @@ const SignInContent = ({ modal }: { modal?: boolean }) => {
       });
   };
 
-  const setToken = (token: TokenRes) => {
+  const setToken = (token: Token) => {
     localStorage.setItem('kitsu-token', JSON.stringify(token));
+    setUserToken(token);
   };
 
   return (

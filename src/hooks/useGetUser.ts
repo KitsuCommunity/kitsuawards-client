@@ -17,12 +17,17 @@ const QUERY = `query {
 }
 `;
 
-const useGetUser = (token: string): [KitsuUser | null, boolean, any] => {
+const useGetUser = (): [
+  KitsuUser | null,
+  boolean,
+  any,
+  (token: string) => void,
+] => {
   const [loading, setLoading] = useState<boolean>(true);
   const [data, setData] = useState<KitsuUser | null>(null);
   const [error, setError] = useState<{}>();
 
-  useEffect(() => {
+  const getUser = (token: string) => {
     axios
       .post('https://kitsu.io/api/graphql', {
         headers: {
@@ -41,9 +46,9 @@ const useGetUser = (token: string): [KitsuUser | null, boolean, any] => {
         setLoading(false);
         setError(err.error);
       });
-  }, []);
+  };
 
-  return [data, loading, error];
+  return [data, loading, error, getUser];
 };
 
 export default useGetUser;

@@ -1,0 +1,8 @@
+query FetchVote($token: String) {
+  fetchvote(token: $token) {
+    nominee {
+      id
+      name
+    }
+  }
+}

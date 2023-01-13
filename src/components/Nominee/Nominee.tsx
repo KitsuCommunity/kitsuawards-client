@@ -9,7 +9,6 @@ interface NomineeProps {
   select: (id: number) => void;
 }
 
-// TODO: Style this component
 export const Nominee = ({
   nominee,
   currentlySelected,

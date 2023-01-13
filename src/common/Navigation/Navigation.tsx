@@ -4,6 +4,10 @@ import styles from './navigation.module.css';
 import { Brand } from 'components/Brand';
 import { CategoryFragment } from 'src/graphql/categories.generated';
 import { Category } from 'src/generated/graphql';
+import { useContext } from 'react';
+import { UserContext } from 'src/App';
+import { Button } from 'components/Button';
+import ProfileCard from 'components/ProfileCard';
 
 interface NavigationProps {
   categories?: CategoryFragment[];
@@ -12,6 +16,8 @@ interface NavigationProps {
 }
 
 export const Navigation = ({ categories, open, close }: NavigationProps) => {
+  const [user, _, signOut] = useContext(UserContext);
+
   return (
     <aside
       className={[
@@ -32,11 +38,7 @@ export const Navigation = ({ categories, open, close }: NavigationProps) => {
           ))}
         </ul>
       </nav>
-      <div className={styles.account}>
-        <img src="https://media.kitsu.io/users/avatars/171606/large.jpeg" />
-        <span>Username</span>
-        <button>Sign out</button>
-      </div>
+      <ProfileCard />
       <footer>
         <p>Made with ❤️ by Reina and Gakamine</p>
         <p>

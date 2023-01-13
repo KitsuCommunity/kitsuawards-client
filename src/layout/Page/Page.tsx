@@ -3,11 +3,12 @@ import styles from './page.module.css';
 
 interface PageProps {
   children: ReactNode;
+  className?: string;
 }
 
-export const Page = ({ children }: PageProps) => {
+export const Page = ({ children, className }: PageProps) => {
   return (
-    <div className={styles.page}>
+    <div className={[styles.page, className].join(' ')}>
       <main>{children}</main>
     </div>
   );

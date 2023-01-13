@@ -1,6 +1,8 @@
 query Categories {
   year {
     description
+    start
+    end
     categories {
       ...Category
     }

@@ -6,7 +6,7 @@ export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 export type CategoriesQueryVariables = Types.Exact<{ [key: string]: never; }>;
 
 
-export type CategoriesQuery = { __typename?: 'Query', year: Array<{ __typename?: 'Year', description: string, categories: Array<{ __typename?: 'Category', name: string, url: string, start: string, end: string, subcategories?: Array<{ __typename?: 'Subcategory', name: string, id: number, nominees: Array<{ __typename?: 'Nominee', id: number, name: string, media: string }> }> | null | undefined }> }> };
+export type CategoriesQuery = { __typename?: 'Query', year: Array<{ __typename?: 'Year', description: string, start: string, end: string, categories: Array<{ __typename?: 'Category', name: string, url: string, start: string, end: string, subcategories?: Array<{ __typename?: 'Subcategory', name: string, id: number, nominees: Array<{ __typename?: 'Nominee', id: number, name: string, media: string }> }> | null | undefined }> }> };
 
 export type CategoryFragment = { __typename?: 'Category', name: string, url: string, start: string, end: string, subcategories?: Array<{ __typename?: 'Subcategory', name: string, id: number, nominees: Array<{ __typename?: 'Nominee', id: number, name: string, media: string }> }> | null | undefined };
 
@@ -45,6 +45,8 @@ export const CategoriesDocument = gql`
     query Categories {
   year {
     description
+    start
+    end
     categories {
       ...Category
     }

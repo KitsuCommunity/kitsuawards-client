@@ -1,7 +1,8 @@
+import { Link } from 'react-router-dom';
 import styles from './button.module.css';
 
 interface ButtonProps {
-  type?: 'button' | 'submit';
+  type?: 'button' | 'submit' | 'link';
   disabled?: boolean;
   onClick?: (
     e:
@@ -9,30 +10,45 @@ interface ButtonProps {
       | React.MouseEvent<HTMLInputElement, MouseEvent>,
   ) => void;
   children?: string;
+  className?: string;
+  to?: string;
 }
 
 export const Button = ({
-  type = 'button',
+  type,
   disabled,
   onClick,
   children,
+  className,
+  to,
 }: ButtonProps) => {
-  if ((type = 'button')) {
+  if (type === 'submit') {
     return (
-      <button className={styles.button} onClick={onClick} disabled={disabled}>
-        {children}
-      </button>
+      <input
+        className={[styles.button, className].join(' ')}
+        type="submit"
+        onClick={onClick}
+        value={children}
+        disabled={disabled}
+      ></input>
     );
   }
 
+  if (type === 'link' && to) {
+    return (
+      <Link to={to} className={[styles.button, className].join(' ')}>
+        <span>{children}</span>
+      </Link>
+    );
+  }
   return (
-    <input
-      className={styles.button}
-      type="submit"
+    <button
+      className={[styles.button, className].join(' ')}
       onClick={onClick}
-      value={children}
       disabled={disabled}
-    ></input>
+    >
+      {children}
+    </button>
   );
 };
 

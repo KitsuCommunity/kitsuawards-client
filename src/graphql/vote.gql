@@ -2,6 +2,11 @@ mutation SubmitVote($token: String!, $nomineeid: Int!) {
   submitVote(input: { token: $token, nomineeid: $nomineeid }) {
     vote {
       id
+      nominee {
+        name
+        id
+      }
+      date
     }
     errors
   }

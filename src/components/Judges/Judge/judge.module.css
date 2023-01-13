@@ -44,5 +44,9 @@
   
       border-radius: 50%;
     }
+
+    .loading {
+      grid-area: image;
+    }
   }
 }
