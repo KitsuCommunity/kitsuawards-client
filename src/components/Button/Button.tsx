@@ -7,7 +7,8 @@ interface ButtonProps {
   onClick?: (
     e:
       | React.MouseEvent<HTMLButtonElement, MouseEvent>
-      | React.MouseEvent<HTMLInputElement, MouseEvent>,
+      | React.MouseEvent<HTMLInputElement, MouseEvent>
+      | undefined,
   ) => void;
   children?: string;
   className?: string;
@@ -36,7 +37,11 @@ export const Button = ({
 
   if (type === 'link' && to) {
     return (
-      <Link to={to} className={[styles.button, className].join(' ')}>
+      <Link
+        to={to}
+        className={[styles.button, className].join(' ')}
+        onClick={() => onClick}
+      >
         <span>{children}</span>
       </Link>
     );

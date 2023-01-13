@@ -1,3 +1,4 @@
+import NavItem from 'common/Navigation/NavItem';
 import { Button } from 'components/Button';
 import { useContext } from 'react';
 import { UserContext } from 'src/App';
@@ -5,9 +6,10 @@ import styles from './profile.module.css';
 
 interface ProfileCardProps {
   className?: string;
+  closeNav?: () => void;
 }
 
-export const ProfileCard = ({ className }: ProfileCardProps) => {
+export const ProfileCard = ({ className, closeNav }: ProfileCardProps) => {
   const [user, _, signOut] = useContext(UserContext);
 
   return (
@@ -27,9 +29,14 @@ export const ProfileCard = ({ className }: ProfileCardProps) => {
           </Button>
         </div>
       ) : (
-        <Button className={styles.signIn} type="link" to="/signin">
+        <NavItem
+          className={styles.signIn}
+          route="/signin"
+          closeNav={closeNav}
+          div
+        >
           Sign In
-        </Button>
+        </NavItem>
       )}
     </>
   );

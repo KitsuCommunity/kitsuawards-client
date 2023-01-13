@@ -12,6 +12,7 @@ const Streamable = ({ media }: StreamableProps) => {
       allow="picture-in-picture"
       src={`https://streamable.com/e/${url}`}
       allowFullScreen
+      loading="lazy"
     />
   );
 };

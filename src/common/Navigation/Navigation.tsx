@@ -38,7 +38,7 @@ export const Navigation = ({ categories, open, close }: NavigationProps) => {
           ))}
         </ul>
       </nav>
-      <ProfileCard />
+      <ProfileCard closeNav={close} />
       <footer>
         <p>Made with ❤️ by Reina and Gakamine</p>
         <p>

@@ -19,6 +19,7 @@ const YouTube = ({ media }: YouTubeProps) => {
         src={`https://youtube.com/embed/${url}`}
         allow="picture-in-picture"
         allowFullScreen
+        loading="lazy"
       />
     );
   }
