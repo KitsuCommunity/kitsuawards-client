@@ -1,5 +1,6 @@
 import { DateTime } from 'components/DateTime';
 import { Subcategory } from 'components/Subcategory';
+import convertServerDate from 'helpers/convertServerDate';
 import { Page } from 'layout/Page';
 import { useContext } from 'react';
 import { UserContext } from 'src/App';
@@ -17,6 +18,8 @@ export const Category = ({ category }: CategoryProps) => {
     variables: { token: user.token?.access_token },
   });
 
+  const currentTime = new Date();
+
   return (
     <Page>
       <h2>{name}</h2>
@@ -25,6 +28,8 @@ export const Category = ({ category }: CategoryProps) => {
       </p>
 
       {!fetching &&
+        convertServerDate(start).getMilliseconds() <
+          currentTime.getMilliseconds() &&
         subcategories?.map((subcategory) => {
           const existingVote = subcategory.nominees.filter((nominee) => {
             return data?.fetchvote?.find(
