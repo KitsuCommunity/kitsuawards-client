@@ -12,7 +12,7 @@ import AsyncComputed from 'vue-async-computed';
 Vue.config.productionTip = false;
 
 const httpLink = new HttpLink({
-	uri: 'https://api.kitsuawards.com/graphql',
+	uri: 'https://api.kitsuawards.com/',
 });
 
 const apolloClient = new ApolloClient({
