@@ -14,7 +14,7 @@ export type SubmitVoteMutation = { __typename?: 'Mutation', submitVote?: { __typ
 
 export const SubmitVoteDocument = gql`
     mutation SubmitVote($token: String!, $nomineeid: Int!) {
-  submitVote(input: {token: $token, nomineeid: $nomineeid}) {
+  submitVote(input: {token: $token, nomineeId: $nomineeid}) {
     vote {
       id
       nominee {

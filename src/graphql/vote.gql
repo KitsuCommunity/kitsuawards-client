@@ -1,5 +1,5 @@
 mutation SubmitVote($token: String!, $nomineeid: Int!) {
-  submitVote(input: { token: $token, nomineeid: $nomineeid }) {
+  submitVote(input: { token: $token, nomineeId: $nomineeid }) {
     vote {
       id
       nominee {

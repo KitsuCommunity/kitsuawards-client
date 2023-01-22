@@ -124,13 +124,18 @@ export type Year = {
 };
 
 
-export const FetchVote = gql`
-    query FetchVote($token: String) {
-  fetchVote(token: $token) {
-    nominee {
+export const SubmitVote = gql`
+    mutation SubmitVote($token: String!, $nomineeid: Int!) {
+  submitVote(input: {token: $token, nomineeId: $nomineeid}) {
+    vote {
       id
-      name
+      nominee {
+        name
+        id
+      }
+      date
     }
+    errors
   }
 }
     `;
