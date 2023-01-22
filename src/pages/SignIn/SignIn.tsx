@@ -44,7 +44,7 @@ const SignInContent = ({ modal }: { modal?: boolean }) => {
       body: JSON.stringify({
         grant_type: 'password',
         username,
-        password: encodeURI(password),
+        password: password,
       }),
     })
       .then(async (data) => {
