@@ -32,7 +32,7 @@ export const Category = ({ category }: CategoryProps) => {
           currentTime.getMilliseconds() &&
         subcategories?.map((subcategory) => {
           const existingVote = subcategory.nominees.filter((nominee) => {
-            return data?.fetchvote?.find(
+            return data?.fetchVote?.find(
               (vote) => vote.nominee.id === nominee.id,
             );
           });

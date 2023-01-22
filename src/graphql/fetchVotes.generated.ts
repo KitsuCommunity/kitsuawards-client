@@ -8,12 +8,12 @@ export type FetchVoteQueryVariables = Types.Exact<{
 }>;
 
 
-export type FetchVoteQuery = { __typename?: 'Query', fetchvote?: Array<{ __typename?: 'Vote', nominee: { __typename?: 'Nominee', id: number, name: string } }> | null | undefined };
+export type FetchVoteQuery = { __typename?: 'Query', fetchVote?: Array<{ __typename?: 'Vote', nominee: { __typename?: 'Nominee', id: number, name: string } }> | null | undefined };
 
 
 export const FetchVoteDocument = gql`
     query FetchVote($token: String) {
-  fetchvote(token: $token) {
+  fetchVote(token: $token) {
     nominee {
       id
       name

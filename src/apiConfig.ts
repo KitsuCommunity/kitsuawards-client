@@ -1,5 +1,5 @@
 import { createClient } from 'urql';
 
 export const client = createClient({
-  url: 'http://localhost:3000/',
+  url: 'http://api.kitsuawards.com/graphql',
 });

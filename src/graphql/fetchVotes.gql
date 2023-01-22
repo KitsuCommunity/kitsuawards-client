@@ -1,5 +1,5 @@
 query FetchVote($token: String) {
-  fetchvote(token: $token) {
+  fetchVote(token: $token) {
     nominee {
       id
       name
