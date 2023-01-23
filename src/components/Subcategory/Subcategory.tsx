@@ -57,7 +57,7 @@ export const Subcategory = ({
       return;
     }
 
-    if (data?.submitVote?.vote?.nominee.id !== selected) {
+    if (data && data?.submitVote?.vote?.nominee.id !== selected) {
       setVoteMessage('Change Vote');
     }
   }, [selected]);
