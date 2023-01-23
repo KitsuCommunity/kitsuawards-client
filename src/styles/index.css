@@ -88,6 +88,11 @@
   --button-primary-hover-bg: #068d75;
   --button-disabled-bg: #6a6c70;
 
+  /* Error */
+  --error-background-color: #493030;
+  --error-border: 2px solid rgb(186 43 43);
+  --error-text-color: #fff;
+
 
   /* ---- UTILITY VARIABLES ---- */
 

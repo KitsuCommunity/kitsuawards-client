@@ -1,0 +1,9 @@
+.error {
+  padding: 0.5rem;
+
+  color: var(--error-text-color);
+
+  background-color: var(--error-background-color);
+  border: var(--error-border);
+  border-radius: var(--radius-medium);
+}

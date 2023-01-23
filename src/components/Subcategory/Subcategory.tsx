@@ -1,4 +1,6 @@
+import { Loading } from 'common/Loading';
 import { Button } from 'components/Button';
+import ErrorMessage from 'components/ErrorMessage';
 import { Nominee } from 'components/Nominee';
 import { useContext, useEffect, useState } from 'react';
 import { UserContext } from 'src/App';
@@ -19,6 +21,7 @@ export const Subcategory = ({
   const [selected, setSelected] = useState<number | null>(existingVote || null);
   const [user] = useContext(UserContext);
   const [{ data, fetching, error }, submitVote] = useSubmitVoteMutation();
+  const [voteMessage, setVoteMessage] = useState('Vote');
 
   const vote = () => {
     const token = user.token?.access_token;
@@ -33,9 +36,31 @@ export const Subcategory = ({
 
   useEffect(() => {
     if (data) {
-      console.log(data);
+      setVoteMessage('Voted');
     }
   }, [data]);
+
+  useEffect(() => {
+    if (!user.token?.access_token) {
+      setVoteMessage('Sign in to Vote');
+      return;
+    }
+
+    if (existingVote) {
+      setVoteMessage('Change Vote');
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!user.token?.access_token) {
+      setVoteMessage('Sign in to Vote');
+      return;
+    }
+
+    if (data?.submitVote?.vote?.nominee.id !== selected) {
+      setVoteMessage('Change Vote');
+    }
+  }, [selected]);
 
   return (
     <form
@@ -57,13 +82,26 @@ export const Subcategory = ({
         ))}
       </div>
 
-      <Button type="submit" disabled={!user.token?.access_token}>
-        {!!user.token?.access_token
-          ? existingVote
-            ? 'Change Vote'
-            : 'Vote'
-          : 'Sign in to Vote'}
+      <Button
+        type="submit"
+        disabled={
+          !user.token?.access_token ||
+          data?.submitVote?.vote?.nominee.id === selected ||
+          existingVote === selected
+        }
+      >
+        {fetching ? '...' : voteMessage}
       </Button>
+      {error && (
+        <ErrorMessage>
+          {error?.message}
+          <br />
+          Please try again. If the error persists, please let Reina know on{' '}
+          <a href="https://matrix.to/#/@reinacchan:matrix.org">Matrix</a>{' '}
+          (quickest response) or on{' '}
+          <a href="https://kitsu.io/users/Reinachan">Kitsu</a>
+        </ErrorMessage>
+      )}
     </form>
   );
 };
