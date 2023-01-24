@@ -18,10 +18,6 @@ export default function Judges({}: JudgesProps) {
     }
   }, [data]);
 
-  useEffect(() => {
-    console.log(judgeData);
-  }, [judgeData]);
-
   return (
     <section className={styles.judgesList}>
       <h3>Judges</h3>

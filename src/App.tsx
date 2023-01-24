@@ -81,14 +81,11 @@ function App() {
   };
 
   const setAdminRole = (user: User) => {
-    console.log('checking admin role');
-    console.log(user);
     if (
       user.user?.id === '171606' ||
       user.user?.id === '171273' ||
       user.user?.id === '195642'
     ) {
-      console.log('Setting admin role');
       setUser((existing) => ({ ...existing, role: Role.Admin }));
     }
   };

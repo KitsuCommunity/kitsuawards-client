@@ -37,8 +37,6 @@ export const Category = ({ category }: CategoryProps) => {
             );
           });
 
-          console.log(existingVote);
-
           return (
             <Subcategory
               subcategory={subcategory}

@@ -13,7 +13,6 @@ const useGetUsers = (): [
 
   const getData = (userIds: string[]) => {
     setLoading(true);
-    console.log('started');
 
     const QUERY = `query {
       ${userIds
@@ -33,8 +32,6 @@ const useGetUsers = (): [
         })
         .join('')}
     }`;
-
-    console.log(QUERY);
 
     fetch('https://kitsu.io/api/graphql', {
       method: 'POST',
