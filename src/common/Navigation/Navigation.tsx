@@ -3,12 +3,12 @@ import NavItem from './NavItem';
 import styles from './navigation.module.css';
 import { Brand } from 'components/Brand';
 import { CategoryFragment } from 'src/graphql/categories.generated';
-import { Category } from 'src/generated/graphql';
+import { Category } from 'generated/graphql';
 import { useContext, useState } from 'react';
 import { UserContext } from 'src/App';
 import { Button } from 'components/Button';
 import ProfileCard from 'components/ProfileCard';
-import { Role } from 'src/types/role';
+import { Role } from 'types/role';
 
 interface NavigationProps {
   categories?: CategoryFragment[];

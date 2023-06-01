@@ -1,4 +1,4 @@
-import useGetUsers from 'hooks/useGetUsers';
+import { useGetUsers } from 'hooks';
 import { useEffect } from 'react';
 import { Judge } from './Judge';
 import { useFetchJudgesQuery } from './Judges.generated';

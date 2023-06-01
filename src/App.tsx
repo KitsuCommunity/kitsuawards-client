@@ -1,12 +1,5 @@
-import {
-  createContext,
-  Dispatch,
-  SetStateAction,
-  useEffect,
-  useState,
-} from 'react';
+import { createContext, useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router';
-import { Judges } from 'components/Judges';
 import { Navigation } from 'common/Navigation';
 import Home from './pages/Home';
 import styles from './app.module.css';
@@ -16,7 +9,6 @@ import Category from './pages/Category';
 import { Loading } from 'common/Loading';
 import icon from 'assets/hamburger_icon.svg';
 import SignIn from './pages/SignIn';
-import useGetUser from 'hooks/useGetUser';
 import getCurrentUser from 'helpers/getUser';
 import getLocalStorage from 'helpers/getLocalStorage';
 import { Role } from './types/role';

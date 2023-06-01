@@ -35,6 +35,7 @@
     "@types/react-dom": "^18.0.10",
     "@vitejs/plugin-react": "^3.0.0",
     "autoprefixer": "^10.4.2",
+    "eslint-plugin-import": "^2.27.5",
     "postcss": "^8.4.20",
     "postcss-nested": "^6.0.0",
     "stylelint": "^14.16.1",

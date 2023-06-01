@@ -17,12 +17,33 @@
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
-      "components/*": ["./src/components/*"],
+      // import index exported members
+      // should be at top for highest priority
+      "assets": ["./src/assets"],
+      "common": ["./src/common"],
+      "components": ["./src/components"],
+      "generated": ["./src/generated"],
+      "helpers": ["./src/helpers"],
+      "hooks": ["./src/hooks"],
+      "layout": ["./src/layout"],
+      "pages": ["./src/pages"],
+      "styles": ["./src/styles"],
+      "types": ["./src/types"],
+
+      // import files inside the folders
+      "assets/*": ["./src/assets/*"],
       "common/*": ["./src/common/*"],
-      "layout/*": ["./src/layout/*"],
+      "components/*": ["./src/components/*"],
+      "generated/*": ["./src/generated/*"],
       "helpers/*": ["./src/helpers/*"],
       "hooks/*": ["./src/hooks/*"],
-      "assets/*": ["./src/assets/*"],
+      "layout/*": ["./src/layout/*"],
+      "pages/*": ["./src/pages/*"],
+      "styles/*": ["./src/styles/*"],
+      "types/*": ["./src/types/*"],
+
+      // import root files
+      // should always be at bottom for lowest priority
       "src/*": ["./src/*"]
     }
   },

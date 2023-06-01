@@ -1,6 +1,26 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 
+/**
+ * This is used as an optimisation for fetching multiple users from Kitsu at once.
+ * Primarily for fetching judges.
+ *
+ * The getData() function takes a list of userIDs as strings and
+ * invokes the fetch request.
+ *
+ * @example
+ * const [{ data, fetching, error }] = useFetchJudgesQuery();
+ * const [judgeData, judgeLoading, judgeError, getJudges] = useGetUsers();
+ *
+ * useEffect(() => {
+ *   if (data?.year[0].judges) {
+ *     const judges = data.year[0].judges.map((judge) => judge.userId);
+ *     getJudges(judges);
+ *   }
+ * }, [data]);
+ *
+ * @returns data, loading, error, getData()
+ */
 const useGetUsers = (): [
   KitsuUser[] | null,
   boolean,
