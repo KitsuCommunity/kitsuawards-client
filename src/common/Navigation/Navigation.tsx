@@ -5,45 +5,42 @@ import { Brand } from 'components/Brand';
 import { CategoryFragment } from 'src/graphql/categories.generated';
 import { Category } from 'generated/graphql';
 import { useContext, useState } from 'react';
-import { globalUser } from 'src/App';
+import { globalUser, navOpen } from 'src/App';
 import { Button } from 'components/Button';
 import ProfileCard from 'components/ProfileCard';
 import { Role } from 'types/role';
 
 interface NavigationProps {
   categories?: CategoryFragment[];
-  open: boolean;
-  close: () => void;
 }
 
-export const Navigation = ({ categories, open, close }: NavigationProps) => {
+export const Navigation = ({ categories }: NavigationProps) => {
   const [showResults, setShowResults] = useState(false);
 
   return (
     <aside
       className={[
         styles.navigationSidebar,
-        open ? styles.navVisible : null,
+        navOpen.value ? styles.navVisible : null,
       ].join(' ')}
     >
       <Brand />
       <nav>
         <ul>
-          <NavItem key="home" route="/" closeNav={close}>
+          <NavItem key="home" route="/">
             Home
           </NavItem>
           {categories?.map(({ name, url }) => (
             <NavItem
               route={`${showResults ? '/results' : ''}/category/${url}`}
               key={url}
-              closeNav={close}
             >
               {name}
             </NavItem>
           ))}
         </ul>
       </nav>
-      <ProfileCard closeNav={close} />
+      <ProfileCard />
       <footer>
         {globalUser.value.role === Role.Admin && (
           <Button

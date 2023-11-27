@@ -1,11 +1,11 @@
 import { ReactNode } from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './navigation.module.css';
+import { closeNav } from 'src/App';
 
 interface NavItemProps {
   route: string;
   children: string;
-  closeNav?: () => void;
   className?: string;
   div?: boolean;
 }
@@ -13,7 +13,6 @@ interface NavItemProps {
 export const NavItem = ({
   route,
   children,
-  closeNav,
   className,
   div = false,
 }: NavItemProps) => {
@@ -23,8 +22,8 @@ export const NavItem = ({
         <NavLink
           className={({ isActive }) => (isActive ? styles.active : '')}
           to={route}
-          onClick={(e) => {
-            closeNav && closeNav();
+          onClick={() => {
+            closeNav();
           }}
         >
           {children}
@@ -37,8 +36,8 @@ export const NavItem = ({
       <NavLink
         className={({ isActive }) => (isActive ? styles.active : '')}
         to={route}
-        onClick={(e) => {
-          closeNav && closeNav();
+        onClick={() => {
+          closeNav();
         }}
       >
         {children}

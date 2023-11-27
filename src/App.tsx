@@ -64,13 +64,11 @@ export const setToken = async (token: Token) => {
   };
 };
 
+export const navOpen = signal(false);
+export const closeNav = () => (navOpen.value = false);
+
 function App() {
   const [{ data, fetching, error }, refetchCategories] = useCategoriesQuery();
-  const [navOpen, setNavOpen] = useState(false);
-
-  const closeNav = () => {
-    setNavOpen(false);
-  };
 
   useEffect(() => {
     const storedToken = getLocalStorage<Token>('kitsu-token');
@@ -100,16 +98,14 @@ function App() {
 
     return (
       <div
-        className={[styles.app, navOpen ? styles.navVisible : null].join(' ')}
+        className={[styles.app, navOpen.value ? styles.navVisible : null].join(
+          ' ',
+        )}
       >
-        <Navigation
-          categories={data?.year[0].categories}
-          open={navOpen}
-          close={closeNav}
-        />
+        <Navigation categories={data?.year[0].categories} />
         <button
           className={styles.navToggle}
-          onClick={() => setNavOpen((c) => !c)}
+          onClick={() => (navOpen.value = !navOpen.value)}
         >
           <img src={icon} />
         </button>

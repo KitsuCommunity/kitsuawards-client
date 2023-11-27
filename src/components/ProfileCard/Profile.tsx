@@ -7,10 +7,9 @@ import { globalUser, signOut } from 'src/App';
 
 interface ProfileCardProps {
   className?: string;
-  closeNav?: () => void;
 }
 
-export const ProfileCard = ({ className, closeNav }: ProfileCardProps) => {
+export const ProfileCard = ({ className }: ProfileCardProps) => {
   return (
     <>
       {!!globalUser.value.user ? (
@@ -40,12 +39,7 @@ export const ProfileCard = ({ className, closeNav }: ProfileCardProps) => {
           </Button>
         </div>
       ) : (
-        <NavItem
-          className={styles.signIn}
-          route="/signin"
-          closeNav={closeNav}
-          div
-        >
+        <NavItem className={styles.signIn} route="/signin" div>
           Sign In
         </NavItem>
       )}
