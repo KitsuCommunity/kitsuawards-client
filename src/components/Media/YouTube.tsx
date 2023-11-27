@@ -1,26 +1,45 @@
-import { Button } from 'components/Button';
-import { useContext } from 'react';
-import { UserContext } from 'src/App';
-import styles from './media.module.css';
+import { Button } from "components/Button";
+import { globalUser, allowYouTube } from "src/App";
+import styles from "./media.module.css";
+import { useSignal } from "@preact/signals";
+import youtubePlay from "assets/youtube_play.png";
 
 interface YouTubeProps {
   media: string;
 }
 
 const YouTube = ({ media }: YouTubeProps) => {
-  const [user, __, ___, allowYouTube] = useContext(UserContext);
+  const url = media.split(".be/")[1];
+  const openVideo = useSignal(false);
 
-  const url = media.split('.be/')[1];
+  console.log(url);
 
-  if (user.allowYouTube) {
+  if (globalUser.value.allowYouTube) {
     return (
-      <iframe
-        className={styles.video}
-        src={`https://youtube.com/embed/${url}`}
-        allow="picture-in-picture"
-        allowFullScreen
-        loading="lazy"
-      />
+      <div
+        className={[styles.videoContainer, styles.disabled].join(" ")}
+        role="button"
+        onClick={() => (openVideo.value = true)}
+        style={{
+          backgroundImage: `url(https://img.youtube.com/vi/${url}/0.jpg)`,
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+        }}
+      >
+        {openVideo.value ? (
+          <iframe
+            className={styles.video}
+            src={`https://youtube.com/embed/${url}`}
+            allow="picture-in-picture"
+            allowFullScreen
+            loading="lazy"
+          />
+        ) : (
+          <div className={styles.playButtonContainer} aria-label="play">
+            <img src={youtubePlay} />
+          </div>
+        )}
+      </div>
     );
   }
 

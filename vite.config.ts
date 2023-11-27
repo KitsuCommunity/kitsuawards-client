@@ -1,12 +1,14 @@
 import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
-import { pathToArray } from 'graphql/jsutils/Path';
+import preact from '@preact/preset-vite';
 import path from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
     alias: {
+      react: path.resolve(__dirname, './node_modules/preact/compat/'),
+      'react-dom': path.resolve(__dirname, './node_modules/preact/compat/'),
+
       assets: path.resolve(__dirname, './src/assets'),
       common: path.resolve(__dirname, './src/common'),
       components: path.resolve(__dirname, './src/components'),
@@ -21,7 +23,7 @@ export default defineConfig({
       src: path.resolve(__dirname, './src'),
     },
   },
-  plugins: [react()],
+  plugins: [preact()],
   css: {
     modules: {
       scopeBehaviour: 'local',

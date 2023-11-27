@@ -5,7 +5,7 @@ import { Brand } from 'components/Brand';
 import { CategoryFragment } from 'src/graphql/categories.generated';
 import { Category } from 'generated/graphql';
 import { useContext, useState } from 'react';
-import { UserContext } from 'src/App';
+import { globalUser } from 'src/App';
 import { Button } from 'components/Button';
 import ProfileCard from 'components/ProfileCard';
 import { Role } from 'types/role';
@@ -17,7 +17,6 @@ interface NavigationProps {
 }
 
 export const Navigation = ({ categories, open, close }: NavigationProps) => {
-  const [user, _, signOut] = useContext(UserContext);
   const [showResults, setShowResults] = useState(false);
 
   return (
@@ -46,7 +45,7 @@ export const Navigation = ({ categories, open, close }: NavigationProps) => {
       </nav>
       <ProfileCard closeNav={close} />
       <footer>
-        {user.role === Role.Admin && (
+        {globalUser.value.role === Role.Admin && (
           <Button
             onClick={() => {
               setShowResults((value) => !value);

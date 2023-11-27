@@ -1,4 +1,5 @@
-import { createContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { signal, useSignalEffect } from '@preact/signals';
 import { Route, Routes } from 'react-router';
 import { Navigation } from 'common/Navigation';
 import Home from './pages/Home';
@@ -21,79 +22,78 @@ const profile: User = {
   role: Role.Regular,
 };
 
-export const UserContext = createContext<
-  [
-    user: User,
-    setToken: (token: Token) => Promise<void>,
-    signOut: () => void,
-    allowYouTube: () => void,
-  ]
->([profile, async (token: Token) => {}, () => {}, () => {}]);
+export const globalUser = signal<User>(profile);
+
+export const signOut = () => {
+  localStorage.removeItem('kitsu-token');
+  globalUser.value = {
+    ...globalUser.value,
+    user: null,
+    token: null,
+    role: Role.Regular,
+  };
+};
+
+export const allowYouTube = () => {
+  localStorage.setItem('allowYouTube', 'true');
+  globalUser.value = {
+    ...globalUser.value,
+    allowYouTube: true,
+  };
+};
+
+const setAdminRole = () => {
+  if (
+    globalUser.value.user?.id === '171606' ||
+    globalUser.value.user?.id === '171273' ||
+    globalUser.value.user?.id === '195642'
+  ) {
+    globalUser.value = { ...globalUser.value, role: Role.Admin };
+  }
+};
+
+export const setToken = async (token: Token) => {
+  const currentUser = await getCurrentUser(token.access_token);
+
+  localStorage.setItem('kitsu-token', JSON.stringify(token));
+
+  globalUser.value = {
+    ...globalUser.value,
+    user: currentUser.data.currentAccount.profile,
+    token,
+  };
+};
 
 function App() {
   const [{ data, fetching, error }, refetchCategories] = useCategoriesQuery();
   const [navOpen, setNavOpen] = useState(false);
-  const [user, setUser] = useState<User>(profile);
 
   const closeNav = () => {
     setNavOpen(false);
   };
 
-  const setToken = async (token: Token) => {
-    const currentUser = await getCurrentUser(token.access_token);
+  useEffect(() => {
+    const storedToken = getLocalStorage<Token>('kitsu-token');
+    const storedAllowYouTube = getLocalStorage<boolean>('allowYouTube');
 
-    setUser((existing) => ({
-      ...existing,
-      user: currentUser.data.currentAccount.profile,
-      token,
-    }));
+    if (storedAllowYouTube) allowYouTube();
+    if (storedToken) setToken(storedToken);
+  }, []);
+
+  useSignalEffect(() => {
+    if (!globalUser.value.token?.access_token) return;
+
     refetchCategories({
       variables: {
-        token: token.access_token,
+        token: globalUser.value.token.access_token,
         signedIn: true,
       },
     });
-  };
+  });
 
-  const signOut = () => {
-    setUser((exsisting) => ({
-      ...exsisting,
-      user: null,
-      token: null,
-    }));
-    localStorage.removeItem('kitsu-token');
-  };
-
-  const allowYouTube = () => {
-    localStorage.setItem('allowYouTube', 'true');
-    setUser((exsisting) => ({
-      ...exsisting,
-      allowYouTube: true,
-    }));
-  };
-
-  const setAdminRole = (user: User) => {
-    if (
-      user.user?.id === '171606' ||
-      user.user?.id === '171273' ||
-      user.user?.id === '195642'
-    ) {
-      setUser((existing) => ({ ...existing, role: Role.Admin }));
-    }
-  };
-
-  useEffect(() => {
-    const token = getLocalStorage<Token>('kitsu-token');
-    const allowYouTubeBool = getLocalStorage<boolean>('allowYouTube');
-
-    if (allowYouTubeBool) allowYouTube();
-
-    if (token) setToken(token);
-  }, []);
-
-  useEffect(() => {
-    if (user.role === Role.Regular) setAdminRole(user);
-  }, [user]);
+  useSignalEffect(() => {
+    if (globalUser.value.role === Role.Regular) setAdminRole();
+  });
 
   if (data?.year[0]) {
     const currentYear = data.year[0];
@@ -102,39 +102,37 @@ function App() {
       <div
         className={[styles.app, navOpen ? styles.navVisible : null].join(' ')}
       >
-        <UserContext.Provider value={[user, setToken, signOut, allowYouTube]}>
-          <Navigation
-            categories={data?.year[0].categories}
-            open={navOpen}
-            close={closeNav}
-          />
-          <button
-            className={styles.navToggle}
-            onClick={() => setNavOpen((c) => !c)}
-          >
-            <img src={icon} />
-          </button>
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <Home
-                  description={currentYear.description}
-                  start={currentYear.start}
-                  end={currentYear.end}
-                />
-              }
-            />
-            <Route path="/signin" element={<SignIn />} />
-            {currentYear.categories.map((category) => (
-              <Route
-                path={`/category/${category.url}`}
-                element={<Category category={category} key={category.url} />}
+        <Navigation
+          categories={data?.year[0].categories}
+          open={navOpen}
+          close={closeNav}
+        />
+        <button
+          className={styles.navToggle}
+          onClick={() => setNavOpen((c) => !c)}
+        >
+          <img src={icon} />
+        </button>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Home
+                description={currentYear.description}
+                start={currentYear.start}
+                end={currentYear.end}
               />
-            ))}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </UserContext.Provider>
+            }
+          />
+          <Route path="/signin" element={<SignIn />} />
+          {currentYear.categories.map((category) => (
+            <Route
+              path={`/category/${category.url}`}
+              element={<Category category={category} key={category.url} />}
+            />
+          ))}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </div>
     );
   }

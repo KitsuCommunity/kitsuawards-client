@@ -4,7 +4,7 @@ import { Modal } from 'components/Modal';
 import { Page } from 'layout/Page';
 import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { UserContext } from 'src/App';
+import { globalUser, setToken } from 'src/App';
 import styles from './signin.module.css';
 
 interface SignInProps {
@@ -33,8 +33,6 @@ const SignInContent = ({ modal }: { modal?: boolean }) => {
   const [error, setError] = useState<string>();
   const nav = useNavigate();
 
-  const [user, setUserToken] = useContext(UserContext);
-
   const submit = () => {
     fetch('https://kitsu.io/api/oauth/token', {
       method: 'POST',
@@ -62,11 +60,6 @@ const SignInContent = ({ modal }: { modal?: boolean }) => {
       .catch((err) => {
         setError(err);
       });
-  };
-
-  const setToken = (token: Token) => {
-    localStorage.setItem('kitsu-token', JSON.stringify(token));
-    setUserToken(token);
   };
 
   return (

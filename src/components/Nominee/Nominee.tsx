@@ -1,13 +1,15 @@
 import { Media } from 'components/Media';
-import { useEffect, useId, useState } from 'react';
+import { useId } from 'react';
+import { Signal, useComputed, useSignal, useSignalEffect } from '@preact/signals';
 import { NomineeFragment } from 'src/graphql/categories.generated';
 import styles from './nominee.module.css';
 
 interface NomineeProps {
   nominee: NomineeFragment;
-  currentlySelected: number | null;
+  currentlySelected: Signal<number | undefined>;
   select: (id: number) => void;
 }
+
 
 export const Nominee = ({
   nominee,
@@ -15,21 +17,17 @@ export const Nominee = ({
   select,
 }: NomineeProps) => {
   const { name, media, id } = nominee;
-
-  const [checked, setChecked] = useState(false);
+  
+  const checked = useComputed(() => currentlySelected.value === nominee.id);
   const selectionId = useId();
 
-  useEffect(() => {
-    if (currentlySelected === id) {
-      setChecked(true);
-    } else {
-      setChecked(false);
-    }
-  }, [currentlySelected]);
+  useSignalEffect(() => {
+    if (checked.value) console.log(name);
+  })
 
   return (
     <section
-      className={[styles.nominee, checked ? styles.active : null].join(' ')}
+      className={[styles.nominee, checked.value ? styles.active : null].join(' ')}
     >
       <h4>{name}</h4>
       <Media media={media} />
@@ -41,8 +39,8 @@ export const Nominee = ({
           style={{ display: 'none' }}
           type="checkbox"
           id={selectionId}
-          checked={checked}
-          onClick={(e) => {
+          checked={checked.value}
+          onClick={() => {
             select(id);
           }}
         />

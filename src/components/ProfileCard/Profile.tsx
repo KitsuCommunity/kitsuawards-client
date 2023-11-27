@@ -1,10 +1,9 @@
 import NavItem from 'common/Navigation/NavItem';
 import { Button } from 'components/Button';
 import Tag from 'components/Tag';
-import { useContext } from 'react';
-import { UserContext } from 'src/App';
-import { Role } from 'types/role';
+import { Role } from 'src/types/role';
 import styles from './profile.module.css';
+import { globalUser, signOut } from 'src/App';
 
 interface ProfileCardProps {
   className?: string;
@@ -12,21 +11,23 @@ interface ProfileCardProps {
 }
 
 export const ProfileCard = ({ className, closeNav }: ProfileCardProps) => {
-  const [user, _, signOut] = useContext(UserContext);
-
   return (
     <>
-      {!!user.user ? (
+      {!!globalUser.value.user ? (
         <div className={[styles.account, className].join(' ')}>
           <img
             src={
-              user.user.avatarImage?.views[0]?.url ??
+              globalUser.value.user.avatarImage?.views[0]?.url ??
               'https://kitsu.io/images/default_avatar-2ec3a4e2fc39a0de55bf42bf4822272a.png'
             }
           />
           <p>
-            {user.user.name}{' '}
-            {user.role !== Role.Regular ? <Tag>{user.role}</Tag> : ''}
+            {globalUser.value.user.name}{' '}
+            {globalUser.value.role !== Role.Regular ? (
+              <Tag>{globalUser.value.role}</Tag>
+            ) : (
+              ''
+            )}
           </p>
           <Button
             className={styles.signOut}

@@ -2,8 +2,8 @@ import { Loading } from 'common/Loading';
 import { Button } from 'components/Button';
 import ErrorMessage from 'components/ErrorMessage';
 import { Nominee } from 'components/Nominee';
-import { useContext, useEffect, useState } from 'react';
-import { UserContext } from 'src/App';
+import { signal, useSignal, useSignalEffect } from '@preact/signals';
+import { globalUser } from 'src/App';
 import { SubcategoryFragment } from 'src/graphql/categories.generated';
 import { useSubmitVoteMutation } from 'src/graphql/vote.generated';
 import styles from './subcategory.module.css';
@@ -18,49 +18,50 @@ export const Subcategory = ({
   existingVote,
 }: SubcategoryProps) => {
   const { name, nominees } = subcategory;
-  const [selected, setSelected] = useState<number | null>(existingVote || null);
-  const [user] = useContext(UserContext);
   const [{ data, fetching, error }, submitVote] = useSubmitVoteMutation();
-  const [voteMessage, setVoteMessage] = useState('Vote');
+  const selected = useSignal<number | undefined>(existingVote);
+  const voteMessage = useSignal('Vote');
 
   const vote = () => {
-    const token = user.token?.access_token;
-    if (token && selected) submitVote({ token, nomineeid: selected });
+    const token = globalUser.value.token?.access_token;
+    if (token && selected.value) submitVote({ token, nomineeid: selected.value });
   };
 
-  useEffect(() => {
+  useSignalEffect(() => {
     if (subcategory.nominees) {
       nominees;
     }
-  }, [subcategory]);
+  });
 
-  useEffect(() => {
+  useSignalEffect(() => {
     if (data) {
-      setVoteMessage('Voted');
+      voteMessage.value = 'Voted';
     }
-  }, [data]);
+  });
 
-  useEffect(() => {
-    if (!user.token?.access_token) {
-      setVoteMessage('Sign in to Vote');
+  useSignalEffect(() => {
+    if (!globalUser.value.token?.access_token) {
+      voteMessage.value = 'Sign in to Vote';
       return;
     }
 
     if (existingVote) {
-      setVoteMessage('Change Vote');
+      voteMessage.value = 'Change Vote';
     }
-  }, []);
+  });
 
-  useEffect(() => {
-    if (!user.token?.access_token) {
-      setVoteMessage('Sign in to Vote');
+  useSignalEffect(() => {
+    if (!globalUser.value.token?.access_token) {
+      voteMessage.value = 'Sign in to Vote';
       return;
     }
 
-    if (data && data?.submitVote?.vote?.nominee.id !== selected) {
-      setVoteMessage('Change Vote');
+    if (data && data?.submitVote?.vote?.nominee.id !== selected.value) {
+      voteMessage.value = 'Change Vote';
     }
-  }, [selected]);
+  });
+
+  const select = (id: number) => selected.value = id;
 
   return (
     <form
@@ -77,7 +78,7 @@ export const Subcategory = ({
           <Nominee
             nominee={nominee}
             currentlySelected={selected}
-            select={(id: number) => setSelected(id)}
+            select={(id: number) => selected.value = id}
           />
         ))}
       </div>
@@ -85,12 +86,12 @@ export const Subcategory = ({
       <Button
         type="submit"
         disabled={
-          !user.token?.access_token ||
-          data?.submitVote?.vote?.nominee.id === selected ||
-          existingVote === selected
+          !globalUser.value.token?.access_token ||
+          data?.submitVote?.vote?.nominee.id === selected.value ||
+          existingVote === selected.value
         }
       >
-        {fetching ? '...' : voteMessage}
+        {fetching ? '...' : voteMessage.value}
       </Button>
       {error && (
         <ErrorMessage>

@@ -1,9 +1,43 @@
-.video {
+.video-container {
+  position: relative;
   /* stylelint-disable-next-line scale-unlimited/declaration-strict-value */
   z-index: 20;
+
+  display: grid;
+  grid-area: preview;
 
   inline-size: 100%;
   aspect-ratio: 16 / 9;
 
+  border-radius: var(--radius-medium-top);
+
+  &.disabled {
+    filter: saturate(0.4);
+  
+    &:hover {
+      filter: saturate(1);
+    }
+  }
+}
+
+.video {
+  /* stylelint-disable-next-line scale-unlimited/declaration-strict-value */
+  z-index: 21;
+
+  inline-size: 100%;
+  aspect-ratio: 16 / 9;
+
+  border: none;
+  border-radius: var(--radius-medium-top);
+}
+
+.play-button-container {
+  align-self: center;
+  justify-self: center;
+
+  inline-size: 5rem;
+  margin: auto;
+
+  background: none;
   border: none;
 }

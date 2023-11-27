@@ -3,7 +3,7 @@ import { Subcategory } from 'components/Subcategory';
 import convertServerDate from 'helpers/convertServerDate';
 import { Page } from 'layout/Page';
 import { useContext } from 'react';
-import { UserContext } from 'src/App';
+import { globalUser } from 'src/App';
 import { CategoryFragment } from 'src/graphql/categories.generated';
 import { useFetchVoteQuery } from 'src/graphql/fetchVotes.generated';
 
@@ -13,9 +13,8 @@ interface CategoryProps {
 
 export const Category = ({ category }: CategoryProps) => {
   const { name, start, end, subcategories } = category;
-  const [user] = useContext(UserContext);
   const [{ data, fetching, error }] = useFetchVoteQuery({
-    variables: { token: user.token?.access_token },
+    variables: { token: globalUser.value.token?.access_token },
   });
 
   const currentTime = new Date();
