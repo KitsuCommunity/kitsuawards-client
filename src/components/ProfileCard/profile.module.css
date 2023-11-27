@@ -20,8 +20,12 @@
   background-color: var(--nav-item-bg);
   border-radius: var(--radius-medium);
 
-  & span {
+  & p {
+    display: flex;
+    gap: 0.4em;
+
     margin: 0;
+    
   }
 
   & img {
@@ -35,7 +39,7 @@
   & .signOut {
     grid-area: signout;
 
-    padding: 4px 22px;
+    padding: 1px 22px;
     margin: 0;
   }
 }

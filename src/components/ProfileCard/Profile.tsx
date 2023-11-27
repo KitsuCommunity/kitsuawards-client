@@ -1,5 +1,6 @@
 import NavItem from 'common/Navigation/NavItem';
 import { Button } from 'components/Button';
+import Tag from 'components/Tag';
 import { useContext } from 'react';
 import { UserContext } from 'src/App';
 import { Role } from 'types/role';
@@ -23,10 +24,10 @@ export const ProfileCard = ({ className, closeNav }: ProfileCardProps) => {
               'https://kitsu.io/images/default_avatar-2ec3a4e2fc39a0de55bf42bf4822272a.png'
             }
           />
-          <span>
+          <p>
             {user.user.name}{' '}
-            {user.role !== Role.Regular ? `-- ${user.role}` : ''}
-          </span>
+            {user.role !== Role.Regular ? <Tag>{user.role}</Tag> : ''}
+          </p>
           <Button
             className={styles.signOut}
             onClick={(e) => {

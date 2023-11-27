@@ -93,6 +93,10 @@
   --error-border: 2px solid rgb(186 43 43);
   --error-text-color: #fff;
 
+  /* Tag */
+  --tag-background-color: var(--orange);
+  --tag-text-color: #312631;
+
 
   /* ---- UTILITY VARIABLES ---- */
 
