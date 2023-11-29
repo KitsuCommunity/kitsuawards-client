@@ -2,7 +2,7 @@
   "extends": [
     "stylelint-config-standard",
     "stylelint-config-prettier",
-    "./postCSS/stylelint-logically-grouped-order"
+    "./postCSS/stylelint-logically-grouped-order.cjs"
   ],
   "plugins": [
     "stylelint-high-performance-animation",

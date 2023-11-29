@@ -1,0 +1,54 @@
+env:
+  browser: true
+  es2021: true
+extends:
+  - eslint:recommended
+  - plugin:@typescript-eslint/recommended
+  # - plugin:react/recommended
+  - plugin:import/recommended
+  - plugin:import/typescript
+parser: '@typescript-eslint/parser'
+parserOptions:
+  ecmaVersion: latest
+  sourceType: module
+plugins:
+  - '@typescript-eslint'
+  - react
+  - import
+settings:
+  import/resolver:
+    typescript:
+      project: './tsconfig.json'
+  import/parsers:
+    '@typescript-eslint/parser': ['.ts', '.tsx']
+ignorePatterns:
+  - node_modules
+  - dist
+  - .vscode
+  - .github
+  - postCss
+rules:
+  semi: ['error', 'always']
+  # max-lines-per-function: ['warn', 60]
+  eqeqeq: 'error'
+  # max-lines: ['warn', 300]
+  no-console: ['error', { 'allow': ['warn', 'error'] }]
+  no-var: 'error'
+  quotes: ['error', 'single']
+  import/order:
+    - 'error'
+    - newlines-between: always
+      pathGroups:
+        - pattern: '{assets,common,components,generated,helpers,hooks,layout,pages,styles,types,src}/**'
+          group: 'parent'
+      alphabetize:
+        order: asc
+      groups:
+        - builtin
+        - external
+        - internal
+        - parent
+        - sibling
+        - index
+        - object
+root: true

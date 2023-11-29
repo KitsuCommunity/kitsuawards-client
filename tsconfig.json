@@ -57,6 +57,6 @@
     "noFallthroughCasesInSwitch": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["src", "postCSS/*.js"],
+  "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

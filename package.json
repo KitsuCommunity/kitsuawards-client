@@ -33,8 +33,13 @@
     "@graphql-codegen/urql-introspection": "2.1.1",
     "@preact/preset-vite": "^2.7.0",
     "@types/babel__core": "^7.1.19",
+    "@typescript-eslint/eslint-plugin": "^6.13.1",
+    "@typescript-eslint/parser": "^6.13.1",
     "autoprefixer": "^10.4.16",
+    "eslint": "^8.54.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-react": "^7.33.2",
     "postcss": "^8.4.31",
     "postcss-nested": "^6.0.0",
     "stylelint": "^14.16.1",
@@ -47,7 +52,6 @@
     "stylelint-order": "^3.1.1",
     "stylelint-use-logical-spec": "^3.2.2",
     "stylelint-use-nesting": "^4.0.0",
-    "typescript": "^5.2.2",
     "vite": "^5.0.2"
   },
   "volta": {
