@@ -22,10 +22,6 @@ export const Nominee = ({
   const checked = useComputed(() => currentlySelected.value === nominee.id);
   const selectionId = useId();
 
-  useSignalEffect(() => {
-    if (checked.value) console.log(name);
-  });
-
   return (
     <section
       className={[styles.nominee, checked.value ? styles.active : null].join(
