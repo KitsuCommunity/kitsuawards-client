@@ -27,6 +27,8 @@ ignorePatterns:
   - .vscode
   - .github
   - postCss
+  - src/generated
+  - '**generated.ts'
 rules:
   semi: ['error', 'always']
   # max-lines-per-function: ['warn', 60]
