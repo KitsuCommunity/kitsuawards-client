@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 
-import { closeNav } from 'src/App';
+import { closeNav } from 'signals';
 
 import styles from './navigation.module.css';
 

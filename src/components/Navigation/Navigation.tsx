@@ -1,11 +1,10 @@
 import { useSignal } from '@preact/signals';
 
 import { Button } from 'common';
+import { ProfileCard, Brand } from 'components';
+import { navOpen, globalUser } from 'signals';
 
-import { Brand } from 'components/Brand';
-import ProfileCard from 'components/ProfileCard';
-import { globalUser, navOpen } from 'src/App';
-import { CategoryFragment } from 'src/graphql/categories.generated';
+import type { CategoryFragment } from 'src/graphql/categories.generated';
 import { Role } from 'types/role';
 
 import { NavItem } from './NavItem';

@@ -1,10 +1,10 @@
 import { DateTime } from 'common';
+import { Subcategory } from 'components';
+import { globalUser } from 'signals';
+import { convertServerDate } from 'utils';
 
-import { Subcategory } from 'components/Subcategory';
-import convertServerDate from 'helpers/convertServerDate';
 import { Page } from 'layout/Page';
-import { globalUser } from 'src/App';
-import { CategoryFragment } from 'src/graphql/categories.generated';
+import type { CategoryFragment } from 'src/graphql/categories.generated';
 import { useFetchVoteQuery } from 'src/graphql/fetchVotes.generated';
 
 interface CategoryProps {

@@ -8,20 +8,21 @@
     "allowJs": false,
     "baseUrl": ".",
     "paths": {
+      // Make sure to update changes in vite.config and .eslintrc as well
       "react": ["./node_modules/preact/compat/"],
       "react-dom": ["./node_modules/preact/compat/"],
-
       // import index exported members
       // should be at top for highest priority
       "assets": ["./src/assets"],
       "common": ["./src/common"],
       "components": ["./src/components"],
       "generated": ["./src/generated"],
-      "helpers": ["./src/helpers"],
       "hooks": ["./src/hooks"],
       "layout": ["./src/layout"],
       "pages": ["./src/pages"],
+      "signals": ["./src/signals"],
       "styles": ["./src/styles"],
+      "utils": ["src/utils"],
       "types": ["./src/types"],
 
       // import files inside the folders
@@ -29,11 +30,12 @@
       "common/*": ["./src/common/*"],
       "components/*": ["./src/components/*"],
       "generated/*": ["./src/generated/*"],
-      "helpers/*": ["./src/helpers/*"],
       "hooks/*": ["./src/hooks/*"],
       "layout/*": ["./src/layout/*"],
       "pages/*": ["./src/pages/*"],
+      "signals/*": ["./src/signals/*"],
       "styles/*": ["./src/styles/*"],
+      "utils/*": ["src/utils/*"],
       "types/*": ["./src/types/*"],
 
       // import root files

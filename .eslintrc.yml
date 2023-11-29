@@ -43,14 +43,15 @@ rules:
       argsIgnorePattern: '^_'
   quotes: ['error', 'single']
   import/order:
+    # Make sure to update changes in vite.config and the tsconfig as well
     - 'error'
     - newlines-between: always
       pathGroups:
-        - pattern: 'common'
+        - pattern: '{assets,common,components,generated,hooks,layout,pages,signals,styles,types,utils,src}/**'
+          group: 'parent'
+        - pattern: '{assets,common,components,generated,hooks,layout,pages,signals,styles,types,utils,src}'
           group: parent
           position: before
-        - pattern: '{assets,components,generated,helpers,hooks,layout,pages,styles,types,src}/**'
-          group: 'parent'
       alphabetize:
         order: asc
       groups:
@@ -65,6 +66,8 @@ rules:
     - error
     - noUselessIndex: true
   import/newline-after-import: error
+  '@typescript-eslint/consistent-type-imports': error
+
   # import/no-duplicates:
   #   - error
   #   - preferInline: false

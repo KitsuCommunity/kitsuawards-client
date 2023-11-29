@@ -1,72 +1,19 @@
-import { signal, useSignalEffect } from '@preact/signals';
+import { useSignalEffect } from '@preact/signals';
 import { useEffect } from 'react';
 import { Route, Routes } from 'react-router';
 
-import { Category, Home, NotFound, SignIn } from 'pages';
-
+import { hamburgerIcon } from 'assets';
 import { Loading } from 'common';
+import { Navigation } from 'components';
+import { Category, Home, NotFound, SignIn } from 'pages';
+import { navOpen } from 'signals';
+import { allowYouTube, getLocalStorage, setAdminRole, setToken } from 'utils';
 
-import icon from 'assets/hamburger_icon.svg';
-import { Navigation } from 'components/Navigation';
-import getLocalStorage from 'helpers/getLocalStorage';
-import getCurrentUser from 'helpers/getUser';
-import { User } from 'types/profile';
+import { globalUser } from 'signals/globalUser';
 import { Role } from 'types/role';
 
 import styles from './app.module.css';
 import { useCategoriesQuery } from './graphql/categories.generated';
-
-const profile: User = {
-  user: null,
-  token: null,
-  allowYouTube: false,
-  role: Role.Regular,
-};
-
-export const globalUser = signal<User>(profile);
-
-export const signOut = () => {
-  localStorage.removeItem('kitsu-token');
-  globalUser.value = {
-    ...globalUser.value,
-    user: null,
-    token: null,
-    role: Role.Regular,
-  };
-};
-
-export const allowYouTube = () => {
-  localStorage.setItem('allowYouTube', 'true');
-  globalUser.value = {
-    ...globalUser.value,
-    allowYouTube: true,
-  };
-};
-
-const setAdminRole = () => {
-  if (
-    globalUser.value.user?.id === '171606' ||
-    globalUser.value.user?.id === '171273' ||
-    globalUser.value.user?.id === '195642'
-  ) {
-    globalUser.value = { ...globalUser.value, role: Role.Admin };
-  }
-};
-
-export const setToken = async (token: Token) => {
-  const currentUser = await getCurrentUser(token.access_token);
-
-  localStorage.setItem('kitsu-token', JSON.stringify(token));
-
-  globalUser.value = {
-    ...globalUser.value,
-    user: currentUser.data.currentAccount.profile,
-    token,
-  };
-};
-
-export const navOpen = signal(false);
-export const closeNav = () => (navOpen.value = false);
 
 function App() {
   const [{ data }, refetchCategories] = useCategoriesQuery();
@@ -108,7 +55,7 @@ function App() {
           className={styles.navToggle}
           onClick={() => (navOpen.value = !navOpen.value)}
         >
-          <img src={icon} />
+          <img src={hamburgerIcon} />
         </button>
         <Routes>
           <Route

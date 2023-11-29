@@ -1,7 +1,8 @@
 import { Tag, Button } from 'common';
+import { NavItem } from 'components';
+import { globalUser } from 'signals';
+import { signOut } from 'utils';
 
-import { NavItem } from 'components/Navigation/NavItem';
-import { globalUser, signOut } from 'src/App';
 import { Role } from 'src/types/role';
 
 import styles from './profile.module.css';

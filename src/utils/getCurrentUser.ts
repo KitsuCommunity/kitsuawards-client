@@ -17,7 +17,7 @@ const QUERY = `query {
 }
 `;
 
-const getCurrentUser = async (token: string) => {
+export const getCurrentUser = async (token: string) => {
   const data = await axios.post<CurrentAccountRes>(
     'https://kitsu.io/api/graphql',
     {
@@ -35,5 +35,3 @@ const getCurrentUser = async (token: string) => {
 
   return res;
 };
-
-export default getCurrentUser;

@@ -1,7 +1,6 @@
 import { DateTime } from 'common';
+import { ProfileCard, Judges } from 'components';
 
-import { Judges } from 'components/Judges';
-import ProfileCard from 'components/ProfileCard';
 import { Page } from 'layout/Page';
 
 import styles from './home.module.css';

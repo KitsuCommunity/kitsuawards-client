@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { Input, Modal, Button } from 'common';
+import { setToken } from 'utils';
 
 import { Page } from 'layout/Page';
-import { setToken } from 'src/App';
 
 import styles from './signin.module.css';
 

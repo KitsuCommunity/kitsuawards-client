@@ -1,9 +1,10 @@
 import { useSignal } from '@preact/signals';
 
 import { Button } from 'common';
+import { globalUser } from 'signals';
+import { allowYouTube } from 'utils';
 
 import youtubePlay from 'assets/youtube_play.png';
-import { globalUser, allowYouTube } from 'src/App';
 
 import styles from './media.module.css';
 

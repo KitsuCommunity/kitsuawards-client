@@ -1,4 +1,4 @@
-import convertServerDate from 'helpers/convertServerDate';
+import { convertServerDate } from 'utils';
 
 interface DateTimeProps {
   dateTime: Date | string;
