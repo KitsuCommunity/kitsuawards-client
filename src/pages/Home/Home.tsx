@@ -1,8 +1,8 @@
-import { Page } from 'layout/Page';
-import { Judges } from 'components/Judges';
-import { Link } from 'react-router-dom';
-import ProfileCard from 'components/ProfileCard';
 import { DateTime } from 'components/DateTime';
+import { Judges } from 'components/Judges';
+import ProfileCard from 'components/ProfileCard';
+import { Page } from 'layout/Page';
+
 import styles from './home.module.css';
 
 interface HomeProps {

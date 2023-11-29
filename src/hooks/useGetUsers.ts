@@ -1,5 +1,4 @@
-import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 /**
  * This is used as an optimisation for fetching multiple users from Kitsu at once.

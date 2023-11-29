@@ -1,5 +1,7 @@
-import { useGetUsers } from 'hooks';
 import { useEffect } from 'react';
+
+import { useGetUsers } from 'hooks';
+
 import { Judge } from './Judge';
 import { useFetchJudgesQuery } from './Judges.generated';
 import styles from './judges.module.css';

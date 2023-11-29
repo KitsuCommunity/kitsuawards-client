@@ -1,5 +1,7 @@
-import { Page } from 'layout/Page';
 import { LegacyRef, ReactElement, useEffect, useRef, useState } from 'react';
+
+import { Page } from 'layout/Page';
+
 import styles from './modal.module.css';
 
 interface ModalProps {

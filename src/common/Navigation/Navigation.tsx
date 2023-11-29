@@ -1,14 +1,14 @@
-import { Link } from 'react-router-dom';
-import NavItem from './NavItem';
-import styles from './navigation.module.css';
+import { useState } from 'react';
+
 import { Brand } from 'components/Brand';
-import { CategoryFragment } from 'src/graphql/categories.generated';
-import { Category } from 'generated/graphql';
-import { useContext, useState } from 'react';
-import { globalUser, navOpen } from 'src/App';
 import { Button } from 'components/Button';
 import ProfileCard from 'components/ProfileCard';
+import { globalUser, navOpen } from 'src/App';
+import { CategoryFragment } from 'src/graphql/categories.generated';
 import { Role } from 'types/role';
+
+import { NavItem } from './NavItem';
+import styles from './navigation.module.css';
 
 interface NavigationProps {
   categories?: CategoryFragment[];

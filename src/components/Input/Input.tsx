@@ -1,4 +1,5 @@
 import { HTMLAttributes } from 'react';
+
 import styles from './input.module.css';
 
 interface InputProps extends HTMLAttributes<HTMLInputElement> {}

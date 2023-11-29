@@ -1,7 +1,9 @@
-import { Media } from 'components/Media';
-import { useId } from 'react';
 import { Signal, useComputed, useSignal, useSignalEffect } from '@preact/signals';
+import { useId } from 'react';
+
+import { Media } from 'components/Media';
 import { NomineeFragment } from 'src/graphql/categories.generated';
+
 import styles from './nominee.module.css';
 
 interface NomineeProps {
@@ -23,7 +25,7 @@ export const Nominee = ({
 
   useSignalEffect(() => {
     if (checked.value) console.log(name);
-  })
+  });
 
   return (
     <section

@@ -1,8 +1,9 @@
+import { useContext } from 'react';
+
 import { DateTime } from 'components/DateTime';
 import { Subcategory } from 'components/Subcategory';
 import convertServerDate from 'helpers/convertServerDate';
 import { Page } from 'layout/Page';
-import { useContext } from 'react';
 import { globalUser } from 'src/App';
 import { CategoryFragment } from 'src/graphql/categories.generated';
 import { useFetchVoteQuery } from 'src/graphql/fetchVotes.generated';

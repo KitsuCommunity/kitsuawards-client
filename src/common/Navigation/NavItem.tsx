@@ -1,7 +1,8 @@
-import { ReactNode } from 'react';
 import { NavLink } from 'react-router-dom';
-import styles from './navigation.module.css';
+
 import { closeNav } from 'src/App';
+
+import styles from './navigation.module.css';
 
 interface NavItemProps {
   route: string;

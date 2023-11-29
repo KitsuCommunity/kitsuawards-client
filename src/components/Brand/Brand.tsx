@@ -1,4 +1,5 @@
 import image from 'assets/favicon.png';
+
 import styles from './brand.module.css';
 
 interface BrandProps {}

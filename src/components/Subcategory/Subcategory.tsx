@@ -1,11 +1,13 @@
+import { signal, useSignal, useSignalEffect } from '@preact/signals';
+
 import { Loading } from 'common/Loading';
 import { Button } from 'components/Button';
 import ErrorMessage from 'components/ErrorMessage';
 import { Nominee } from 'components/Nominee';
-import { signal, useSignal, useSignalEffect } from '@preact/signals';
 import { globalUser } from 'src/App';
 import { SubcategoryFragment } from 'src/graphql/categories.generated';
 import { useSubmitVoteMutation } from 'src/graphql/vote.generated';
+
 import styles from './subcategory.module.css';
 
 interface SubcategoryProps {

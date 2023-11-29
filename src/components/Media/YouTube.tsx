@@ -1,15 +1,17 @@
-import { Button } from "components/Button";
-import { globalUser, allowYouTube } from "src/App";
-import styles from "./media.module.css";
-import { useSignal } from "@preact/signals";
-import youtubePlay from "assets/youtube_play.png";
+import { useSignal } from '@preact/signals';
+
+import youtubePlay from 'assets/youtube_play.png';
+import { Button } from 'components/Button';
+import { globalUser, allowYouTube } from 'src/App';
+
+import styles from './media.module.css';
 
 interface YouTubeProps {
   media: string;
 }
 
 const YouTube = ({ media }: YouTubeProps) => {
-  const url = media.split(".be/")[1];
+  const url = media.split('.be/')[1];
   const openVideo = useSignal(false);
 
   console.log(url);
@@ -17,13 +19,13 @@ const YouTube = ({ media }: YouTubeProps) => {
   if (globalUser.value.allowYouTube) {
     return (
       <div
-        className={[styles.videoContainer, styles.disabled].join(" ")}
+        className={[styles.videoContainer, styles.disabled].join(' ')}
         role="button"
         onClick={() => (openVideo.value = true)}
         style={{
           backgroundImage: `url(https://img.youtube.com/vi/${url}/0.jpg)`,
-          backgroundPosition: "center",
-          backgroundSize: "cover",
+          backgroundPosition: 'center',
+          backgroundSize: 'cover',
         }}
       >
         {openVideo.value ? (

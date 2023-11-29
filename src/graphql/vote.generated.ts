@@ -1,7 +1,8 @@
-import * as Types from '../generated/graphql.js';
 
 import gql from 'graphql-tag';
 import * as Urql from 'urql';
+
+import * as Types from '../generated/graphql.js';
 export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 export type SubmitVoteMutationVariables = Types.Exact<{
   token: Types.Scalars['String'];
@@ -29,4 +30,4 @@ export const SubmitVoteDocument = gql`
 
 export function useSubmitVoteMutation() {
   return Urql.useMutation<SubmitVoteMutation, SubmitVoteMutationVariables>(SubmitVoteDocument);
-};
+}

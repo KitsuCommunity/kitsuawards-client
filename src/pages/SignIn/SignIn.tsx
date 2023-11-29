@@ -1,10 +1,12 @@
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import { Button } from 'components/Button';
 import { Input } from 'components/Input';
 import { Modal } from 'components/Modal';
 import { Page } from 'layout/Page';
-import { useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { globalUser, setToken } from 'src/App';
+import { setToken } from 'src/App';
+
 import styles from './signin.module.css';
 
 interface SignInProps {

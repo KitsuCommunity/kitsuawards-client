@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+
 import styles from './error.module.css';
 
 interface ErrorProps {

@@ -1,9 +1,10 @@
 import NavItem from 'common/Navigation/NavItem';
 import { Button } from 'components/Button';
 import Tag from 'components/Tag';
-import { Role } from 'src/types/role';
-import styles from './profile.module.css';
 import { globalUser, signOut } from 'src/App';
+import { Role } from 'src/types/role';
+
+import styles from './profile.module.css';
 
 interface ProfileCardProps {
   className?: string;
@@ -12,7 +13,7 @@ interface ProfileCardProps {
 export const ProfileCard = ({ className }: ProfileCardProps) => {
   return (
     <>
-      {!!globalUser.value.user ? (
+      {globalUser.value.user ? (
         <div className={[styles.account, className].join(' ')}>
           <img
             src={

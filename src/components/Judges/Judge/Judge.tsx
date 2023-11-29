@@ -1,4 +1,5 @@
 import { Loading } from 'common/Loading';
+
 import styles from './judge.module.css';
 
 interface JudgeProps {

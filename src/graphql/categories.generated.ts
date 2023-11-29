@@ -1,7 +1,8 @@
-import * as Types from '../generated/graphql.js';
 
 import gql from 'graphql-tag';
 import * as Urql from 'urql';
+
+import * as Types from '../generated/graphql.js';
 export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 export type CategoriesQueryVariables = Types.Exact<{ [key: string]: never; }>;
 
@@ -56,4 +57,4 @@ export const CategoriesDocument = gql`
 
 export function useCategoriesQuery(options?: Omit<Urql.UseQueryArgs<CategoriesQueryVariables>, 'query'>) {
   return Urql.useQuery<CategoriesQuery, CategoriesQueryVariables>({ query: CategoriesDocument, ...options });
-};
+}

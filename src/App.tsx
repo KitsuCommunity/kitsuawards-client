@@ -1,19 +1,21 @@
-import { useEffect, useState } from 'react';
 import { signal, useSignalEffect } from '@preact/signals';
+import { useEffect } from 'react';
 import { Route, Routes } from 'react-router';
+
+import icon from 'assets/hamburger_icon.svg';
+import { Loading } from 'common/Loading';
 import { Navigation } from 'common/Navigation';
-import Home from './pages/Home';
+import getLocalStorage from 'helpers/getLocalStorage';
+import getCurrentUser from 'helpers/getUser';
+
 import styles from './app.module.css';
-import NotFound from './pages/NotFound';
 import { useCategoriesQuery } from './graphql/categories.generated';
 import Category from './pages/Category';
-import { Loading } from 'common/Loading';
-import icon from 'assets/hamburger_icon.svg';
+import Home from './pages/Home';
+import NotFound from './pages/NotFound';
 import SignIn from './pages/SignIn';
-import getCurrentUser from 'helpers/getUser';
-import getLocalStorage from 'helpers/getLocalStorage';
-import { Role } from './types/role';
 import { User } from './types/profile';
+import { Role } from './types/role';
 
 const profile: User = {
   user: null,
@@ -68,7 +70,7 @@ export const navOpen = signal(false);
 export const closeNav = () => (navOpen.value = false);
 
 function App() {
-  const [{ data, fetching, error }, refetchCategories] = useCategoriesQuery();
+  const [{ data }, refetchCategories] = useCategoriesQuery();
 
   useEffect(() => {
     const storedToken = getLocalStorage<Token>('kitsu-token');
