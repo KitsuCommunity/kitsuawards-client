@@ -14,6 +14,7 @@
     "stylelint:fix": "stylelint --fix \"**/*.css\"",
     "prettier": "prettier -c \"./src/**/*.{ts,tsx,css}\"",
     "prettier:fix": "prettier -w \"./src/**/*.{ts,tsx,css}\"",
+    "fix": "npm run prettier:fix && npm run lint:fix && npm run stylelint:fix",
     "typecheck": "tsc"
   },
   "dependencies": {
