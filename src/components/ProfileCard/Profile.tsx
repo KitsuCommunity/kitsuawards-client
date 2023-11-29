@@ -1,6 +1,6 @@
-import NavItem from 'common/Navigation/NavItem';
-import { Button } from 'components/Button';
-import Tag from 'components/Tag';
+import { Tag, Button } from 'common';
+
+import { NavItem } from 'components/Navigation/NavItem';
 import { globalUser, signOut } from 'src/App';
 import { Role } from 'src/types/role';
 

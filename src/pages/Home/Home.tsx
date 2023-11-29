@@ -1,4 +1,5 @@
-import { DateTime } from 'components/DateTime';
+import { DateTime } from 'common';
+
 import { Judges } from 'components/Judges';
 import ProfileCard from 'components/ProfileCard';
 import { Page } from 'layout/Page';

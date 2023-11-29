@@ -1,4 +1,4 @@
-import { Loading } from 'common/Loading';
+import { Loading } from 'common';
 
 import styles from './judge.module.css';
 

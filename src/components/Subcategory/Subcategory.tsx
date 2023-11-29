@@ -1,7 +1,7 @@
 import { useSignal, useSignalEffect } from '@preact/signals';
 
-import { Button } from 'components/Button';
-import ErrorMessage from 'components/ErrorMessage';
+import { ErrorMessage, Button } from 'common';
+
 import { Nominee } from 'components/Nominee';
 import { globalUser } from 'src/App';
 import { SubcategoryFragment } from 'src/graphql/categories.generated';

@@ -46,7 +46,10 @@ rules:
     - 'error'
     - newlines-between: always
       pathGroups:
-        - pattern: '{assets,common,components,generated,helpers,hooks,layout,pages,styles,types,src}/**'
+        - pattern: 'common'
+          group: parent
+          position: before
+        - pattern: '{assets,components,generated,helpers,hooks,layout,pages,styles,types,src}/**'
           group: 'parent'
       alphabetize:
         order: asc
@@ -58,4 +61,11 @@ rules:
         - sibling
         - index
         - object
+  import/no-useless-path-segments:
+    - error
+    - noUselessIndex: true
+  import/newline-after-import: error
+  # import/no-duplicates:
+  #   - error
+  #   - preferInline: false
 root: true

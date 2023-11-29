@@ -2,20 +2,19 @@ import { signal, useSignalEffect } from '@preact/signals';
 import { useEffect } from 'react';
 import { Route, Routes } from 'react-router';
 
+import { Category, Home, NotFound, SignIn } from 'pages';
+
+import { Loading } from 'common';
+
 import icon from 'assets/hamburger_icon.svg';
-import { Loading } from 'common/Loading';
-import { Navigation } from 'common/Navigation';
+import { Navigation } from 'components/Navigation';
 import getLocalStorage from 'helpers/getLocalStorage';
 import getCurrentUser from 'helpers/getUser';
+import { User } from 'types/profile';
+import { Role } from 'types/role';
 
 import styles from './app.module.css';
 import { useCategoriesQuery } from './graphql/categories.generated';
-import Category from './pages/Category';
-import Home from './pages/Home';
-import NotFound from './pages/NotFound';
-import SignIn from './pages/SignIn';
-import { User } from './types/profile';
-import { Role } from './types/role';
 
 const profile: User = {
   user: null,

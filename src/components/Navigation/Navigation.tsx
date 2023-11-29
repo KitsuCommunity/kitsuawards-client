@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useSignal } from '@preact/signals';
+
+import { Button } from 'common';
 
 import { Brand } from 'components/Brand';
-import { Button } from 'components/Button';
 import ProfileCard from 'components/ProfileCard';
 import { globalUser, navOpen } from 'src/App';
 import { CategoryFragment } from 'src/graphql/categories.generated';
@@ -15,7 +16,7 @@ interface NavigationProps {
 }
 
 export const Navigation = ({ categories }: NavigationProps) => {
-  const [showResults, setShowResults] = useState(false);
+  const showResults = useSignal(false);
 
   return (
     <aside
@@ -32,7 +33,7 @@ export const Navigation = ({ categories }: NavigationProps) => {
           </NavItem>
           {categories?.map(({ name, url }) => (
             <NavItem
-              route={`${showResults ? '/results' : ''}/category/${url}`}
+              route={`${showResults.value ? '/results' : ''}/category/${url}`}
               key={url}
             >
               {name}
@@ -45,10 +46,10 @@ export const Navigation = ({ categories }: NavigationProps) => {
         {globalUser.value.role === Role.Admin && (
           <Button
             onClick={() => {
-              setShowResults((value) => !value);
+              showResults.value = !showResults.value;
             }}
           >
-            {showResults ? 'Navigate Voting' : 'Navigate Results'}
+            {showResults.value ? 'Navigate Voting' : 'Navigate Results'}
           </Button>
         )}
         <p>Made with ❤️ by Reina and Gakamine</p>

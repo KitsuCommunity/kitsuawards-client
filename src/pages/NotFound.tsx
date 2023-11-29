@@ -1,8 +1,6 @@
 import { Page } from 'layout/Page';
 
-interface NotFoundProps {}
-
-export const NotFound = ({}: NotFoundProps) => {
+export const NotFound = () => {
   return (
     <Page>
       <h2>Fancy 404 Not Found Page</h2>

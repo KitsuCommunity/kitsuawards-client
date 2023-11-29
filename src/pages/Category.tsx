@@ -1,4 +1,5 @@
-import { DateTime } from 'components/DateTime';
+import { DateTime } from 'common';
+
 import { Subcategory } from 'components/Subcategory';
 import convertServerDate from 'helpers/convertServerDate';
 import { Page } from 'layout/Page';

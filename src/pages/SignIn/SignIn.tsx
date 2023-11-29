@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { Button } from 'components/Button';
-import { Input } from 'components/Input';
-import { Modal } from 'components/Modal';
+import { Input, Modal, Button } from 'common';
+
 import { Page } from 'layout/Page';
 import { setToken } from 'src/App';
 
