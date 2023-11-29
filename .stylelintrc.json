@@ -11,6 +11,7 @@
     "stylelint-use-logical-spec",
     "stylelint-use-nesting"
   ],
+  "ignoreFiles": ["node_modules", "dist"],
   "rules": {
     "declaration-empty-line-before": null,
     "color-no-invalid-hex": true,
