@@ -1,3 +1,28 @@
+.loaderOuter {
+  --size: 50px;
+  --padding: 5px;
+
+  inline-size: var(--size);
+  block-size: var(--size);
+  padding: var(--padding);
+  margin: auto;
+
+  background-color: var(--loader-outer-bg);
+  border-radius: var(--radius-large);
+
+  animation: loading-outer 700ms ease-in-out infinite alternate;
+
+  .loaderInner {
+    inline-size: var(--size);
+    block-size: var(--size);
+  
+    background-color: var(--loader-inner-bg);
+    border-radius: var(--radius-circle);
+  
+    animation: loading-inner 700ms ease-in-out infinite alternate;
+  }
+}
+
 .fill {
   display: grid;
   grid-row: span 5;
@@ -23,31 +48,6 @@
 
   inline-size: 100vw;
   block-size: 100vh;
-}
-
-.loaderOuter {
-  --size: 50px;
-  --padding: 5px;
-
-  inline-size: var(--size);
-  block-size: var(--size);
-  padding: var(--padding);
-  margin: auto;
-
-  background-color: var(--loader-outer-bg);
-  border-radius: var(--radius-large);
-
-  animation: loading-outer 700ms ease-in-out infinite alternate;
-
-  .loaderInner {
-    inline-size: var(--size);
-    block-size: var(--size);
-  
-    background-color: var(--loader-inner-bg);
-    border-radius: var(--radius-circle);
-  
-    animation: loading-inner 700ms ease-in-out infinite alternate;
-  }
 }
 
 @keyframes loading-inner {
