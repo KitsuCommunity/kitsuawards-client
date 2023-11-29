@@ -6,9 +6,7 @@ import { Judge } from './Judge';
 import { useFetchJudgesQuery } from './Judges.generated';
 import styles from './judges.module.css';
 
-interface JudgesProps {}
-
-export default function Judges({}: JudgesProps) {
+export default function Judges() {
   const [{ data, fetching, error }] = useFetchJudgesQuery();
 
   const [judgeData, judgeLoading, judgeError, getJudges] = useGetUsers();

@@ -7,8 +7,8 @@ interface ButtonProps {
   disabled?: boolean;
   onClick?: (
     e:
-      | React.MouseEvent<HTMLButtonElement, MouseEvent>
-      | React.MouseEvent<HTMLInputElement, MouseEvent>,
+      | React.TargetedEvent<HTMLButtonElement, MouseEvent>
+      | React.TargetedEvent<HTMLInputElement, MouseEvent>,
   ) => void;
   children?: string;
   className?: string;

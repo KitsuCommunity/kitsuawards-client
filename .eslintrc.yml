@@ -33,7 +33,12 @@ rules:
   eqeqeq: 'error'
   # max-lines: ['warn', 300]
   no-console: ['error', { 'allow': ['warn', 'error'] }]
-  no-var: 'error'
+  'no-var': 'error'
+  '@typescript-eslint/no-unused-vars':
+    - warn
+    - varsIgnorePattern: '^_'
+      destructuredArrayIgnorePattern: '^_'
+      argsIgnorePattern: '^_'
   quotes: ['error', 'single']
   import/order:
     - 'error'

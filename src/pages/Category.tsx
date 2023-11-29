@@ -1,5 +1,3 @@
-import { useContext } from 'react';
-
 import { DateTime } from 'components/DateTime';
 import { Subcategory } from 'components/Subcategory';
 import convertServerDate from 'helpers/convertServerDate';
@@ -14,7 +12,7 @@ interface CategoryProps {
 
 export const Category = ({ category }: CategoryProps) => {
   const { name, start, end, subcategories } = category;
-  const [{ data, fetching, error }] = useFetchVoteQuery({
+  const [{ data, fetching }] = useFetchVoteQuery({
     variables: { token: globalUser.value.token?.access_token },
   });
 

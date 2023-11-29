@@ -1,6 +1,5 @@
-import { signal, useSignal, useSignalEffect } from '@preact/signals';
+import { useSignal, useSignalEffect } from '@preact/signals';
 
-import { Loading } from 'common/Loading';
 import { Button } from 'components/Button';
 import ErrorMessage from 'components/ErrorMessage';
 import { Nominee } from 'components/Nominee';
@@ -26,7 +25,8 @@ export const Subcategory = ({
 
   const vote = () => {
     const token = globalUser.value.token?.access_token;
-    if (token && selected.value) submitVote({ token, nomineeid: selected.value });
+    if (token && selected.value)
+      submitVote({ token, nomineeid: selected.value });
   };
 
   useSignalEffect(() => {
@@ -63,8 +63,6 @@ export const Subcategory = ({
     }
   });
 
-  const select = (id: number) => selected.value = id;
-
   return (
     <form
       className={styles.subcategory}
@@ -80,7 +78,7 @@ export const Subcategory = ({
           <Nominee
             nominee={nominee}
             currentlySelected={selected}
-            select={(id: number) => selected.value = id}
+            select={(id: number) => (selected.value = id)}
           />
         ))}
       </div>

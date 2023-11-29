@@ -35,7 +35,7 @@ const useGetUsers = (): [
 
     const QUERY = `query {
       ${userIds
-        .map((userId, i) => {
+        .map((userId) => {
           return `profile${userId}: findProfileById(id: ${userId}) {
           name
           id

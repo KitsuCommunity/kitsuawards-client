@@ -1,4 +1,4 @@
-import { Signal, useComputed, useSignal, useSignalEffect } from '@preact/signals';
+import { Signal, useComputed, useSignalEffect } from '@preact/signals';
 import { useId } from 'react';
 
 import { Media } from 'components/Media';
@@ -12,14 +12,13 @@ interface NomineeProps {
   select: (id: number) => void;
 }
 
-
 export const Nominee = ({
   nominee,
   currentlySelected,
   select,
 }: NomineeProps) => {
   const { name, media, id } = nominee;
-  
+
   const checked = useComputed(() => currentlySelected.value === nominee.id);
   const selectionId = useId();
 
@@ -29,7 +28,9 @@ export const Nominee = ({
 
   return (
     <section
-      className={[styles.nominee, checked.value ? styles.active : null].join(' ')}
+      className={[styles.nominee, checked.value ? styles.active : null].join(
+        ' ',
+      )}
     >
       <h4>{name}</h4>
       <Media media={media} />

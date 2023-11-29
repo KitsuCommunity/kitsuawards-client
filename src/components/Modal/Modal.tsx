@@ -1,11 +1,9 @@
-import { LegacyRef, ReactElement, useEffect, useRef, useState } from 'react';
-
-import { Page } from 'layout/Page';
+import { ReactNode, useEffect, useRef } from 'react';
 
 import styles from './modal.module.css';
 
 interface ModalProps {
-  children?: ReactElement;
+  children?: ReactNode;
 }
 
 export const Modal = ({ children }: ModalProps) => {
@@ -16,8 +14,6 @@ export const Modal = ({ children }: ModalProps) => {
       dialog.current?.show();
     }
   }, [dialog]);
-
-  const open = () => {};
 
   return (
     <dialog ref={dialog} className={styles.dialog}>
