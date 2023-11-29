@@ -7,7 +7,7 @@
   background-color: var(--input-background);
   border: var(--input-border);
   border-radius: var(--radius-medium);
-  
+
   &:invalid {
     border: var(--input-invalid-border);
   }

@@ -10,7 +10,10 @@
     "gql": "graphql-codegen --config codegen.yml",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
-    "stylelint": "stylelint --config .stylelintrc.json \"**/*.css\"",
+    "stylelint": "stylelint \"**/*.css\"",
+    "stylelint:fix": "stylelint --fix \"**/*.css\"",
+    "prettier": "prettier -c \"./src/**/*.{ts,tsx,css}\"",
+    "prettier:fix": "prettier -w \"./src/**/*.{ts,tsx,css}\"",
     "typecheck": "tsc"
   },
   "dependencies": {
@@ -43,6 +46,7 @@
     "eslint-plugin-react": "^7.33.2",
     "postcss": "^8.4.31",
     "postcss-nested": "^6.0.0",
+    "prettier": "^3.1.0",
     "stylelint": "^14.16.1",
     "stylelint-config-idiomatic-order": "^8.1.0",
     "stylelint-config-prettier": "^9.0.3",

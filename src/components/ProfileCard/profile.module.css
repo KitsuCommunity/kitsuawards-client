@@ -1,7 +1,7 @@
 .account {
   display: grid;
   grid-area: account;
-  grid-template-areas: 
+  grid-template-areas:
     'image username'
     'image signout';
   grid-template-columns: 3rem;
@@ -25,7 +25,6 @@
     gap: 0.4em;
 
     margin: 0;
-    
   }
 
   & img {

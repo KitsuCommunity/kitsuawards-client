@@ -1,7 +1,7 @@
 .navToggle {
   position: fixed;
   z-index: var(--index-top);
-    
+
   inline-size: 100vw;
   block-size: 50px;
 
@@ -28,15 +28,15 @@
   display: grid;
   grid-template-areas: 'Navigation Content';
   grid-template-columns: 17rem auto;
-  
+
   .navToggle {
     display: none;
   }
-  
+
   @media screen and (max-width: 65rem) {
     grid-template-areas: 'Content';
     grid-template-columns: auto;
-    
+
     .navToggle {
       display: block;
     }

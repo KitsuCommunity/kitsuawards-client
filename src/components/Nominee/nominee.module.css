@@ -25,7 +25,8 @@
     border-radius: var(--radius-medium-top);
   }
 
-  & iframe, &video {
+  & iframe,
+  &video {
     z-index: 20;
   }
 

@@ -10,15 +10,14 @@
       '.';
     grid-template-rows: 1fr 120px 2rem 1fr;
     grid-gap: 0.2em;
-  
+
     place-items: center;
-  
+
     inline-size: 10rem;
     block-size: 10rem;
 
     color: var(--secondary-text);
-  
-  
+
     background-color: var(--card-bg);
     border-radius: var(--radius-medium);
     box-shadow: var(--card-shadow);
@@ -28,20 +27,20 @@
 
       background-color: var(--card-hover-bg);
     }
-  
+
     p {
       align-self: start;
       grid-area: text;
-  
+
       margin: 0;
     }
-  
+
     img {
       grid-area: image;
-  
+
       inline-size: 100px;
       block-size: 100px;
-  
+
       border-radius: 50%;
     }
 

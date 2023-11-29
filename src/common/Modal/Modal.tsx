@@ -1,4 +1,4 @@
-import type { ReactNode} from 'react';
+import type { ReactNode } from 'react';
 import { useEffect, useRef } from 'react';
 
 import styles from './modal.module.css';

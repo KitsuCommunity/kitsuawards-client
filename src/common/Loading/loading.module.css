@@ -15,10 +15,10 @@
   .loaderInner {
     inline-size: var(--size);
     block-size: var(--size);
-  
+
     background-color: var(--loader-inner-bg);
     border-radius: var(--radius-circle);
-  
+
     animation: loading-inner 700ms ease-in-out infinite alternate;
   }
 }
@@ -51,11 +51,19 @@
 }
 
 @keyframes loading-inner {
-  from {filter: opacity(30%)}
-  to {filter: opacity(100%)}
+  from {
+    filter: opacity(30%);
+  }
+  to {
+    filter: opacity(100%);
+  }
 }
 
 @keyframes loading-outer {
-  from {filter: opacity(100%)}
-  to {filter: opacity(80%)}
+  from {
+    filter: opacity(100%);
+  }
+  to {
+    filter: opacity(80%);
+  }
 }

@@ -1,9 +1,15 @@
 import gql from 'graphql-tag';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
-export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
+export type Exact<T extends { [key: string]: unknown }> = {
+  [K in keyof T]: T[K];
+};
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]?: Maybe<T[SubKey]>;
+};
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]: Maybe<T[SubKey]>;
+};
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -36,7 +42,6 @@ export type Mutation = {
   submitVote?: Maybe<SubmitVotePayload>;
 };
 
-
 export type MutationSubmitVoteArgs = {
   input: SubmitVoteInput;
 };
@@ -52,12 +57,10 @@ export type Nominee = {
   usersResults?: Maybe<Scalars['Int']>;
 };
 
-
 /** Nominees information */
 export type NomineeJudgesResultsArgs = {
   token?: InputMaybe<Scalars['String']>;
 };
-
 
 /** Nominees information */
 export type NomineeUsersResultsArgs = {
@@ -71,7 +74,6 @@ export type Query = {
   /** Show current year information */
   year: Array<Year>;
 };
-
 
 export type QueryFetchVoteArgs = {
   token?: InputMaybe<Scalars['String']>;
@@ -123,14 +125,13 @@ export type Year = {
   start: Scalars['String'];
 };
 
-
 export const FetchJudges = gql`
-    query FetchJudges {
-  year {
-    judges {
-      id
-      userId
+  query FetchJudges {
+    year {
+      judges {
+        id
+        userId
+      }
     }
   }
-}
-    `;
+`;
