@@ -2,9 +2,7 @@ import image from 'assets/favicon.png';
 
 import styles from './brand.module.css';
 
-interface BrandProps {}
-
-export const Brand = ({}: BrandProps) => {
+export const Brand = () => {
   return (
     <div className={styles.brand}>
       <img src={image} />

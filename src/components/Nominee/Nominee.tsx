@@ -1,4 +1,4 @@
-import { Signal, useComputed, useSignalEffect } from '@preact/signals';
+import { Signal, useComputed } from '@preact/signals';
 import { useId } from 'react';
 
 import { Media } from 'components/Media';

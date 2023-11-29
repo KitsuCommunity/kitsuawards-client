@@ -23,12 +23,12 @@ import { useState } from 'react';
 const useGetUsers = (): [
   KitsuUser[] | null,
   boolean,
-  any,
+  unknown,
   (userIds: string[]) => void,
 ] => {
   const [loading, setLoading] = useState<boolean>(false);
   const [data, setData] = useState<KitsuUser[] | null>(null);
-  const [error, setError] = useState<{}>();
+  const [error, setError] = useState<unknown>();
 
   const getData = (userIds: string[]) => {
     setLoading(true);

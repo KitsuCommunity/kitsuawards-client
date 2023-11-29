@@ -15,8 +15,6 @@ const YouTube = ({ media }: YouTubeProps) => {
   const url = media.split('.be/')[1];
   const openVideo = useSignal(false);
 
-  console.log(url);
-
   if (globalUser.value.allowYouTube) {
     return (
       <div
