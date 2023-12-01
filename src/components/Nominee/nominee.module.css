@@ -1,89 +1,89 @@
 /* stylelint-disable scale-unlimited/declaration-strict-value */
 .nominee {
-  position: relative;
+    position: relative;
 
-  display: grid;
-  grid-template-areas:
-    'preview'
-    'title'
-    'selection';
-  gap: 0.6rem;
+    display: grid;
+    grid-template-areas:
+        'preview'
+        'title'
+        'selection';
+    gap: 0.6rem;
 
-  justify-items: center;
+    justify-items: center;
 
-  padding: 0;
+    padding: 0;
 
-  background-color: var(--card-bg);
-  border-radius: var(--radius-medium);
+    background-color: var(--card-bg);
+    border-radius: var(--radius-medium);
 
-  & img,
-  & video {
-    grid-area: preview;
+    & img,
+    & video {
+        grid-area: preview;
 
-    inline-size: 100%;
+        inline-size: 100%;
 
-    border-radius: var(--radius-medium-top);
-  }
-
-  & iframe,
-  &video {
-    z-index: 20;
-  }
-
-  & h4 {
-    grid-area: title;
-
-    margin: 0 5px;
-  }
-
-  & .vote {
-    grid-area: selection;
-
-    inline-size: 20px;
-    block-size: 20px;
-    margin-block-end: 0.5rem;
-
-    background-color: var(--vote-btn-bkg);
-    border: 2px solid var(--vote-btn-border);
-    border-radius: var(--radius-circle);
-
-    > div {
-      inline-size: 100%;
-      block-size: 100%;
-
-      background-color: var(--vote-btn-selected-bkg);
-      border-radius: var(--radius-circle);
-
-      transition: transform 200ms;
-      transform: scale(0);
+        border-radius: var(--radius-medium-top);
     }
-  }
 
-  &.active {
-    background-color: var(--card-selected-bg);
-
-    .vote {
-      border: 2px solid var(--vote-btn-selected-border);
-
-      > div {
-        transform: scale(0.7);
-      }
+    & iframe,
+    &video {
+        z-index: 20;
     }
-  }
 
-  &:hover {
-    background-color: var(--card-selected-bg);
+    & h4 {
+        grid-area: title;
+
+        margin: 0 5px;
+    }
 
     & .vote {
-      border-color: var(--vote-btn-selected-bkg);
+        grid-area: selection;
+
+        inline-size: 20px;
+        block-size: 20px;
+        margin-block-end: 0.5rem;
+
+        background-color: var(--vote-btn-bkg);
+        border: 2px solid var(--vote-btn-border);
+        border-radius: var(--radius-circle);
+
+        > div {
+            inline-size: 100%;
+            block-size: 100%;
+
+            background-color: var(--vote-btn-selected-bkg);
+            border-radius: var(--radius-circle);
+
+            transition: transform 200ms;
+            transform: scale(0);
+        }
     }
-  }
 
-  .voteLabel {
-    position: absolute;
-    z-index: 10;
+    &.active {
+        background-color: var(--card-selected-bg);
 
-    inline-size: 100%;
-    block-size: 100%;
-  }
+        .vote {
+            border: 2px solid var(--vote-btn-selected-border);
+
+            > div {
+                transform: scale(0.7);
+            }
+        }
+    }
+
+    &:hover {
+        background-color: var(--card-selected-bg);
+
+        & .vote {
+            border-color: var(--vote-btn-selected-bkg);
+        }
+    }
+
+    .voteLabel {
+        position: absolute;
+        z-index: 10;
+
+        inline-size: 100%;
+        block-size: 100%;
+    }
 }

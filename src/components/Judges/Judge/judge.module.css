@@ -1,51 +1,51 @@
 .judgeItem {
-  list-style-type: none;
+    list-style-type: none;
 
-  > a {
-    display: grid;
-    grid-template-areas:
-      '.'
-      'image'
-      'text'
-      '.';
-    grid-template-rows: 1fr 120px 2rem 1fr;
-    grid-gap: 0.2em;
+    > a {
+        display: grid;
+        grid-template-areas:
+            '.'
+            'image'
+            'text'
+            '.';
+        grid-template-rows: 1fr 120px 2rem 1fr;
+        grid-gap: 0.2em;
 
-    place-items: center;
+        place-items: center;
 
-    inline-size: 10rem;
-    block-size: 10rem;
+        inline-size: 10rem;
+        block-size: 10rem;
 
-    color: var(--secondary-text);
+        color: var(--secondary-text);
 
-    background-color: var(--card-bg);
-    border-radius: var(--radius-medium);
-    box-shadow: var(--card-shadow);
+        background-color: var(--card-bg);
+        border-radius: var(--radius-medium);
+        box-shadow: var(--card-shadow);
 
-    &:hover {
-      color: var(--link-text);
+        &:hover {
+            color: var(--link-text);
 
-      background-color: var(--card-hover-bg);
+            background-color: var(--card-hover-bg);
+        }
+
+        p {
+            align-self: start;
+            grid-area: text;
+
+            margin: 0;
+        }
+
+        img {
+            grid-area: image;
+
+            inline-size: 100px;
+            block-size: 100px;
+
+            border-radius: 50%;
+        }
+
+        .loading {
+            grid-area: image;
+        }
     }
-
-    p {
-      align-self: start;
-      grid-area: text;
-
-      margin: 0;
-    }
-
-    img {
-      grid-area: image;
-
-      inline-size: 100px;
-      block-size: 100px;
-
-      border-radius: 50%;
-    }
-
-    .loading {
-      grid-area: image;
-    }
-  }
 }

@@ -1,19 +1,19 @@
 .brand {
-  display: flex;
-  grid-area: brand;
+    display: flex;
+    grid-area: brand;
 
-  align-items: center;
-  justify-content: center;
+    align-items: center;
+    justify-content: center;
 
-  margin: 0.8em 0 1em;
+    margin: 0.8em 0 1em;
 
-  h1 {
-    font-size: var(--font-xl);
-  }
+    h1 {
+        font-size: var(--font-xl);
+    }
 
-  img {
-    block-size: 2.3rem;
-    margin-inline-start: -4px;
-    margin-inline-end: 4px;
-  }
+    img {
+        block-size: 2.3rem;
+        margin-inline-start: -4px;
+        margin-inline-end: 4px;
+    }
 }

@@ -1,19 +1,19 @@
 interface KitsuUser {
-  avatarImage: {
-    blurhash: string;
-    views: {
-      name: string;
-      url: string;
-    }[];
-  };
-  name: string;
-  id: string;
+    avatarImage: {
+        blurhash: string;
+        views: {
+            name: string;
+            url: string;
+        }[];
+    };
+    name: string;
+    id: string;
 }
 
 interface KitsuUserRes {
-  data: { findProfileById: KitsuUser };
+    data: { findProfileById: KitsuUser };
 }
 
 interface CurrentAccountRes {
-  data: { currentAccount: { profile: KitsuUser } };
+    data: { currentAccount: { profile: KitsuUser } };
 }

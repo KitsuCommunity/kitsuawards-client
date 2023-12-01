@@ -1,46 +1,46 @@
 import styles from './button.module.css';
 
 interface ButtonProps {
-  type?: 'button' | 'submit';
-  disabled?: boolean;
-  onClick?: (
-    e:
-      | React.TargetedEvent<HTMLButtonElement, MouseEvent>
-      | React.TargetedEvent<HTMLInputElement, MouseEvent>,
-  ) => void;
-  children?: string;
-  className?: string;
-  to?: string;
+    type?: 'button' | 'submit';
+    disabled?: boolean;
+    onClick?: (
+        e:
+            | React.TargetedEvent<HTMLButtonElement, MouseEvent>
+            | React.TargetedEvent<HTMLInputElement, MouseEvent>,
+    ) => void;
+    children?: string;
+    className?: string;
+    to?: string;
 }
 
 export const Button = ({
-  type,
-  disabled,
-  onClick,
-  children,
-  className,
+    type,
+    disabled,
+    onClick,
+    children,
+    className,
 }: ButtonProps) => {
-  if (type === 'submit') {
-    return (
-      <input
-        className={[styles.button, className].join(' ')}
-        type="submit"
-        onClick={onClick}
-        value={children}
-        disabled={disabled}
-      ></input>
-    );
-  }
+    if (type === 'submit') {
+        return (
+            <input
+                className={[styles.button, className].join(' ')}
+                type="submit"
+                onClick={onClick}
+                value={children}
+                disabled={disabled}
+            ></input>
+        );
+    }
 
-  return (
-    <button
-      className={[styles.button, className].join(' ')}
-      onClick={onClick}
-      disabled={disabled}
-    >
-      {children}
-    </button>
-  );
+    return (
+        <button
+            className={[styles.button, className].join(' ')}
+            onClick={onClick}
+            disabled={disabled}
+        >
+            {children}
+        </button>
+    );
 };
 
 export default Button;

@@ -1,62 +1,62 @@
 {
-  "compilerOptions": {
-    "target": "ES2020",
-    "useDefineForClassFields": true,
-    "module": "ESNext",
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "skipLibCheck": true,
-    "allowJs": false,
-    "baseUrl": ".",
-    "paths": {
-      // Make sure to update changes in vite.config and .eslintrc as well
-      "react": ["./node_modules/preact/compat/"],
-      "react-dom": ["./node_modules/preact/compat/"],
-      // import index exported members
-      // should be at top for highest priority
-      "assets": ["./src/assets"],
-      "common": ["./src/common"],
-      "components": ["./src/components"],
-      "generated": ["./src/generated"],
-      "hooks": ["./src/hooks"],
-      "layout": ["./src/layout"],
-      "pages": ["./src/pages"],
-      "signals": ["./src/signals"],
-      "styles": ["./src/styles"],
-      "utils": ["src/utils"],
-      "types": ["./src/types"],
+    "compilerOptions": {
+        "target": "ES2020",
+        "useDefineForClassFields": true,
+        "module": "ESNext",
+        "lib": ["ES2020", "DOM", "DOM.Iterable"],
+        "skipLibCheck": true,
+        "allowJs": false,
+        "baseUrl": ".",
+        "paths": {
+            // Make sure to update changes in vite.config and .eslintrc as well
+            "react": ["./node_modules/preact/compat/"],
+            "react-dom": ["./node_modules/preact/compat/"],
+            // import index exported members
+            // should be at top for highest priority
+            "assets": ["./src/assets"],
+            "common": ["./src/common"],
+            "components": ["./src/components"],
+            "generated": ["./src/generated"],
+            "hooks": ["./src/hooks"],
+            "layout": ["./src/layout"],
+            "pages": ["./src/pages"],
+            "signals": ["./src/signals"],
+            "styles": ["./src/styles"],
+            "utils": ["src/utils"],
+            "types": ["./src/types"],
 
-      // import files inside the folders
-      "assets/*": ["./src/assets/*"],
-      "common/*": ["./src/common/*"],
-      "components/*": ["./src/components/*"],
-      "generated/*": ["./src/generated/*"],
-      "hooks/*": ["./src/hooks/*"],
-      "layout/*": ["./src/layout/*"],
-      "pages/*": ["./src/pages/*"],
-      "signals/*": ["./src/signals/*"],
-      "styles/*": ["./src/styles/*"],
-      "utils/*": ["src/utils/*"],
-      "types/*": ["./src/types/*"],
+            // import files inside the folders
+            "assets/*": ["./src/assets/*"],
+            "common/*": ["./src/common/*"],
+            "components/*": ["./src/components/*"],
+            "generated/*": ["./src/generated/*"],
+            "hooks/*": ["./src/hooks/*"],
+            "layout/*": ["./src/layout/*"],
+            "pages/*": ["./src/pages/*"],
+            "signals/*": ["./src/signals/*"],
+            "styles/*": ["./src/styles/*"],
+            "utils/*": ["src/utils/*"],
+            "types/*": ["./src/types/*"],
 
-      // import root files
-      // should always be at bottom for lowest priority
-      "src/*": ["./src/*"]
+            // import root files
+            // should always be at bottom for lowest priority
+            "src/*": ["./src/*"]
+        },
+
+        /* Bundler mode */
+        "moduleResolution": "bundler",
+        "allowImportingTsExtensions": true,
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "noEmit": true,
+        "jsx": "react-jsx",
+        "jsxImportSource": "preact",
+
+        /* Linting */
+        "strict": true,
+        "noFallthroughCasesInSwitch": true,
+        "forceConsistentCasingInFileNames": true
     },
-
-    /* Bundler mode */
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx",
-    "jsxImportSource": "preact",
-
-    /* Linting */
-    "strict": true,
-    "noFallthroughCasesInSwitch": true,
-    "forceConsistentCasingInFileNames": true
-  },
-  "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+    "include": ["src"],
+    "references": [{ "path": "./tsconfig.node.json" }]
 }

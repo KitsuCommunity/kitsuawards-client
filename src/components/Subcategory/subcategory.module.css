@@ -1,14 +1,14 @@
 .subcategory {
-  display: grid;
-  gap: 1rem;
+    display: grid;
+    gap: 1rem;
 
-  & h3 {
-    margin: 0.5rem 0 0.2rem;
-  }
+    & h3 {
+        margin: 0.5rem 0 0.2rem;
+    }
 }
 
 .nominees {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1rem;
 }

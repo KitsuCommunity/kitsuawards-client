@@ -1,12 +1,12 @@
 .judgesList {
-  max-inline-size: 1000px;
+    max-inline-size: 1000px;
 
-  ul {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 10rem);
-    gap: 15px;
+    ul {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 10rem);
+        gap: 15px;
 
-    padding: 0;
-    margin: 0;
-  }
+        padding: 0;
+        margin: 0;
+    }
 }

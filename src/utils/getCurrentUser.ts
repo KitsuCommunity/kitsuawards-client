@@ -18,20 +18,20 @@ const QUERY = `query {
 `;
 
 export const getCurrentUser = async (token: string) => {
-  const data = await axios.post<CurrentAccountRes>(
-    'https://kitsu.io/api/graphql',
-    {
-      query: QUERY,
-    },
-    {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + token,
-      },
-    },
-  );
+    const data = await axios.post<CurrentAccountRes>(
+        'https://kitsu.io/api/graphql',
+        {
+            query: QUERY,
+        },
+        {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: 'Bearer ' + token,
+            },
+        },
+    );
 
-  const res = data.data;
+    const res = data.data;
 
-  return res;
+    return res;
 };

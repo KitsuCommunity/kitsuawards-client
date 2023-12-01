@@ -1,22 +1,22 @@
 :root {
-  /* Font Sizes */
-  --font-xs: 0.6rem;
-  --font-sm: 0.8rem;
-  --font-me: 1rem;
-  --font-lg: 1.2rem;
-  --font-xl: 1.4rem;
-  --font-xxl: 1.8rem;
-  --font-heading: 2.5rem;
-  --font-subheading: var(--font-xxl);
+    /* Font Sizes */
+    --font-xs: 0.6rem;
+    --font-sm: 0.8rem;
+    --font-me: 1rem;
+    --font-lg: 1.2rem;
+    --font-xl: 1.4rem;
+    --font-xxl: 1.8rem;
+    --font-heading: 2.5rem;
+    --font-subheading: var(--font-xxl);
 
-  /* Font Weights */
-  --font-light: 300;
-  --font-regular: 400;
-  --font-semi-bold: 600;
-  --font-bold: 700;
-  --font-extra-bold: 800;
+    /* Font Weights */
+    --font-light: 300;
+    --font-regular: 400;
+    --font-semi-bold: 600;
+    --font-bold: 700;
+    --font-extra-bold: 800;
 
-  /* Font Families */
-  --font-family-body: 'Open Sans', sans-serif;
-  --font-family-headings: 'Asap', sans-serif;
+    /* Font Families */
+    --font-family-body: 'Open Sans', sans-serif;
+    --font-family-headings: 'Asap', sans-serif;
 }

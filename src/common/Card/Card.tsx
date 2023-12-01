@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 
 interface CardProps {
-  children?: ReactNode;
+    children?: ReactNode;
 }
 
 export default function Judge({ children }: CardProps) {}

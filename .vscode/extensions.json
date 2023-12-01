@@ -1,17 +1,17 @@
 {
-  "recommendations": [
-    "dbaeumer.vscode-eslint",
-    "clinyong.vscode-css-modules",
-    "phoenisx.cssvar",
-    "mikestead.dotenv",
-    "capaj.graphql-codegen-vscode",
-    "GraphQL.vscode-graphql",
-    "GraphQL.vscode-graphql-syntax",
-    "GraphQL.vscode-graphql-execution",
-    "bierner.markdown-preview-github-styles",
-    "esbenp.prettier-vscode",
-    "stylelint.vscode-stylelint",
-    "csstools.postcss",
-    "vunguyentuan.vscode-postcss"
-  ]
+    "recommendations": [
+        "dbaeumer.vscode-eslint",
+        "clinyong.vscode-css-modules",
+        "phoenisx.cssvar",
+        "mikestead.dotenv",
+        "capaj.graphql-codegen-vscode",
+        "GraphQL.vscode-graphql",
+        "GraphQL.vscode-graphql-syntax",
+        "GraphQL.vscode-graphql-execution",
+        "bierner.markdown-preview-github-styles",
+        "esbenp.prettier-vscode",
+        "stylelint.vscode-stylelint",
+        "csstools.postcss",
+        "vunguyentuan.vscode-postcss"
+    ]
 }

@@ -9,10 +9,10 @@ import { client } from './apiConfig';
 import 'styles/index.css';
 
 render(
-  <Provider value={client}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </Provider>,
-  document.getElementById('root')!,
+    <Provider value={client}>
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>
+    </Provider>,
+    document.getElementById('root')!,
 );

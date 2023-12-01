@@ -1,11 +1,11 @@
 .tag {
-  block-size: 1.4em;
-  padding: 0 0.2em;
+    block-size: 1.4em;
+    padding: 0 0.2em;
 
-  font-size: var(--font-sm);
-  font-weight: var(--font-regular);
-  color: var(--tag-text-color);
+    font-size: var(--font-sm);
+    font-weight: var(--font-regular);
+    color: var(--tag-text-color);
 
-  background-color: var(--tag-background-color);
-  border-radius: var(--radius-small);
+    background-color: var(--tag-background-color);
+    border-radius: var(--radius-small);
 }

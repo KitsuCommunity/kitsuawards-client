@@ -1,30 +1,30 @@
 .button {
-  padding: 13px 22px;
+    padding: 13px 22px;
 
-  color: var(--input-text-color);
+    color: var(--input-text-color);
 
-  background-color: var(--button-primary-bg);
-  border: var(--input-border);
-  border-radius: var(--radius-medium);
+    background-color: var(--button-primary-bg);
+    border: var(--input-border);
+    border-radius: var(--radius-medium);
 
-  &:is(a) {
-    display: grid;
+    &:is(a) {
+        display: grid;
 
-    align-content: center;
-    justify-content: center;
+        align-content: center;
+        justify-content: center;
 
-    padding: 0;
+        padding: 0;
 
-    & span {
-      color: var(--input-text-color);
+        & span {
+            color: var(--input-text-color);
+        }
     }
-  }
 
-  &:hover {
-    background-color: var(--button-primary-hover-bg);
-  }
+    &:hover {
+        background-color: var(--button-primary-hover-bg);
+    }
 
-  &:disabled {
-    background-color: var(--button-disabled-bg);
-  }
+    &:disabled {
+        background-color: var(--button-disabled-bg);
+    }
 }

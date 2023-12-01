@@ -1,74 +1,74 @@
 env:
-  browser: true
-  es2021: true
+    browser: true
+    es2021: true
 extends:
-  - eslint:recommended
-  - plugin:@typescript-eslint/recommended
-  # - plugin:react/recommended
-  - plugin:import/recommended
-  - plugin:import/typescript
+    - eslint:recommended
+    - plugin:@typescript-eslint/recommended
+    # - plugin:react/recommended
+    - plugin:import/recommended
+    - plugin:import/typescript
 parser: '@typescript-eslint/parser'
 parserOptions:
-  ecmaVersion: latest
-  sourceType: module
+    ecmaVersion: latest
+    sourceType: module
 plugins:
-  - '@typescript-eslint'
-  - react
-  - import
+    - '@typescript-eslint'
+    - react
+    - import
 settings:
-  import/resolver:
-    typescript:
-      project: './tsconfig.json'
-  import/parsers:
-    '@typescript-eslint/parser': ['.ts', '.tsx']
+    import/resolver:
+        typescript:
+            project: './tsconfig.json'
+    import/parsers:
+        '@typescript-eslint/parser': ['.ts', '.tsx']
 ignorePatterns:
-  - node_modules
-  - dist
-  - .vscode
-  - .github
-  - postCss
-  - src/generated
-  - '**generated.ts'
+    - node_modules
+    - dist
+    - .vscode
+    - .github
+    - postCss
+    - src/generated
+    - '**generated.ts'
 rules:
-  semi: ['error', 'always']
-  # max-lines-per-function: ['warn', 60]
-  eqeqeq: 'error'
-  # max-lines: ['warn', 300]
-  no-console: ['error', { 'allow': ['warn', 'error'] }]
-  'no-var': 'error'
-  '@typescript-eslint/no-unused-vars':
-    - warn
-    - varsIgnorePattern: '^_'
-      destructuredArrayIgnorePattern: '^_'
-      argsIgnorePattern: '^_'
-  quotes: ['error', 'single']
-  import/order:
-    # Make sure to update changes in vite.config and the tsconfig as well
-    - 'error'
-    - newlines-between: always
-      pathGroups:
-        - pattern: '{assets,common,components,generated,hooks,layout,pages,signals,styles,types,utils,src}/**'
-          group: 'parent'
-        - pattern: '{assets,common,components,generated,hooks,layout,pages,signals,styles,types,utils,src}'
-          group: parent
-          position: before
-      alphabetize:
-        order: asc
-      groups:
-        - builtin
-        - external
-        - internal
-        - parent
-        - sibling
-        - index
-        - object
-  import/no-useless-path-segments:
-    - error
-    - noUselessIndex: true
-  import/newline-after-import: error
-  '@typescript-eslint/consistent-type-imports': error
+    semi: ['error', 'always']
+    # max-lines-per-function: ['warn', 60]
+    eqeqeq: 'error'
+    # max-lines: ['warn', 300]
+    no-console: ['error', { 'allow': ['warn', 'error'] }]
+    'no-var': 'error'
+    '@typescript-eslint/no-unused-vars':
+        - warn
+        - varsIgnorePattern: '^_'
+          destructuredArrayIgnorePattern: '^_'
+          argsIgnorePattern: '^_'
+    quotes: ['error', 'single']
+    import/order:
+        # Make sure to update changes in vite.config and the tsconfig as well
+        - 'error'
+        - newlines-between: always
+          pathGroups:
+              - pattern: '{assets,common,components,generated,hooks,layout,pages,signals,styles,types,utils,src}/**'
+                group: 'parent'
+              - pattern: '{assets,common,components,generated,hooks,layout,pages,signals,styles,types,utils,src}'
+                group: parent
+                position: before
+          alphabetize:
+              order: asc
+          groups:
+              - builtin
+              - external
+              - internal
+              - parent
+              - sibling
+              - index
+              - object
+    import/no-useless-path-segments:
+        - error
+        - noUselessIndex: true
+    import/newline-after-import: error
+    '@typescript-eslint/consistent-type-imports': error
 
-  # import/no-duplicates:
-  #   - error
-  #   - preferInline: false
+    # import/no-duplicates:
+    #   - error
+    #   - preferInline: false
 root: true

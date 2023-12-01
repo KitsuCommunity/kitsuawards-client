@@ -1,11 +1,11 @@
 .page {
-  display: grid;
-  grid-area: Content;
-  grid-template-columns: 1fr min(95%, 1100px) 1fr;
+    display: grid;
+    grid-area: Content;
+    grid-template-columns: 1fr min(95%, 1100px) 1fr;
 
-  > main {
-    grid-column: 2;
-  }
+    > main {
+        grid-column: 2;
+    }
 
-  padding-block-end: 4rem;
+    padding-block-end: 4rem;
 }

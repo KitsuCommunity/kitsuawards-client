@@ -1,8 +1,8 @@
 query FetchJudges {
-	year {
-		judges {
-			id
-			userId
-		}
-	}
+    year {
+        judges {
+            id
+            userId
+        }
+    }
 }

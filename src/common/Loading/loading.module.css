@@ -1,71 +1,71 @@
 .loaderOuter {
-  --size: 50px;
-  --padding: 5px;
+    --size: 50px;
+    --padding: 5px;
 
-  inline-size: var(--size);
-  block-size: var(--size);
-  padding: var(--padding);
-  margin: auto;
-
-  background-color: var(--loader-outer-bg);
-  border-radius: var(--radius-large);
-
-  animation: loading-outer 700ms ease-in-out infinite alternate;
-
-  .loaderInner {
     inline-size: var(--size);
     block-size: var(--size);
+    padding: var(--padding);
+    margin: auto;
 
-    background-color: var(--loader-inner-bg);
-    border-radius: var(--radius-circle);
+    background-color: var(--loader-outer-bg);
+    border-radius: var(--radius-large);
 
-    animation: loading-inner 700ms ease-in-out infinite alternate;
-  }
+    animation: loading-outer 700ms ease-in-out infinite alternate;
+
+    .loaderInner {
+        inline-size: var(--size);
+        block-size: var(--size);
+
+        background-color: var(--loader-inner-bg);
+        border-radius: var(--radius-circle);
+
+        animation: loading-inner 700ms ease-in-out infinite alternate;
+    }
 }
 
 .fill {
-  display: grid;
-  grid-row: span 5;
-  grid-column: span 5;
+    display: grid;
+    grid-row: span 5;
+    grid-column: span 5;
 
-  align-content: center;
-  justify-content: center;
+    align-content: center;
+    justify-content: center;
 
-  inline-size: 100%;
-  block-size: 100%;
+    inline-size: 100%;
+    block-size: 100%;
 
-  & > .loaderOuter {
-    --size: 40px;
-    --padding: 4px;
-  }
+    & > .loaderOuter {
+        --size: 40px;
+        --padding: 4px;
+    }
 }
 
 .fullscreen {
-  display: grid;
+    display: grid;
 
-  align-content: center;
-  justify-content: center;
+    align-content: center;
+    justify-content: center;
 
-  inline-size: 100vw;
-  block-size: 100vh;
+    inline-size: 100vw;
+    block-size: 100vh;
 }
 
 @keyframes loading-inner {
-  from {
-    filter: opacity(30%);
-  }
+    from {
+        filter: opacity(30%);
+    }
 
-  to {
-    filter: opacity(100%);
-  }
+    to {
+        filter: opacity(100%);
+    }
 }
 
 @keyframes loading-outer {
-  from {
-    filter: opacity(100%);
-  }
+    from {
+        filter: opacity(100%);
+    }
 
-  to {
-    filter: opacity(80%);
-  }
+    to {
+        filter: opacity(80%);
+    }
 }

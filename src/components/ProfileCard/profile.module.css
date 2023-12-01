@@ -1,51 +1,51 @@
 .account {
-  display: grid;
-  grid-area: account;
-  grid-template-areas:
-    'image username'
-    'image signout';
-  grid-template-columns: 3rem;
-  gap: 0.5rem;
-  row-gap: 0;
+    display: grid;
+    grid-area: account;
+    grid-template-areas:
+        'image username'
+        'image signout';
+    grid-template-columns: 3rem;
+    gap: 0.5rem;
+    row-gap: 0;
 
-  align-items: center;
-
-  block-size: 3rem;
-  padding: 1rem;
-
-  font-size: var(--font-me);
-  font-weight: var(--font-bold);
-  color: var(--nav-text);
-
-  background-color: var(--nav-item-bg);
-  border-radius: var(--radius-medium);
-
-  & p {
-    display: flex;
-    gap: 0.4em;
-
-    margin: 0;
-  }
-
-  & img {
-    grid-area: image;
+    align-items: center;
 
     block-size: 3rem;
+    padding: 1rem;
 
-    border-radius: var(--radius-circle);
-  }
+    font-size: var(--font-me);
+    font-weight: var(--font-bold);
+    color: var(--nav-text);
 
-  & .signOut {
-    grid-area: signout;
+    background-color: var(--nav-item-bg);
+    border-radius: var(--radius-medium);
 
-    padding: 1px 22px;
-    margin: 0;
-  }
+    & p {
+        display: flex;
+        gap: 0.4em;
+
+        margin: 0;
+    }
+
+    & img {
+        grid-area: image;
+
+        block-size: 3rem;
+
+        border-radius: var(--radius-circle);
+    }
+
+    & .signOut {
+        grid-area: signout;
+
+        padding: 1px 22px;
+        margin: 0;
+    }
 }
 
 .signIn {
-  grid-area: account;
+    grid-area: account;
 
-  block-size: 3rem;
-  padding: 1rem;
+    block-size: 3rem;
+    padding: 1rem;
 }

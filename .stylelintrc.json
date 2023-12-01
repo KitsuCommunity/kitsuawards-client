@@ -1,87 +1,91 @@
 {
-  "extends": [
-    "stylelint-config-standard",
-    "stylelint-config-prettier",
-    "./postCSS/stylelint-logically-grouped-order.cjs"
-  ],
-  "plugins": [
-    "stylelint-high-performance-animation",
-    "stylelint-max-lines",
-    "stylelint-declaration-strict-value",
-    "stylelint-use-logical-spec",
-    "stylelint-use-nesting"
-  ],
-  "ignoreFiles": ["node_modules", "dist"],
-  "rules": {
-    "declaration-empty-line-before": null,
-    "color-no-invalid-hex": true,
-    "selector-pseudo-class-no-unknown": [
-      true,
-      {
-        "ignorePseudoClasses": ["global", "local"]
-      }
+    "extends": [
+        "stylelint-config-standard",
+        "stylelint-config-prettier",
+        "./postCSS/stylelint-logically-grouped-order.cjs"
     ],
-    "declaration-no-important": true,
-    "custom-property-empty-line-before": [
-      "always",
-      {
-        "except": ["after-custom-property", "first-nested", "after-comment"],
-        "ignore": ["inside-single-line-block"],
-        "severity": "warning",
-        "message": "Please add a comment above the custom property group denoting what it is for."
-      }
+    "plugins": [
+        "stylelint-high-performance-animation",
+        "stylelint-max-lines",
+        "stylelint-declaration-strict-value",
+        "stylelint-use-logical-spec",
+        "stylelint-use-nesting"
     ],
-    "plugin/no-low-performance-animation-properties": [
-      true,
-      { "ignoreProperties": ["color", "background-color"] }
-    ],
-    "pitcher/max-lines": 300,
-    "scale-unlimited/declaration-strict-value": [
-      [
-        "/color$/",
-        "box-shadow",
-        "z-index",
-        "font-size",
-        "font-weight",
-        "font-family",
-        "fill",
-        "stroke"
-      ],
-      {
-        "expandShorthand": true,
-        "ignoreFunctions": true,
-        "ignoreValues": ["currentColor", "inherit"],
-        "message": "Custom expected ${types} for \"${value}\" of \"${property}\""
-      }
-    ],
-    "liberty/use-logical-spec": true,
+    "ignoreFiles": ["node_modules", "dist"],
+    "rules": {
+        "declaration-empty-line-before": null,
+        "color-no-invalid-hex": true,
+        "selector-pseudo-class-no-unknown": [
+            true,
+            {
+                "ignorePseudoClasses": ["global", "local"]
+            }
+        ],
+        "declaration-no-important": true,
+        "custom-property-empty-line-before": [
+            "always",
+            {
+                "except": [
+                    "after-custom-property",
+                    "first-nested",
+                    "after-comment"
+                ],
+                "ignore": ["inside-single-line-block"],
+                "severity": "warning",
+                "message": "Please add a comment above the custom property group denoting what it is for."
+            }
+        ],
+        "plugin/no-low-performance-animation-properties": [
+            true,
+            { "ignoreProperties": ["color", "background-color"] }
+        ],
+        "pitcher/max-lines": 300,
+        "scale-unlimited/declaration-strict-value": [
+            [
+                "/color$/",
+                "box-shadow",
+                "z-index",
+                "font-size",
+                "font-weight",
+                "font-family",
+                "fill",
+                "stroke"
+            ],
+            {
+                "expandShorthand": true,
+                "ignoreFunctions": true,
+                "ignoreValues": ["currentColor", "inherit"],
+                "message": "Custom expected ${types} for \"${value}\" of \"${property}\""
+            }
+        ],
+        "liberty/use-logical-spec": true,
 
-    "selector-id-pattern": [
-      "[a-zA-Z0-9]+",
-      {
-        "message": "Expected class selector to be camelCase"
-      }
-    ],
-    "selector-class-pattern": [
-      "[a-zA-Z0-9]+",
-      {
-        "message": "Expected class selector to be camelCase"
-      }
-    ],
-    "csstools/use-nesting": "ignore"
-  },
-  "overrides": [
-    {
-      "files": [
-        "themes/**/*.css",
-        "colours.css",
-        "colors.css",
-        "theme.css",
-        "palette.css"
-      ],
-      "rules": {
-        "pitcher/max-lines": 10000
-      }
-    }
-  ]
+        "selector-id-pattern": [
+            "[a-zA-Z0-9]+",
+            {
+                "message": "Expected class selector to be camelCase"
+            }
+        ],
+        "selector-class-pattern": [
+            "[a-zA-Z0-9]+",
+            {
+                "message": "Expected class selector to be camelCase"
+            }
+        ],
+        "csstools/use-nesting": "ignore"
+    },
+    "overrides": [
+        {
+            "files": [
+                "themes/**/*.css",
+                "colours.css",
+                "colors.css",
+                "theme.css",
+                "palette.css"
+            ],
+            "rules": {
+                "pitcher/max-lines": 10000
+            }
+        }
+    ]
 }

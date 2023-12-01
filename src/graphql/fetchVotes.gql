@@ -1,8 +1,8 @@
 query FetchVote($token: String) {
-  fetchVote(token: $token) {
-    nominee {
-      id
-      name
+    fetchVote(token: $token) {
+        nominee {
+            id
+            name
+        }
     }
-  }
 }

@@ -21,22 +21,22 @@ import { useState } from 'react';
  * @returns data, loading, error, getData()
  */
 const useGetUsers = (): [
-  KitsuUser[] | null,
-  boolean,
-  unknown,
-  (userIds: string[]) => void,
+    KitsuUser[] | null,
+    boolean,
+    unknown,
+    (userIds: string[]) => void,
 ] => {
-  const [loading, setLoading] = useState<boolean>(false);
-  const [data, setData] = useState<KitsuUser[] | null>(null);
-  const [error, setError] = useState<unknown>();
+    const [loading, setLoading] = useState<boolean>(false);
+    const [data, setData] = useState<KitsuUser[] | null>(null);
+    const [error, setError] = useState<unknown>();
 
-  const getData = (userIds: string[]) => {
-    setLoading(true);
+    const getData = (userIds: string[]) => {
+        setLoading(true);
 
-    const QUERY = `query {
+        const QUERY = `query {
       ${userIds
-        .map((userId) => {
-          return `profile${userId}: findProfileById(id: ${userId}) {
+          .map((userId) => {
+              return `profile${userId}: findProfileById(id: ${userId}) {
           name
           id
           avatarImage {
@@ -48,36 +48,36 @@ const useGetUsers = (): [
           }
         }
         `;
-        })
-        .join('')}
+          })
+          .join('')}
     }`;
 
-    fetch('https://kitsu.io/api/graphql', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        query: QUERY,
-      }),
-    })
-      .then(async (req) => {
-        setLoading(false);
+        fetch('https://kitsu.io/api/graphql', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                query: QUERY,
+            }),
+        })
+            .then(async (req) => {
+                setLoading(false);
 
-        const res = await req.json();
+                const res = await req.json();
 
-        const results = userIds.map(
-          (userId) => res.data[`profile${userId}`] as KitsuUser,
-        );
-        setData(results);
-      })
-      .catch((err) => {
-        setLoading(false);
-        setError(err.error);
-      });
-  };
+                const results = userIds.map(
+                    (userId) => res.data[`profile${userId}`] as KitsuUser,
+                );
+                setData(results);
+            })
+            .catch((err) => {
+                setLoading(false);
+                setError(err.error);
+            });
+    };
 
-  return [data, loading, error, getData];
+    return [data, loading, error, getData];
 };
 
 export default useGetUsers;
