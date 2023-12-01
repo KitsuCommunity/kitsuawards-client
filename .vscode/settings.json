@@ -10,5 +10,6 @@
         "*.gql": "graphql",
         "*.css": "postcss"
     },
-    "editor.indentSize": 4
+    "editor.indentSize": 4,
+    "editor.detectIndentation": false
 }
