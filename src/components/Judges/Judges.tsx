@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 
+import { ErrorMessage } from 'common';
 import { useGetUsers } from 'hooks';
 
 import { Judge } from './Judge';
@@ -9,7 +10,7 @@ import styles from './judges.module.css';
 export default function Judges() {
     const [{ data, fetching, error }] = useFetchJudgesQuery();
 
-    const [judgeData, judgeLoading, judgeError, getJudges] = useGetUsers();
+    const [judgeData, _, judgeError, getJudges] = useGetUsers();
 
     useEffect(() => {
         if (data?.year[0].judges) {
@@ -22,10 +23,16 @@ export default function Judges() {
         <section className={styles.judgesList}>
             <h3>Judges</h3>
             <ul>
-                {judgeData && !fetching && !error
-                    ? judgeData.map((judge) => {
+                {(error || judgeError) && (
+                    <ErrorMessage>Failed to load judges</ErrorMessage>
+                )}
+                {data && !fetching && !error
+                    ? data.year[0].judges.map((judge, i) => {
                           return (
-                              <Judge judge={judge} key={`judge${judge.id}`} />
+                              <Judge
+                                  judge={judgeData?.[i]}
+                                  key={`judge${judge.id}`}
+                              />
                           );
                       })
                     : data?.year[0].judges.map((judge) => (
