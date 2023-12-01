@@ -1,5 +1,5 @@
 import { DateTime } from 'common';
-import { ProfileCard, Judges } from 'components';
+import { ProfileCard, JudgesList } from 'components';
 
 import { Page } from 'layout/Page';
 
@@ -24,7 +24,7 @@ export const Home = ({ description, start, end }: HomeProps) => {
 
             <ProfileCard className={styles.profile} />
 
-            <Judges />
+            <JudgesList />
         </Page>
     );
 };

@@ -4,10 +4,10 @@ import { ErrorMessage } from 'common';
 import { useGetUsers } from 'hooks';
 
 import { Judge } from './Judge';
-import { useFetchJudgesQuery } from './Judges.generated';
-import styles from './judges.module.css';
+import { useFetchJudgesQuery } from './JudgesList.generated';
+import styles from './JudgesList.module.css';
 
-export default function Judges() {
+export default function JudgesList() {
     const [{ data, fetching, error }] = useFetchJudgesQuery();
 
     const [judgeData, _, judgeError, getJudges] = useGetUsers();

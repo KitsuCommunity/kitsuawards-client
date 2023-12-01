@@ -1,5 +1,5 @@
 export { Brand } from './Brand';
-export { Judges } from './Judges';
+export { JudgesList } from './JudgesList';
 export { Media } from './Media';
 export { Navigation, NavItem } from './Navigation';
 export { Nominee } from './Nominee';
