@@ -18,7 +18,6 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@graphql-codegen/cli": "^2.16.2",
     "@preact/signals": "^1.2.2",
     "axios": "^1.2.2",
     "graphql": "^16.6.0",
@@ -27,7 +26,7 @@
     "urql": "^3.0.3"
   },
   "devDependencies": {
-    "@graphql-codegen/cli": "2.4.0",
+    "@graphql-codegen/cli": "^2.16.2",
     "@graphql-codegen/introspection": "2.1.1",
     "@graphql-codegen/near-operation-file-preset": "^2.2.3",
     "@graphql-codegen/typescript": "2.4.2",
@@ -37,7 +36,6 @@
     "@graphql-codegen/typescript-urql": "^3.4.2",
     "@graphql-codegen/urql-introspection": "2.1.1",
     "@preact/preset-vite": "^2.7.0",
-    "@types/babel__core": "^7.1.19",
     "@typescript-eslint/eslint-plugin": "^6.13.1",
     "@typescript-eslint/parser": "^6.13.1",
     "autoprefixer": "^10.4.16",
