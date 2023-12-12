@@ -56,7 +56,7 @@
         "stylelint-order": "^3.1.1",
         "stylelint-use-logical-spec": "^3.2.2",
         "stylelint-use-nesting": "^4.0.0",
-        "vite": "^5.0.2"
+        "vite": "^5.0.8"
     },
     "volta": {
         "node": "20.10.0"
