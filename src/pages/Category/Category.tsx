@@ -3,6 +3,7 @@ import { Subcategory } from 'components';
 import { globalUser } from 'signals';
 import { convertServerDate } from 'utils';
 
+import yuiPeace from 'assets/yui_peace.gif';
 import { Page } from 'layout/Page';
 import type { CategoryFragment } from 'src/graphql/categories.generated';
 import { useFetchVoteQuery } from 'src/graphql/fetchVotes.generated';
@@ -45,6 +46,17 @@ export const Category = ({ category }: CategoryProps) => {
                         />
                     );
                 })}
+            {!fetching && !subcategories && (
+                <>
+                    <p>
+                        Oh my, we've got an early bird! Sadly, this category
+                        isn't ready for voting yet so you'll have to soak
+                        yourself in a healthy dose of patience. Stay cute out
+                        there!
+                    </p>
+                    <img src={yuiPeace} alt="Yui Hirasawa making peace signs" />
+                </>
+            )}
         </Page>
     );
 };
