@@ -1,5 +1,30 @@
+@keyframes fade-in {
+    0% {
+        filter: opacity(0);
+    }
+
+    100% {
+        filter: opacity(1);
+    }
+}
+
 .judgeItem {
     list-style-type: none;
+
+    transition: transform 300ms;
+    transition-timing-function: ease-out;
+    transform: scale(0.5);
+    animation: fade-in 800ms;
+
+    &:has(div) {
+        filter: opacity(1);
+    }
+
+    &:has(img) {
+        filter: opacity(1);
+
+        transform: scale(1);
+    }
 
     > a {
         display: grid;
