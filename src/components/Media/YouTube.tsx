@@ -13,7 +13,8 @@ interface YouTubeProps {
 }
 
 const YouTube = ({ media }: YouTubeProps) => {
-    const url = media.split('.be/')[1];
+    const dirtyUrl = media.split('.be/')[1];
+    const url = dirtyUrl.split('?')[0];
     const openVideo = useSignal(false);
 
     if (globalUser.value.allowYouTube) {
