@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+import { globalUser } from 'signals';
+
 const QUERY = `query {
   currentAccount {
     profile {
@@ -18,20 +20,24 @@ const QUERY = `query {
 `;
 
 export const getCurrentUser = async (token: string) => {
-    const data = await axios.post<CurrentAccountRes>(
-        'https://kitsu.io/api/graphql',
-        {
-            query: QUERY,
-        },
-        {
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: 'Bearer ' + token,
+    try {
+        const data = await axios.post<CurrentAccountRes>(
+            'https://kitsu.io/api/graphql',
+            {
+                query: QUERY,
             },
-        },
-    );
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: 'Bearer ' + token,
+                },
+            },
+        );
 
-    const res = data.data;
+        const res = data.data;
 
-    return res;
+        return res;
+    } catch {
+        return null;
+    }
 };
