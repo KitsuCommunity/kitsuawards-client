@@ -1,7 +1,7 @@
 {
     "editor.codeActionsOnSave": {
-        "source.fixAll": true,
-        "source.fixAll.stylelint": true
+        "source.fixAll": "explicit",
+        "source.fixAll.stylelint": "explicit"
     },
     "[postcss]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -11,5 +11,6 @@
         "*.css": "postcss"
     },
     "editor.indentSize": 4,
-    "editor.detectIndentation": false
+    "editor.detectIndentation": false,
+    "cssvar.ignore": ["**/node_modules/**", "**/dist/**"]
 }
