@@ -1,4 +1,4 @@
-import { DateTime } from 'common';
+import { DateTime, Loading } from 'common';
 import { Subcategory } from 'components';
 import { globalUser } from 'signals';
 import { convertServerDate } from 'utils';
@@ -28,6 +28,8 @@ export const Category = ({ category }: CategoryProps) => {
             <p>
                 <DateTime dateTime={start} /> → <DateTime dateTime={end} />
             </p>
+
+            {fetching && <Loading />}
 
             {!fetching &&
                 convertServerDate(start).getMilliseconds() <
