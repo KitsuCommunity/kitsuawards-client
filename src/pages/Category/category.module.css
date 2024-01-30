@@ -1,0 +1,15 @@
+.notStarted {
+    display: flex;
+    gap: 1rem;
+
+    align-items: center;
+
+    @media screen and (max-width: 420px) {
+        flex-direction: column-reverse;
+    }
+
+    & img {
+        max-inline-size: 100px;
+        block-size: auto;
+    }
+}
