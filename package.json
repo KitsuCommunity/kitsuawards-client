@@ -19,7 +19,7 @@
     },
     "dependencies": {
         "@preact/signals": "^1.2.2",
-        "axios": "^1.2.2",
+        "axios": "^1.6.0",
         "graphql": "^16.6.0",
         "preact": "^10.19.2",
         "react-router-dom": "^6.6.1",
